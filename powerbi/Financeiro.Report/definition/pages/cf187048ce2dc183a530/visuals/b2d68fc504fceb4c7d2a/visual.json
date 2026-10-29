@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b2d68fc504fceb4c7d2a",
+  "position": {
+    "x": 1065,
+    "y": 80,
+    "z": 7000,
+    "height": 92,
+    "width": 195,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Pagamentos em Atraso %"
+                }
+              },
+              "queryRef": "Medidas.Pagamentos em Atraso %",
+              "nativeQueryRef": "Pagamentos em Atraso %",
+              "displayName": "Pagos com atraso %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

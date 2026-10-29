@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7d476378614514345a25",
+  "position": {
+    "x": 20,
+    "y": 460,
+    "z": 11000,
+    "height": 245,
+    "width": 1240,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cliente"
+                    }
+                  },
+                  "Property": "Cliente"
+                }
+              },
+              "queryRef": "Cliente.Cliente",
+              "nativeQueryRef": "Cliente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cliente"
+                    }
+                  },
+                  "Property": "Tipo de Cliente"
+                }
+              },
+              "queryRef": "Cliente.Tipo de Cliente",
+              "nativeQueryRef": "Tipo de Cliente"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Cliente"
+                    }
+                  },
+                  "Property": "Cidade"
+                }
+              },
+              "queryRef": "Cliente.Cidade",
+              "nativeQueryRef": "Cidade"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Vencido"
+                }
+              },
+              "queryRef": "Medidas.Vencido",
+              "nativeQueryRef": "Vencido"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Maior Atraso (dias)"
+                }
+              },
+              "queryRef": "Medidas.Maior Atraso (dias)",
+              "nativeQueryRef": "Maior Atraso (dias)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Vencido"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Clientes com títulos vencidos'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f8585f397dc7444f68ce",
+  "position": {
+    "x": 1054.5,
+    "y": 347,
+    "z": 13000,
+    "height": 148,
+    "width": 205.5,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Desvio do Resultado"
+                }
+              },
+              "queryRef": "Medidas.Desvio do Resultado",
+              "nativeQueryRef": "Desvio do Resultado",
+              "displayName": "Resultado vs orçado"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,26 +1,31 @@
 /// Plano de contas gerencial. Ordem DRE e Sinal montam a DRE; Grupo de Caixa agrupa as saídas no fluxo de caixa.
 table Conta
+	lineageTag: 00d8ee50-a11f-4e5f-b611-eb9ce8dc354f
 
 	column conta_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 2fc6e7bf-f3c0-43e8-bf8c-a5b38a2e4acb
 		summarizeBy: none
 		sourceColumn: conta_key
 
 	column 'Código Conta'
 		dataType: string
+		lineageTag: 3934696c-ac28-4286-b4ab-cd3416421cb9
 		summarizeBy: none
 		sourceColumn: cod_conta
 
 	column Conta
 		dataType: string
+		lineageTag: b3f4c03f-5012-455c-b8b9-9147d33d0d00
 		summarizeBy: none
 		sourceColumn: descricao
 		sortByColumn: 'Código Conta'
 
 	column 'Grupo DRE'
 		dataType: string
+		lineageTag: b8ca1f6c-ba71-4eeb-b094-d977661f789c
 		summarizeBy: none
 		sourceColumn: grupo_dre
 		sortByColumn: 'Ordem DRE'
@@ -29,6 +34,7 @@ table Conta
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: cb814ad6-2277-4b19-a845-12b8d7d16aa4
 		summarizeBy: none
 		sourceColumn: ordem_grupo
 
@@ -36,6 +42,7 @@ table Conta
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 1bbe9db1-e802-4201-8028-c3b561a26365
 		summarizeBy: none
 		sourceColumn: sinal
 
@@ -43,11 +50,13 @@ table Conta
 		dataType: boolean
 		isHidden
 		formatString: """Sim"";""Sim"";""Não"""
+		lineageTag: cbbaf775-2c37-4893-9560-9d792010ac78
 		summarizeBy: none
 		sourceColumn: entra_dre
 
 	column 'Grupo de Caixa'
 		dataType: string
+		lineageTag: 78cab84a-f71f-4c99-bcf8-e4ca894b0fc0
 		summarizeBy: none
 		sourceColumn: grupo_caixa
 

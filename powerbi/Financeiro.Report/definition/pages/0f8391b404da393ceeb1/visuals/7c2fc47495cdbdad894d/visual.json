@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7c2fc47495cdbdad894d",
+  "position": {
+    "x": 20,
+    "y": 80,
+    "z": 2000,
+    "height": 92,
+    "width": 195,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Carteira em Aberto"
+                }
+              },
+              "queryRef": "Medidas.Carteira em Aberto",
+              "nativeQueryRef": "Carteira em Aberto"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

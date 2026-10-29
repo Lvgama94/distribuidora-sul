@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "d1ca3714d0379b63a216",
+  "position": {
+    "x": 20,
+    "y": 185,
+    "z": 9000,
+    "height": 310,
+    "width": 800,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "lineClusteredColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendário"
+                    }
+                  },
+                  "Property": "Mês/Ano"
+                }
+              },
+              "queryRef": "Calendário.Mês/Ano",
+              "nativeQueryRef": "Mês/Ano",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Receita Líquida"
+                }
+              },
+              "queryRef": "Medidas.Receita Líquida",
+              "nativeQueryRef": "Receita Líquida"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Margem Líquida %"
+                }
+              },
+              "queryRef": "Medidas.Margem Líquida %",
+              "nativeQueryRef": "Margem Líquida %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendário"
+                  }
+                },
+                "Property": "Mês/Ano"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Receita líquida e margem líquida por mês'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "98568e0863dd7128ac59",
+  "position": {
+    "x": 855,
+    "y": 510,
+    "z": 11000,
+    "height": 195,
+    "width": 405,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Competência x caixa",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "fontWeight": "bold",
+                      "color": "#1F4E79"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A compra de mercadoria sai do caixa quando é paga, mas só vira custo (CMV) quando é vendida. Por isso a geração de caixa não é igual ao resultado da DRE.",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontWeight": "normal",
+                      "color": "#1B2631"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Jan/2024 tem pouca entrada porque a simulação começa sem títulos anteriores.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "fontWeight": "normal",
+                      "color": "#6C757D"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

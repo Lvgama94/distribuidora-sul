@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "d3f828797bea6a875d74",
+  "position": {
+    "x": 20,
+    "y": 4,
+    "z": 0,
+    "height": 70,
+    "width": 700,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Painel Financeiro · DRE e Orçamento",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "fontWeight": "bold",
+                      "color": "#1B2631"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Distribuidora Sul Ltda. · 2024 e 2025 · carteira na posição de 31/12/2025",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "fontWeight": "normal",
+                      "color": "#6C757D"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,26 +1,31 @@
 /// Matriz Porto Alegre e filiais de Caxias do Sul e Pelotas. O orçamento não é aberto por filial.
 table Filial
+	lineageTag: 2832ae1c-2f21-4a22-9af5-40d41b6153ab
 
 	column filial_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: d789e415-8cfc-458d-8f1a-c67a108e5ab4
 		summarizeBy: none
 		sourceColumn: filial_key
 
 	column Filial
 		dataType: string
+		lineageTag: 0586b047-6556-40ea-95d1-7e220aef4276
 		summarizeBy: none
 		sourceColumn: nome
 
 	column Cidade
 		dataType: string
+		lineageTag: fe4bee31-acd9-40c6-934f-467903692819
 		dataCategory: City
 		summarizeBy: none
 		sourceColumn: cidade
 
 	column UF
 		dataType: string
+		lineageTag: 17872a16-d199-4b28-aaa7-3ebc0fec817b
 		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: uf

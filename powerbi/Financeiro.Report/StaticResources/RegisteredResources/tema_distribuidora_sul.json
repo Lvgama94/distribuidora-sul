@@ -1,0 +1,105 @@
+{
+  "name": "Distribuidora Sul",
+  "dataColors": [
+    "#1F4E79",
+    "#2E86AB",
+    "#F18F01",
+    "#3B8B5A",
+    "#C73E1D",
+    "#8E7DBE",
+    "#6C757D",
+    "#A23B72"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1B2631",
+  "tableAccent": "#1F4E79",
+  "good": "#2E7D32",
+  "neutral": "#F9A825",
+  "bad": "#C62828",
+  "maximum": "#1F4E79",
+  "center": "#E8EEF4",
+  "minimum": "#C62828",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#1F4E79"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1B2631"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#1B2631"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#4A5561"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DDE3EA"
+              }
+            },
+            "radius": 8
+          }
+        ],
+        "padding": [
+          {
+            "top": 10,
+            "bottom": 10,
+            "left": 12,
+            "right": 12
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#1B2631"
+              }
+            },
+            "fontSize": 12
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F4F6F9"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

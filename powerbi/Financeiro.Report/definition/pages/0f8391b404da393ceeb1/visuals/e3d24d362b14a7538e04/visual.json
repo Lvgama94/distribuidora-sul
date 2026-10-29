@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e3d24d362b14a7538e04",
+  "position": {
+    "x": 1065,
+    "y": 80,
+    "z": 7000,
+    "height": 92,
+    "width": 195,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Atraso Médio no Recebimento (dias)"
+                }
+              },
+              "queryRef": "Medidas.Atraso Médio no Recebimento (dias)",
+              "nativeQueryRef": "Atraso Médio no Recebimento (dias)",
+              "displayName": "Atraso médio (dias)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,10 +1,12 @@
 /// Um título por linha: mercadorias (conta 1.05), despesas, folha, encargos, benefícios e impostos.
 /// Relação ativa com o calendário pelo vencimento; competência, emissão e pagamento são usados com USERELATIONSHIP.
 table 'Contas a Pagar'
+	lineageTag: 634ed0e6-8e1c-420a-b28c-09c86878833e
 
 	column 'ID Título'
 		dataType: int64
 		formatString: 0
+		lineageTag: 7e7ab8a5-580e-4fd4-83ee-ef02d4d7deff
 		summarizeBy: none
 		sourceColumn: id_titulo
 
@@ -12,6 +14,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 5e190b4e-71da-4f1c-84ca-f2d6c7b8b8e6
 		summarizeBy: none
 		sourceColumn: fornecedor_key
 
@@ -19,6 +22,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 839b0b4b-bd7b-4692-9498-64f9c0d048ba
 		summarizeBy: none
 		sourceColumn: conta_key
 
@@ -26,6 +30,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 8fa78266-a79f-46c2-bea3-c119f565a3b2
 		summarizeBy: none
 		sourceColumn: cc_key
 
@@ -33,6 +38,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: d67e9375-b9b0-403c-ab0f-8884c75cdcfa
 		summarizeBy: none
 		sourceColumn: filial_key
 
@@ -40,6 +46,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 63b87115-fb2a-48e6-8fc3-28756877e273
 		summarizeBy: none
 		sourceColumn: competencia_key
 
@@ -47,6 +54,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: a4922316-4352-4a3d-a04e-26c98b77952e
 		summarizeBy: none
 		sourceColumn: emissao_key
 
@@ -54,6 +62,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 9e185c84-ba14-4130-8ff0-9c82d5b91cef
 		summarizeBy: none
 		sourceColumn: vencimento_key
 
@@ -61,16 +70,19 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: f8dc3ed4-69fd-48bf-aa37-e5d64fed389b
 		summarizeBy: none
 		sourceColumn: pagamento_key
 
 	column Documento
 		dataType: string
+		lineageTag: 4be5ebbc-8c82-4a21-a17e-2e12eb82f8e0
 		summarizeBy: none
 		sourceColumn: documento
 
-	column 'Descrição'
+	column Descrição
 		dataType: string
+		lineageTag: 837d2806-c1e6-4467-874f-9839eaee3a3a
 		summarizeBy: none
 		sourceColumn: descricao
 
@@ -78,28 +90,33 @@ table 'Contas a Pagar'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: 4761fa0a-a716-40c9-bff7-005999072a24
 		sourceColumn: valor
 
 	column 'Valor Pago'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: 011281be-2f41-4d99-80bd-b50920d55620
 		sourceColumn: valor_pago
 
 	column 'Juros e Multa'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: 07b03464-b82d-4525-a1c9-3a32f1118f26
 		sourceColumn: juros_multa
 
 	column Status
 		dataType: string
+		lineageTag: 31a14408-05f2-4fd3-8d85-81e5267406be
 		summarizeBy: none
 		sourceColumn: status
 
 	column 'Dias de Atraso'
 		dataType: int64
 		formatString: 0
+		lineageTag: 82d7c1be-04f4-4b37-9bbd-2f3d9938b28b
 		summarizeBy: none
 		sourceColumn: dias_atraso
 
@@ -107,6 +124,7 @@ table 'Contas a Pagar'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 025e9d27-aaf2-4075-8f17-c1f69bc0c9f4
 		summarizeBy: none
 		sourceColumn: prazo_real_dias
 

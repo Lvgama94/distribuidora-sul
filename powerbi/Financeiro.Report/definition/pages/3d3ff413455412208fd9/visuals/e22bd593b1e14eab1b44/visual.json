@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e22bd593b1e14eab1b44",
+  "position": {
+    "x": 1054.5,
+    "y": 185,
+    "z": 11000,
+    "height": 148,
+    "width": 205.5,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Margem Líquida vs Ano Anterior (p.p.)"
+                }
+              },
+              "queryRef": "Medidas.Margem Líquida vs Ano Anterior (p.p.)",
+              "nativeQueryRef": "Margem Líquida vs Ano Anterior (p.p.)",
+              "displayName": "Margem vs ano ant. (p.p.)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

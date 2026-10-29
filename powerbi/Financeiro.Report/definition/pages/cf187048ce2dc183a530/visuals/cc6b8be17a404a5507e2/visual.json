@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cc6b8be17a404a5507e2",
+  "position": {
+    "x": 855,
+    "y": 185,
+    "z": 9000,
+    "height": 310,
+    "width": 405,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "hundredPercentStackedBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendário"
+                    }
+                  },
+                  "Property": "Ano"
+                }
+              },
+              "queryRef": "Calendário.Ano",
+              "nativeQueryRef": "Ano",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Conta"
+                    }
+                  },
+                  "Property": "Grupo de Caixa"
+                }
+              },
+              "queryRef": "Conta.Grupo de Caixa",
+              "nativeQueryRef": "Grupo de Caixa"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Pago"
+                }
+              },
+              "queryRef": "Medidas.Pago",
+              "nativeQueryRef": "Pago"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendário"
+                  }
+                },
+                "Property": "Ano"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Para onde vai o dinheiro'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "88379076f30cbbcf2ee6",
+  "position": {
+    "x": 647,
+    "y": 80,
+    "z": 5000,
+    "height": 92,
+    "width": 195,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "PMR - PMP (dias)"
+                }
+              },
+              "queryRef": "Medidas.PMR - PMP (dias)",
+              "nativeQueryRef": "PMR - PMP (dias)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

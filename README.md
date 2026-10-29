@@ -12,7 +12,7 @@ Este é o **projeto 0** do meu portfólio: a fundação que alimenta os painéis
 |---|---|
 | **Python (pandas)**: ETL e qualidade de dados | [`python/etl.py`](python/etl.py) trata 11 tipos de problema e gera um [relatório de qualidade](docs/relatorio_qualidade.md) a cada execução |
 | **SQL Server**: modelagem e carga | [`sql/`](sql/): staging, modelo estrela, procedure de carga com transação, testes automáticos e views com CTE e funções de janela |
-| **Power BI e DAX** | Modelo semântico em PBIP/TMDL com relacionamentos inativos (`USERELATIONSHIP`), inteligência de tempo e medidas conferidas contra o SQL |
+| **Power BI e DAX** | [Painel Financeiro](docs/painel_financeiro.md) em formato PBIP (modelo em TMDL, relatório em PBIR): relacionamentos inativos (`USERELATIONSHIP`), inteligência de tempo e medidas conferidas contra o SQL |
 | **Modelagem dimensional** | 8 dimensões e 9 fatos com grão definido ([dicionário de dados](docs/dicionario_de_dados.md)) |
 | **Processos administrativos** | Contas a pagar e a receber, DRE por competência, orçamento, folha, ponto, estoque e compras |
 
@@ -108,7 +108,10 @@ powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatór
 
 ## Painéis sobre esta base
 
-1. **Financeiro** (em construção): DRE, orçado × realizado, contas a receber e fluxo de caixa. O modelo semântico com 51 medidas DAX está em [`powerbi/`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), e o [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência
+1. **Financeiro**: DRE, orçado × realizado, contas a receber e fluxo de caixa, em 4 páginas. O modelo tem 55 medidas DAX ([`Medidas.tmdl`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl)), todas conferidas contra o SQL. O [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência.
+
+   ![Painel Financeiro: Resumo](docs/img/financeiro_resumo.png)
+
 2. **People Analytics**: rotatividade, absenteísmo e custo de pessoal
 3. **Compras e estoque**: curva ABC, ruptura e pontualidade de fornecedores
 4. **Excel + automação**: consolidação com Power Query e conciliação

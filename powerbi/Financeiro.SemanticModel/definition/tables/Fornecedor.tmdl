@@ -1,35 +1,42 @@
 /// Fornecedores de mercadoria, prestadores de serviço e órgãos de governo (impostos e encargos).
 table Fornecedor
+	lineageTag: 941c6719-0f81-4b85-81af-c6738675c8e5
 
 	column fornecedor_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 03aa3b88-a12c-4eef-9adf-baae83dc71ab
 		summarizeBy: none
 		sourceColumn: fornecedor_key
 
 	column 'Código Fornecedor'
 		dataType: string
+		lineageTag: 0768210a-1e30-4883-a2af-4ef452f6dbf8
 		summarizeBy: none
 		sourceColumn: cod_fornecedor
 
 	column Fornecedor
 		dataType: string
+		lineageTag: c2567506-eb8f-4f44-9c03-947427c60d4c
 		summarizeBy: none
 		sourceColumn: razao_social
 
 	column CNPJ
 		dataType: string
+		lineageTag: 74a43bc3-4c70-417b-a701-f8d1fdb42f99
 		summarizeBy: none
 		sourceColumn: cnpj
 
 	column 'Tipo de Fornecedor'
 		dataType: string
+		lineageTag: a94b8b10-1c47-4958-9ada-467f10cc0a71
 		summarizeBy: none
 		sourceColumn: tipo
 
 	column Cidade
 		dataType: string
+		lineageTag: 39b4895d-13d7-45da-b0d6-a115a563ff5c
 		dataCategory: City
 		summarizeBy: none
 		sourceColumn: cidade
@@ -37,12 +44,14 @@ table Fornecedor
 	column 'Prazo de Pagamento (dias)'
 		dataType: int64
 		formatString: 0
+		lineageTag: 9c90c1f0-671e-46ac-b87f-f069f69ba7bd
 		summarizeBy: none
 		sourceColumn: prazo_pagamento_dias
 
 	column 'Lead Time (dias)'
 		dataType: int64
 		formatString: 0
+		lineageTag: a152893b-3ee4-44f3-b362-14b010601453
 		summarizeBy: none
 		sourceColumn: lead_time_dias
 

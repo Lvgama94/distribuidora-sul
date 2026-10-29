@@ -1,5 +1,11 @@
 /// Instância do SQL Server onde o banco DistribuidoraSul foi carregado (python/carregar_sql.py)
 expression Servidor = "localhost\SQLEXPRESS" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 8c757e03-5f6e-4b95-b57c-8a60e85be5e2
+
+	annotation PBI_ResultType = Text
 
 expression Banco = "DistribuidoraSul" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: e599f694-2831-4d24-bd96-e1b1ce2837d8
+
+	annotation PBI_ResultType = Text
 

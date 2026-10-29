@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "8028f5cc87ae02711ffe",
+  "position": {
+    "x": 20,
+    "y": 185,
+    "z": 8000,
+    "height": 260,
+    "width": 400,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contas a Receber"
+                    }
+                  },
+                  "Property": "Faixa de Aging"
+                }
+              },
+              "queryRef": "Contas a Receber.Faixa de Aging",
+              "nativeQueryRef": "Faixa de Aging",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Carteira em Aberto"
+                }
+              },
+              "queryRef": "Medidas.Carteira em Aberto",
+              "nativeQueryRef": "Carteira em Aberto"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Contas a Receber"
+                  }
+                },
+                "Property": "Faixa de Aging"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Carteira em aberto por faixa de atraso'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

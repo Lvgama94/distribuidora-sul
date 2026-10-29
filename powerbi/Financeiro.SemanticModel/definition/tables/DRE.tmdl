@@ -1,11 +1,13 @@
 /// DRE realizada por competência: mês x conta x centro de custo x filial.
 /// Valor é sempre positivo; Valor Resultado já tem o sinal da conta (receita soma, custos e despesas subtraem).
 table DRE
+	lineageTag: 4be14f80-86b5-4f95-b083-371e076dd24c
 
 	column competencia_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 2476d8c9-7781-459c-a13f-09b5ae5371ff
 		summarizeBy: none
 		sourceColumn: competencia_key
 
@@ -13,6 +15,7 @@ table DRE
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: c813faf8-9e1e-454b-8720-c0acc65303f6
 		summarizeBy: none
 		sourceColumn: conta_key
 
@@ -20,6 +23,7 @@ table DRE
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 90bc617f-de7b-46a0-b518-3fdb6640ab2f
 		summarizeBy: none
 		sourceColumn: cc_key
 
@@ -27,6 +31,7 @@ table DRE
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: b3e91510-b52e-4250-8667-6f8e2883b812
 		summarizeBy: none
 		sourceColumn: filial_key
 
@@ -34,12 +39,14 @@ table DRE
 		dataType: double
 		isHidden
 		formatString: R$ #,##0
+		lineageTag: e4237aa0-0162-4c84-8187-305ce6d815ee
 		sourceColumn: valor
 
 	column 'Valor Resultado'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0
+		lineageTag: 559106e7-25bc-4aa4-931c-865b622ac5f2
 		sourceColumn: valor_resultado
 
 	partition DRE = m

@@ -1,9 +1,11 @@
 /// Um título (parcela) por linha. Status, dias de atraso e aging foram calculados na data de corte (31/12/2025).
 /// Relação ativa com o calendário pelo vencimento; emissão e pagamento são usados com USERELATIONSHIP.
 table 'Contas a Receber'
+	lineageTag: 056e7605-62e6-49a4-99af-b8ec64ea497a
 
-	column 'Título'
+	column Título
 		dataType: string
+		lineageTag: 317ee932-7773-4bb7-8f58-e4541239777b
 		summarizeBy: none
 		sourceColumn: titulo
 
@@ -11,6 +13,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 535ccee5-93d2-48d8-b03a-9f0ccae33403
 		summarizeBy: none
 		sourceColumn: cliente_key
 
@@ -18,6 +21,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: a4957493-e53e-421c-ba92-36578359f32c
 		summarizeBy: none
 		sourceColumn: filial_key
 
@@ -25,6 +29,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: e0f8f51b-efce-4492-9e0a-f495b87d4570
 		summarizeBy: none
 		sourceColumn: emissao_key
 
@@ -32,6 +37,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: ddad095a-43a7-4c30-b909-89ab8d6146a8
 		summarizeBy: none
 		sourceColumn: vencimento_key
 
@@ -39,17 +45,20 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: d0a97884-76db-46b2-abc8-a8ac8063d30e
 		summarizeBy: none
 		sourceColumn: pagamento_key
 
 	column 'Nota Fiscal'
 		dataType: int64
 		formatString: 0
+		lineageTag: 8475e03d-f125-4371-8ecd-820eccc5d5a7
 		summarizeBy: none
 		sourceColumn: nf_numero
 
 	column Parcela
 		dataType: string
+		lineageTag: dbc055d6-70f8-468e-a569-4bb9fe6644d4
 		summarizeBy: none
 		sourceColumn: parcela
 
@@ -57,33 +66,39 @@ table 'Contas a Receber'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: c082fe7b-bcd4-402e-a685-0972b216c122
 		sourceColumn: valor
 
 	column 'Valor Pago'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: 438cca3a-4f17-45e3-ba52-44467f913723
 		sourceColumn: valor_pago
 
 	column 'Juros e Multa'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0.00
+		lineageTag: ba9c6552-b6e3-4f03-8015-e3e10e7f6203
 		sourceColumn: juros_multa
 
 	column Status
 		dataType: string
+		lineageTag: 7b432c85-b4a3-4671-b134-8a867b78ca3d
 		summarizeBy: none
 		sourceColumn: status
 
 	column 'Dias de Atraso'
 		dataType: int64
 		formatString: 0
+		lineageTag: 38857e8e-dd87-4c9a-9065-3ee37a6db3a3
 		summarizeBy: none
 		sourceColumn: dias_atraso
 
 	column 'Faixa de Aging'
 		dataType: string
+		lineageTag: 87fb8461-495d-48d3-b614-9a5a1623e17c
 		summarizeBy: none
 		sourceColumn: faixa_aging
 		sortByColumn: 'Ordem Aging'
@@ -92,6 +107,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 52424985-460f-49a9-8556-361125ff83b4
 		summarizeBy: none
 		sourceColumn: ordem_aging
 
@@ -99,6 +115,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: df72fd6d-3d37-4aa7-b410-ac9fdd15ee77
 		summarizeBy: none
 		sourceColumn: prazo_concedido_dias
 
@@ -106,6 +123,7 @@ table 'Contas a Receber'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: aee9dd4a-b96b-411a-8d59-16bc8052f6c8
 		summarizeBy: none
 		sourceColumn: prazo_real_dias
 

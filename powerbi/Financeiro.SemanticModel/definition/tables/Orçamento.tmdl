@@ -1,10 +1,12 @@
 /// Orçamento anual aprovado pela controladoria: mês x conta x centro de custo (sem abertura por filial).
-table 'Orçamento'
+table Orçamento
+	lineageTag: 90d9e0b4-d7fa-4e64-a18b-f095531d09d3
 
 	column competencia_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: b05737fb-8a67-4123-a224-c4c5362adf32
 		summarizeBy: none
 		sourceColumn: competencia_key
 
@@ -12,6 +14,7 @@ table 'Orçamento'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 11830f59-926f-40b9-b5a8-cfb6cb09aedc
 		summarizeBy: none
 		sourceColumn: conta_key
 
@@ -19,6 +22,7 @@ table 'Orçamento'
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: 1e35bd13-3b38-4a92-a44b-922aa390f11a
 		summarizeBy: none
 		sourceColumn: cc_key
 
@@ -26,9 +30,10 @@ table 'Orçamento'
 		dataType: double
 		isHidden
 		formatString: R$ #,##0
+		lineageTag: e6be7751-8b51-4440-9b48-d5f0917c4f7f
 		sourceColumn: valor
 
-	partition 'Orçamento' = m
+	partition Orçamento = m
 		mode: import
 		source =
 				let

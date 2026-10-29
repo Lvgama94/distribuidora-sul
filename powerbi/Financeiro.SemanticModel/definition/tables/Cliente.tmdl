@@ -1,40 +1,48 @@
 table Cliente
+	lineageTag: a904acd3-8f2e-4a14-a90d-1dafdc296bc7
 
 	column cliente_key
 		dataType: int64
 		isHidden
 		formatString: 0
+		lineageTag: e443ce95-31ca-47cf-b87f-70355b70184a
 		summarizeBy: none
 		sourceColumn: cliente_key
 
 	column 'Código Cliente'
 		dataType: string
+		lineageTag: 49425f23-61e5-4c4c-b7fe-f0b2795f1b70
 		summarizeBy: none
 		sourceColumn: cod_cliente
 
 	column Cliente
 		dataType: string
+		lineageTag: ec1cea1e-8ef8-41dc-b0e3-f56f22c92703
 		summarizeBy: none
 		sourceColumn: razao_social
 
 	column CNPJ
 		dataType: string
+		lineageTag: 63b0a23f-b260-458c-ad4c-b20d00328d4b
 		summarizeBy: none
 		sourceColumn: cnpj
 
 	column 'Tipo de Cliente'
 		dataType: string
+		lineageTag: f1b31d2e-bfaa-47e3-8737-16775c4121cb
 		summarizeBy: none
 		sourceColumn: tipo_cliente
 
 	column Cidade
 		dataType: string
+		lineageTag: 37c30a3c-43ef-47c1-902d-eb8ffa73c2e5
 		dataCategory: City
 		summarizeBy: none
 		sourceColumn: cidade
 
 	column UF
 		dataType: string
+		lineageTag: f76de26b-a23b-43c6-b78d-ab9cf8bebb4e
 		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: uf
@@ -42,22 +50,28 @@ table Cliente
 	column 'Data de Cadastro'
 		dataType: dateTime
 		formatString: dd/mm/yyyy
+		lineageTag: 09d2b0f9-431b-4620-91ec-dc97f9600ba9
 		summarizeBy: none
 		sourceColumn: data_cadastro
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column 'Condição de Pagamento'
 		dataType: string
+		lineageTag: 52e185a3-1de4-443c-9940-9531fe93ece0
 		summarizeBy: none
 		sourceColumn: condicao_pagamento
 
 	column 'Limite de Crédito'
 		dataType: double
 		formatString: R$ #,##0
+		lineageTag: 78777ab8-4a35-4f85-b91c-7bd46c8fc46d
 		summarizeBy: none
 		sourceColumn: limite_credito
 
-	column 'Situação'
+	column Situação
 		dataType: string
+		lineageTag: 87ede268-c80a-4a69-a8d1-8e11e07d7874
 		summarizeBy: none
 		sourceColumn: situacao
 

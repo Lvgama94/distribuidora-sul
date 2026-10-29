@@ -1,6 +1,6 @@
 # Painel Financeiro: roteiro
 
-Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul. O modelo semântico (tabelas, relacionamentos e 51 medidas DAX) está em [`powerbi/Financeiro.SemanticModel`](../powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), em formato PBIP/TMDL (texto, versionado no Git).
+Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul. O modelo semântico (tabelas, relacionamentos e 55 medidas DAX) está em [`powerbi/Financeiro.SemanticModel`](../powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), em formato PBIP/TMDL (texto, versionado no Git).
 
 ## Perguntas que o painel responde
 
@@ -11,48 +11,63 @@ Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul
 
 ## Páginas
 
-Tela de 1280 × 720, tema [`powerbi/tema_distribuidora_sul.json`](../powerbi/tema_distribuidora_sul.json) (Exibir → Temas → Procurar temas). Em todas as páginas: segmentação de **Ano** (botões) e de **Filial** (lista suspensa) no topo.
+Tela de 1280 × 720 com o tema [`powerbi/tema_distribuidora_sul.json`](../powerbi/tema_distribuidora_sul.json). Os filtros de cada visual ficam dentro das medidas (por exemplo, `Desvio das Despesas` e `A Receber (projeção)`), então nenhum visual tem filtro escondido.
 
 ### 1. Resumo
 
+![Resumo](img/financeiro_resumo.png)
+
 | Visual | Campos e medidas |
 |---|---|
-| 6 cartões | Receita Líquida (com Receita Líquida vs Ano Anterior %), Margem Bruta %, Resultado Líquido (com Desvio do Resultado), Margem Líquida % (com Margem Líquida vs Ano Anterior (p.p.)), Geração de Caixa, Inadimplência % |
+| Filtros | Ano (abre em **2025**) e Filial |
+| 6 cartões | Receita Líquida, Margem Bruta %, Resultado Líquido, Margem Líquida %, Geração de Caixa, Inadimplência % |
 | Colunas + linha | Eixo: Calendário[Mês/Ano] · Colunas: Receita Líquida · Linha: Margem Líquida % |
+| 4 cartões de comparação | Receita Líquida vs Ano Anterior %, Margem Líquida vs Ano Anterior (p.p.), Atingimento da Receita %, Desvio do Resultado |
 | Colunas agrupadas | Eixo: Calendário[Mês/Ano] · Valores: Resultado Líquido e Resultado Orçado |
-| Caixa de texto | 3 conclusões em uma linha cada (ver "Histórias nos dados") |
+| Caixa de texto | Destaques de 2025 (ver "Histórias nos dados") |
 
 ### 2. DRE e Orçamento
 
+![DRE e Orçamento](img/financeiro_dre.png)
+
 | Visual | Campos e medidas |
 |---|---|
-| Matriz (DRE) | Linhas: Conta[Grupo DRE] → Conta[Conta] · Valores: Realizado, Orçado, Desvio, Desvio %, % da Receita Líquida · Formatação condicional em Desvio % (verde positivo, vermelho negativo) |
+| Filtros | Centro de custo, Ano (abre em **2025**) e Filial |
+| Matriz (DRE) | Linhas: Conta[Grupo DRE] → Conta[Conta] (clique no + para abrir as contas) · Valores: Realizado, Orçado, Desvio, Desvio %, % da Receita Líquida |
 | Cascata | Categoria: Conta[Grupo DRE] · Valor: Realizado (da receita bruta até o resultado) |
-| Barras horizontais | Eixo: Conta[Conta] · Valor: Desvio · Filtro: Conta[Grupo DRE] começa com "Despesas" · Ordenar do maior estouro |
-| Segmentação | Centro de Custo[Centro de Custo] |
+| Barras horizontais | Eixo: Conta[Conta] · Valor: Desvio das Despesas, do maior estouro para o menor |
 
 O orçamento não é aberto por filial: com uma filial selecionada, Orçado e Desvio ficam em branco de propósito.
 
 ### 3. Contas a Receber
 
+![Contas a Receber](img/financeiro_receber.png)
+
 | Visual | Campos e medidas |
 |---|---|
+| Filtros | Filial (sem filtro de ano: a carteira é uma fotografia em 31/12/2025) |
 | 6 cartões | Carteira em Aberto, Vencido, Vencido há Mais de 90 Dias, Inadimplência %, PMR (dias), Atraso Médio no Recebimento (dias) |
-| Colunas | Eixo: Contas a Receber[Faixa de Aging] · Valor: Carteira em Aberto · Excluir "Liquidado" |
+| Colunas | Eixo: Contas a Receber[Faixa de Aging] · Valor: Carteira em Aberto |
 | Barras | Eixo: Cliente[Tipo de Cliente] · Valor: Inadimplência % |
-| Tabela (top 10) | Cliente[Cliente], Cliente[Tipo de Cliente], Vencido, Clientes Inadimplentes · Filtro Top N 10 por Vencido |
 | Linhas | Eixo: Calendário[Mês/Ano] · Valores: PMR (dias) e Prazo Médio Concedido (dias) |
-
-Os cartões de carteira são uma fotografia em 31/12/2025 (medidas com `REMOVEFILTERS('Calendário')`), por isso não mudam com o filtro de ano.
+| Tabela | Cliente, Tipo de Cliente, Cidade, Vencido, Maior Atraso (dias), do maior valor vencido para o menor |
 
 ### 4. Fluxo de Caixa
 
+![Fluxo de Caixa](img/financeiro_caixa.png)
+
 | Visual | Campos e medidas |
 |---|---|
+| Filtros | Filial (sem filtro de ano, para mostrar a série inteira e a projeção de 2026) |
 | 6 cartões | Recebido, Pago, Geração de Caixa, PMR - PMP (dias), Juros e Multas Pagos, Pagamentos em Atraso % |
-| Colunas agrupadas + linha | Eixo: Calendário[Mês/Ano] · Colunas: Recebido e Pago · Linha: Geração de Caixa Acumulada |
-| Barras empilhadas 100% | Eixo: Calendário[Trimestre] · Legenda: Conta[Grupo de Caixa] · Valor: Pago |
-| Colunas (projeção) | Eixo: Calendário[Mês/Ano] · Valores: Valor a Receber e Valor a Pagar · Filtros: Status ≠ PAGO nas duas tabelas e Calendário[Data] depois de 31/12/2025 |
+| Colunas agrupadas + linha | Eixo: Calendário[Mês/Ano] · Colunas: Recebido e Pago · Linha: Geração de Caixa Acumulada (para em dez/2025) |
+| Barras 100% | Eixo: Calendário[Ano] · Legenda: Conta[Grupo de Caixa] · Valor: Pago |
+| Colunas (projeção) | Eixo: Calendário[Mês/Ano] · Valores: A Receber (projeção) e A Pagar (projeção) |
+| Caixa de texto | Competência × caixa |
+
+## Testes
+
+As 55 medidas foram executadas no motor do Power BI Desktop. Os 42 indicadores da view de conferência bateram com o SQL, sem divergência. Também conferimos: orçado vazio com filtro de filial, soma da DRE igual ao resultado e inadimplência que não muda com o filtro de ano.
 
 ## Decisões de modelagem (bons pontos para entrevista)
 
@@ -109,4 +124,4 @@ Calculados em SQL por outro caminho (`dw.vw_conferencia_financeiro`, script [`sq
 
 1. Rode `python python/carregar_sql.py` para ter o banco `DistribuidoraSul` no SQL Server Express.
 2. Abra `powerbi/Financeiro.pbip` no Power BI Desktop. Os parâmetros **Servidor** e **Banco** ficam em Transformar dados → Gerenciar parâmetros.
-3. Clique em **Atualizar** para importar os dados.
+3. Clique em **Atualizar** para importar os dados. O projeto é salvo sem dados (o cache fica fora do Git), então a primeira abertura mostra os visuais em branco até atualizar.

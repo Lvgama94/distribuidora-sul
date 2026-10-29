@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "85d8e24fd66468d1e8a2",
+  "position": {
+    "x": 20,
+    "y": 510,
+    "z": 10000,
+    "height": 195,
+    "width": 820,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendário"
+                    }
+                  },
+                  "Property": "Mês/Ano"
+                }
+              },
+              "queryRef": "Calendário.Mês/Ano",
+              "nativeQueryRef": "Mês/Ano",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "A Receber (projeção)"
+                }
+              },
+              "queryRef": "Medidas.A Receber (projeção)",
+              "nativeQueryRef": "A Receber (projeção)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "A Pagar (projeção)"
+                }
+              },
+              "queryRef": "Medidas.A Pagar (projeção)",
+              "nativeQueryRef": "A Pagar (projeção)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendário"
+                  }
+                },
+                "Property": "Mês/Ano"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Próximos meses: títulos em aberto por vencimento'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

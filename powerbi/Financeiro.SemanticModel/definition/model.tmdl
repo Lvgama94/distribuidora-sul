@@ -7,17 +7,23 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Medidas","DRE","Orçamento","Contas a Receber","Contas a Pagar","Calendário","Conta","Centro de Custo","Filial","Cliente","Fornecedor","Servidor","Banco"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table Medidas
 ref table DRE
-ref table 'Orçamento'
+ref table Orçamento
 ref table 'Contas a Receber'
 ref table 'Contas a Pagar'
-ref table 'Calendário'
+ref table Calendário
 ref table Conta
 ref table 'Centro de Custo'
 ref table Filial
 ref table Cliente
 ref table Fornecedor
 
-annotation __PBI_TimeIntelligenceEnabled = 0
+ref cultureInfo pt-BR
 

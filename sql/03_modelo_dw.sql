@@ -240,6 +240,7 @@ CREATE TABLE dw.fato_ponto (
     competencia_key  INT           NOT NULL REFERENCES dw.dim_calendario,
     funcionario_key  INT           NOT NULL REFERENCES dw.dim_funcionario,
     cc_key           INT           NOT NULL REFERENCES dw.dim_centro_custo,
+    filial_key       INT           NOT NULL REFERENCES dw.dim_filial,
     dias_previstos   INT           NOT NULL,
     dias_trabalhados INT           NOT NULL,
     faltas           INT           NOT NULL,

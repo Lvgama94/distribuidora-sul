@@ -280,9 +280,9 @@ BEGIN
         GROUP BY cal.data_key, c.conta_key, cc.cc_key, r.filial_key, c.sinal;
 
         -- 10. Ponto mensal
-        INSERT INTO dw.fato_ponto (competencia_key, funcionario_key, cc_key, dias_previstos, dias_trabalhados, faltas,
-                                   atestado_dias, horas_extras)
-        SELECT cal.data_key, f.funcionario_key, cc.cc_key,
+        INSERT INTO dw.fato_ponto (competencia_key, funcionario_key, cc_key, filial_key, dias_previstos,
+                                   dias_trabalhados, faltas, atestado_dias, horas_extras)
+        SELECT cal.data_key, f.funcionario_key, cc.cc_key, f.filial_key,
                p.dias_trabalhados + p.faltas + p.atestado_dias, p.dias_trabalhados, p.faltas, p.atestado_dias,
                p.horas_extras
         FROM stg.ponto_mensal p

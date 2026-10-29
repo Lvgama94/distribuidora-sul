@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_saidas_no_1o_ano",
+  "position": {
+    "x": 856,
+    "y": 88,
+    "z": 9000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Saídas no 1º Ano"
+                }
+              },
+              "queryRef": "Medidas.% Saídas no 1º Ano",
+              "nativeQueryRef": "% Saídas no 1º Ano",
+              "displayName": "Saíram no 1º ano"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

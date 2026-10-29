@@ -1,0 +1,58 @@
+/// Salários, encargos e benefícios por mês de competência, setor e filial (contas 5.01 a 5.03 da DRE).
+table 'Custo de Pessoal'
+	lineageTag: 59047ce1-f6f6-47f1-aa8c-8877e6560c99
+
+	column competencia_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d4ad7f09-4d5f-411a-a6ed-af5400f00d2e
+		summarizeBy: none
+		sourceColumn: competencia_key
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2d4e334f-b788-402e-b5a9-04d1bfd06226
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 76f9d2dd-0bb2-4fe3-a67a-71b5a37f8b6a
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column 'Código Conta'
+		dataType: string
+		isHidden
+		lineageTag: 1a44959c-feff-4a1b-86b4-8fd1f35108a8
+		summarizeBy: none
+		sourceColumn: cod_conta
+
+	column 'Tipo de Custo'
+		dataType: string
+		lineageTag: 5014039f-26c6-4b57-af6e-b74e21361c45
+		summarizeBy: none
+		sourceColumn: conta
+		sortByColumn: 'Código Conta'
+
+	column Valor
+		dataType: double
+		isHidden
+		formatString: R$ #,##0
+		lineageTag: 470fd138-c523-4f02-9760-f6e73acf1325
+		sourceColumn: valor
+
+	partition 'Custo de Pessoal' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "vw_custo_pessoal"]}[Data]
+				in
+				    Dados
+

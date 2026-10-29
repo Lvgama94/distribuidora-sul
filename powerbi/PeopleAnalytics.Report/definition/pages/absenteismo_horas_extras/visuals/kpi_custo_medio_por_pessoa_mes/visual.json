@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_custo_medio_por_pessoa_mes",
+  "position": {
+    "x": 1064,
+    "y": 88,
+    "z": 10000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Custo Médio por Pessoa (mês)"
+                }
+              },
+              "queryRef": "Medidas.Custo Médio por Pessoa (mês)",
+              "nativeQueryRef": "Custo Médio por Pessoa (mês)",
+              "displayName": "Custo por pessoa/mês"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

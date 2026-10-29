@@ -1,0 +1,44 @@
+relationship quadro_calendario
+	fromColumn: 'Quadro Mensal'.competencia_key
+	toColumn: Calendário.data_key
+
+relationship quadro_funcionario
+	fromColumn: 'Quadro Mensal'.funcionario_key
+	toColumn: Funcionário.funcionario_key
+
+relationship quadro_centro_custo
+	fromColumn: 'Quadro Mensal'.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship quadro_filial
+	fromColumn: 'Quadro Mensal'.filial_key
+	toColumn: Filial.filial_key
+
+relationship ponto_calendario
+	fromColumn: Ponto.competencia_key
+	toColumn: Calendário.data_key
+
+relationship ponto_funcionario
+	fromColumn: Ponto.funcionario_key
+	toColumn: Funcionário.funcionario_key
+
+relationship ponto_centro_custo
+	fromColumn: Ponto.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship ponto_filial
+	fromColumn: Ponto.filial_key
+	toColumn: Filial.filial_key
+
+relationship custo_calendario
+	fromColumn: 'Custo de Pessoal'.competencia_key
+	toColumn: Calendário.data_key
+
+relationship custo_centro_custo
+	fromColumn: 'Custo de Pessoal'.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship custo_filial
+	fromColumn: 'Custo de Pessoal'.filial_key
+	toColumn: Filial.filial_key
+

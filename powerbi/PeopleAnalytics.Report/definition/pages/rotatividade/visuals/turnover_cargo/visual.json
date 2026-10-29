@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "turnover_cargo",
+  "position": {
+    "x": 24,
+    "y": 466,
+    "z": 14000,
+    "height": 230,
+    "width": 784,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Funcionário"
+                    }
+                  },
+                  "Property": "Cargo"
+                }
+              },
+              "queryRef": "Funcionário.Cargo",
+              "nativeQueryRef": "Cargo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Headcount Médio"
+                }
+              },
+              "queryRef": "Medidas.Headcount Médio",
+              "nativeQueryRef": "Headcount Médio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Desligamentos"
+                }
+              },
+              "queryRef": "Medidas.Desligamentos",
+              "nativeQueryRef": "Desligamentos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Turnover %"
+                }
+              },
+              "queryRef": "Medidas.Turnover %",
+              "nativeQueryRef": "Turnover %",
+              "displayName": "Turnover"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Voluntário dos Desligamentos"
+                }
+              },
+              "queryRef": "Medidas.% Voluntário dos Desligamentos",
+              "nativeQueryRef": "% Voluntário dos Desligamentos",
+              "displayName": "% voluntário"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Desligamentos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Rotatividade por cargo'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

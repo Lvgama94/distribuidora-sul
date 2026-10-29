@@ -1,0 +1,80 @@
+/// Ponto mensal: uma linha por funcionário e mês, com dias previstos, faltas, atestados e horas extras.
+table Ponto
+	lineageTag: 0679f8bd-57da-4fdb-b299-df13041a4b29
+
+	column competencia_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bab86709-50b7-4475-98ab-fc7d31d82f31
+		summarizeBy: none
+		sourceColumn: competencia_key
+
+	column funcionario_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 14c42299-0bf5-4ea3-b428-c303d373693c
+		summarizeBy: none
+		sourceColumn: funcionario_key
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9fcb9f34-6644-4c22-a9f4-a27a76b93a19
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 63abe661-692b-4464-9fed-d63b95b876f4
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column 'Dias Previstos'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 85e3b3ee-2853-4851-b68a-a580f7d4937b
+		sourceColumn: dias_previstos
+
+	column 'Dias Trabalhados'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7718514b-1ba9-4449-8b3d-21d238f16c0e
+		sourceColumn: dias_trabalhados
+
+	column Faltas
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cbbfca7f-7e9d-4532-941d-4aac69c86288
+		sourceColumn: faltas
+
+	column 'Dias de Atestado'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0cc3110e-23fa-4398-bb01-1d9984a5b686
+		sourceColumn: atestado_dias
+
+	column 'Horas Extras'
+		dataType: double
+		isHidden
+		formatString: #,##0.0
+		lineageTag: 95a14d4f-beeb-4705-9cfb-e1941d246a31
+		sourceColumn: horas_extras
+
+	partition Ponto = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_ponto"]}[Data]
+				in
+				    Dados
+

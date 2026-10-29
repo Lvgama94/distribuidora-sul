@@ -1,0 +1,33 @@
+table 'Centro de Custo'
+	lineageTag: 143d87a6-7c7d-40cc-8481-490293bf320d
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d2df56b4-0a7c-412a-b002-c1810d530d43
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column 'Código CC'
+		dataType: string
+		lineageTag: 344a56fc-0293-4fc0-a02d-d0b7c1f982b0
+		summarizeBy: none
+		sourceColumn: cod_centro_custo
+
+	column 'Centro de Custo'
+		dataType: string
+		lineageTag: 585bc9db-ab0c-4c9b-aacd-e2b778f6fad6
+		summarizeBy: none
+		sourceColumn: nome
+		sortByColumn: 'Código CC'
+
+	partition 'Centro de Custo' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_centro_custo"]}[Data]
+				in
+				    Dados
+

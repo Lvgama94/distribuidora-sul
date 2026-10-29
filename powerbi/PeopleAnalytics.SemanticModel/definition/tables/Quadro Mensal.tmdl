@@ -1,0 +1,83 @@
+/// Uma linha por funcionário em cada mês em que esteve na empresa. Os indicadores (ativo no início/fim,
+/// admitido, desligado, voluntário) vêm como 0 ou 1, para somar headcount e movimentações.
+table 'Quadro Mensal'
+	lineageTag: a5eeff1e-3872-4d0a-a31c-60e365aa627e
+
+	column competencia_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b36578a5-e7fc-4f64-9d53-f9324326caa7
+		summarizeBy: none
+		sourceColumn: competencia_key
+
+	column funcionario_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4ca91aa8-5b3f-44eb-8d1a-5312680d623a
+		summarizeBy: none
+		sourceColumn: funcionario_key
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d98030d6-580f-4eb1-8007-3605c5035af5
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 645c9634-f2df-40f4-ad79-bd3e2e217fee
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column 'Ativo no Início do Mês'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bd387b18-de5a-44fd-94c4-e9cf6456541d
+		sourceColumn: ativo_inicio_mes
+
+	column 'Ativo no Fim do Mês'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: caf90dd6-09ce-4edd-a85d-722a91e25663
+		sourceColumn: ativo_fim_mes
+
+	column 'Admitido no Mês'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 06137d9b-833c-4bec-b9f7-919419a1dc2e
+		sourceColumn: admitido_no_mes
+
+	column 'Desligado no Mês'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ea1ec4c1-972e-4828-9c48-b1ae96114da0
+		sourceColumn: desligado_no_mes
+
+	column 'Desligamento Voluntário'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: db9ae7d8-a79f-4de3-b1aa-2dcce0a3ba5b
+		sourceColumn: desligamento_voluntario
+
+	partition 'Quadro Mensal' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_quadro_mensal"]}[Data],
+				    Indicadores = {"ativo_inicio_mes", "ativo_fim_mes", "admitido_no_mes", "desligado_no_mes", "desligamento_voluntario"},
+				    EmNumeros = Table.TransformColumns(Dados, List.Transform(Indicadores, each {_, (v) => if v then 1 else 0, Int64.Type}))
+				in
+				    EmNumeros
+

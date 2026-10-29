@@ -1,0 +1,136 @@
+/// Todos os funcionários que passaram pela empresa em 2024 e 2025. Idade e tempo de casa são medidos
+/// no desligamento ou na data de corte (31/12/2025).
+table Funcionário
+	lineageTag: 1d6277d8-7508-44a5-a318-067159619f9b
+
+	column funcionario_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 54297288-45a3-41d2-bd4d-2a78628b81c2
+		summarizeBy: none
+		sourceColumn: funcionario_key
+
+	column Matrícula
+		dataType: string
+		lineageTag: fbd80dc8-86d6-4365-b7e5-fb68ae87b069
+		summarizeBy: none
+		sourceColumn: matricula
+
+	column Nome
+		dataType: string
+		lineageTag: 6ade6a6d-11fd-40cd-9aa1-c87205c40292
+		summarizeBy: none
+		sourceColumn: nome
+
+	column Sexo
+		dataType: string
+		lineageTag: c1b6813e-e48f-486e-aa77-ce245d01b7c6
+		summarizeBy: none
+		sourceColumn: sexo
+
+	column 'Data de Nascimento'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 3927dc49-f817-49d7-bd98-aa888ec4f79e
+		summarizeBy: none
+		sourceColumn: data_nascimento
+
+	column 'Faixa Etária'
+		dataType: string
+		lineageTag: fed9c0f1-b120-455b-8710-b7edca6e7d56
+		summarizeBy: none
+		sourceColumn: faixa_etaria
+		sortByColumn: 'Ordem Faixa Etária'
+
+	column 'Ordem Faixa Etária'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2ca68a60-8409-411a-9a27-0845c18d9d2a
+		summarizeBy: none
+		sourceColumn: ordem_faixa_etaria
+
+	column Cargo
+		dataType: string
+		lineageTag: d8c0cb74-0eb1-4b4f-be95-e5ece07df522
+		summarizeBy: none
+		sourceColumn: cargo
+
+	column 'Data de Admissão'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 3e5e7049-5bc1-4add-bc92-16ed74e87e4f
+		summarizeBy: none
+		sourceColumn: data_admissao
+
+	column 'Data de Desligamento'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 02dd37bb-d506-4942-adef-3377e2c02b38
+		summarizeBy: none
+		sourceColumn: data_desligamento
+
+	column 'Motivo do Desligamento'
+		dataType: string
+		lineageTag: 0e0c6239-48e9-469e-9351-23286993c452
+		summarizeBy: none
+		sourceColumn: motivo_desligamento
+
+	column 'Tipo de Desligamento'
+		dataType: string
+		lineageTag: 49ca8cd5-36e1-4555-914e-a3993f9ff7e9
+		summarizeBy: none
+		sourceColumn: tipo_desligamento
+
+	column 'Tempo de Casa (meses)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 58f27f08-f0a7-4079-90af-42912ec30b9e
+		summarizeBy: none
+		sourceColumn: tempo_casa_meses
+
+	column 'Faixa de Tempo de Casa'
+		dataType: string
+		lineageTag: 6da91afc-9830-4490-a73a-e04853fd2b44
+		summarizeBy: none
+		sourceColumn: faixa_tempo_casa
+		sortByColumn: 'Ordem Tempo de Casa'
+
+	column 'Ordem Tempo de Casa'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7ea7c5b4-8e09-411a-95ee-88447e0e9a4c
+		summarizeBy: none
+		sourceColumn: ordem_tempo_casa
+
+	column 'Salário Atual'
+		dataType: double
+		formatString: R$ #,##0
+		lineageTag: 13d19d23-8ab1-4dbd-ac23-bab885f7eefb
+		summarizeBy: none
+		sourceColumn: salario_atual
+
+	column Situação
+		dataType: string
+		lineageTag: b68294d3-5364-42c4-9c2f-9571680c72bd
+		summarizeBy: none
+		sourceColumn: situacao
+
+	partition Funcionário = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_funcionario"]}[Data],
+				    SemChaves = Table.RemoveColumns(Dados, {"cc_key", "filial_key"}),
+				    FaixasIdade = {"Até 24 anos", "25 a 34 anos", "35 a 44 anos", "45 a 54 anos", "55 anos ou mais", "Não informada"},
+				    FaixasCasa = {"Até 3 meses", "3 a 12 meses", "1 a 2 anos", "2 a 5 anos", "Mais de 5 anos"},
+				    ComIdade = Table.AddColumn(SemChaves, "ordem_faixa_etaria", each List.PositionOf(FaixasIdade, [faixa_etaria]) + 1, Int64.Type),
+				    ComCasa = Table.AddColumn(ComIdade, "ordem_tempo_casa", each List.PositionOf(FaixasCasa, [faixa_tempo_casa]) + 1, Int64.Type),
+				    ComSituacao = Table.AddColumn(ComCasa, "situacao", each if [ativo] then "Ativo" else "Desligado", type text),
+				    Final = Table.RemoveColumns(ComSituacao, {"ativo"})
+				in
+				    Final
+

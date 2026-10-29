@@ -1,0 +1,214 @@
+/// Tabela só de medidas (a coluna é oculta). Pastas: 1. Quadro, 2. Rotatividade, 3. Absenteísmo e Horas Extras,
+/// 4. Custo, 5. Comparativos, 6. Formatação.
+table Medidas
+	lineageTag: 0b095da4-c2be-4c82-9056-3960b89b0d42
+
+	/// Pessoas ativas no fim do último mês do período selecionado.
+	measure Headcount =
+			VAR UltimoMes = MAX('Quadro Mensal'[competencia_key])
+			RETURN CALCULATE(SUM('Quadro Mensal'[Ativo no Fim do Mês]), 'Quadro Mensal'[competencia_key] = UltimoMes)
+		formatString: #,##0
+		displayFolder: 1. Quadro
+		lineageTag: 99649768-65f3-4bfe-b081-bce18b0ea337
+
+	/// Média mensal de (headcount do início + headcount do fim) / 2. Base da taxa de rotatividade.
+	measure 'Headcount Médio' =
+			AVERAGEX(
+			    VALUES('Quadro Mensal'[competencia_key]),
+			    CALCULATE(SUM('Quadro Mensal'[Ativo no Início do Mês]) + SUM('Quadro Mensal'[Ativo no Fim do Mês])) / 2
+			)
+		formatString: #,##0.0
+		displayFolder: 1. Quadro
+		lineageTag: e6d45465-3b9e-4661-81ad-f8302f82599c
+
+	measure Admissões = SUM('Quadro Mensal'[Admitido no Mês])
+		formatString: #,##0
+		displayFolder: 1. Quadro
+		lineageTag: 2d1cba47-5ba3-42fb-9711-8b7875c96474
+
+	measure Desligamentos = SUM('Quadro Mensal'[Desligado no Mês])
+		formatString: #,##0
+		displayFolder: 1. Quadro
+		lineageTag: 39093a00-a002-433a-8c87-ec69a8551e04
+
+	measure 'Saldo de Contratações' = [Admissões] - [Desligamentos]
+		formatString: +#,##0;-#,##0;0
+		displayFolder: 1. Quadro
+		lineageTag: 967433ee-4d50-4d0e-b454-d5a7c2e8cabd
+
+	/// Desligamentos para gráficos por motivo: esconde a categoria vazia (funcionários ativos não têm motivo).
+	measure 'Desligamentos por Motivo' = IF(ISBLANK(SELECTEDVALUE('Funcionário'[Motivo do Desligamento])), BLANK(), [Desligamentos])
+		formatString: #,##0
+		displayFolder: 2. Rotatividade
+		lineageTag: 99b06c15-59b4-4dd1-b696-c39bf8df859e
+
+	measure 'Desligamentos Voluntários' = SUM('Quadro Mensal'[Desligamento Voluntário])
+		formatString: #,##0
+		displayFolder: 2. Rotatividade
+		lineageTag: ec36e62f-17ab-4db4-8d9c-3890517139dd
+
+	/// Desligamentos ÷ headcount médio do período. Com um ano selecionado, é a rotatividade anual.
+	measure 'Turnover %' = DIVIDE([Desligamentos], [Headcount Médio])
+		formatString: 0.0%
+		displayFolder: 2. Rotatividade
+		lineageTag: 9ac7e23a-d9e7-430e-a10e-8be0908d9ef4
+
+	/// Só pedidos de demissão: mede quanto a empresa perde gente que queria manter.
+	measure 'Turnover Voluntário %' = DIVIDE([Desligamentos Voluntários], [Headcount Médio])
+		formatString: 0.0%
+		displayFolder: 2. Rotatividade
+		lineageTag: 59bb7662-bc71-4a1b-a748-cad047818f93
+
+	measure '% Voluntário dos Desligamentos' = DIVIDE([Desligamentos Voluntários], [Desligamentos])
+		formatString: 0.0%
+		displayFolder: 2. Rotatividade
+		lineageTag: 89a7d5dd-c6af-44e0-890c-9c73746e1bb6
+
+	/// Saídas com menos de 3 meses de casa (período de experiência).
+	measure 'Desligamentos na Experiência' = CALCULATE([Desligamentos], KEEPFILTERS('Funcionário'[Tempo de Casa (meses)] < 3))
+		formatString: #,##0
+		displayFolder: 2. Rotatividade
+		lineageTag: 1fb2af71-c05a-4e79-b1a6-9aab97f622fc
+
+	measure '% Saídas na Experiência' = DIVIDE([Desligamentos na Experiência], [Desligamentos])
+		formatString: 0.0%
+		displayFolder: 2. Rotatividade
+		lineageTag: 7e86273d-b43b-4c35-80cf-c4285719c84e
+
+	measure 'Desligamentos no 1º Ano' = CALCULATE([Desligamentos], KEEPFILTERS('Funcionário'[Tempo de Casa (meses)] < 12))
+		formatString: #,##0
+		displayFolder: 2. Rotatividade
+		lineageTag: 542cb552-37e2-4c6b-94a3-ecfe8d2b7a76
+
+	measure '% Saídas no 1º Ano' = DIVIDE([Desligamentos no 1º Ano], [Desligamentos])
+		formatString: 0.0%
+		displayFolder: 2. Rotatividade
+		lineageTag: 772af203-5fd4-4b40-8cd7-bf2bd2423d3d
+
+	measure 'Dias Previstos' = SUM(Ponto[Dias Previstos])
+		formatString: #,##0
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: d2e42988-648c-4f2a-b282-b6aa5dd56472
+
+	measure Faltas = SUM(Ponto[Faltas])
+		formatString: #,##0
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 9a512934-a17d-4e10-963c-05d0349becf6
+
+	measure 'Dias de Atestado' = SUM(Ponto[Dias de Atestado])
+		formatString: #,##0
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 07fc232e-cdb9-43b2-8e0e-45a059ad6256
+
+	/// (Faltas + dias de atestado) ÷ dias úteis previstos.
+	measure 'Absenteísmo %' = DIVIDE([Faltas] + [Dias de Atestado], [Dias Previstos])
+		formatString: 0.0%
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 1f2b8456-b8b7-4755-bed8-9a9d8b3ad316
+
+	measure 'Horas Extras' = SUM(Ponto[Horas Extras])
+		formatString: #,##0
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 9076d6ef-f420-42d7-849d-ba05ca42ee29
+
+	/// Horas extras por funcionário em cada mês trabalhado.
+	measure 'Horas Extras por Pessoa (mês)' = DIVIDE([Horas Extras], COUNTROWS(Ponto))
+		formatString: #,##0.0
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 21996d1c-61df-4416-a24b-ea5490604924
+
+	measure 'Faltas por Pessoa (mês)' = DIVIDE([Faltas], COUNTROWS(Ponto))
+		formatString: 0.00
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: b25f832b-88f3-46d4-affe-ebb899c328d8
+
+	/// Faltas por mês de quem já saiu da empresa: o sinal de alerta antes do desligamento.
+	measure 'Faltas por Mês: Quem Saiu' = CALCULATE([Faltas por Pessoa (mês)], 'Funcionário'[Situação] = "Desligado")
+		formatString: 0.00
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 33c74c03-ce62-4abd-a13f-95e59c534f66
+
+	measure 'Faltas por Mês: Quem Ficou' = CALCULATE([Faltas por Pessoa (mês)], 'Funcionário'[Situação] = "Ativo")
+		formatString: 0.00
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 47d4e582-e8be-451a-bf8f-be09894fe3b8
+
+	measure 'Quem Saiu Faltava a Mais %' = DIVIDE([Faltas por Mês: Quem Saiu] - [Faltas por Mês: Quem Ficou], [Faltas por Mês: Quem Ficou])
+		formatString: +0%;-0%;0%
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 08b60548-1e4e-42e4-8203-17eddbab4677
+
+	measure 'Absenteísmo: Quem Saiu' = CALCULATE([Absenteísmo %], 'Funcionário'[Situação] = "Desligado")
+		formatString: 0.0%
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: c361349e-2bcb-4f43-8246-eea9c6564092
+
+	measure 'Absenteísmo: Quem Ficou' = CALCULATE([Absenteísmo %], 'Funcionário'[Situação] = "Ativo")
+		formatString: 0.0%
+		displayFolder: 3. Absenteísmo e Horas Extras
+		lineageTag: 5db9a411-b2c0-44f3-bcc3-3f59d7f50570
+
+	/// Salários, encargos e benefícios (competência).
+	measure 'Custo de Pessoal' = SUM('Custo de Pessoal'[Valor])
+		formatString: R$ #,##0
+		displayFolder: 4. Custo
+		lineageTag: f31d6ac7-bf7c-4849-8583-1d31ef794f6e
+
+	/// Custo de pessoal ÷ soma do headcount médio de cada mês.
+	measure 'Custo Médio por Pessoa (mês)' =
+			DIVIDE(
+			    [Custo de Pessoal],
+			    SUMX(
+			        VALUES('Quadro Mensal'[competencia_key]),
+			        CALCULATE(SUM('Quadro Mensal'[Ativo no Início do Mês]) + SUM('Quadro Mensal'[Ativo no Fim do Mês])) / 2
+			    )
+			)
+		formatString: R$ #,##0
+		displayFolder: 4. Custo
+		lineageTag: 8f77588e-b126-4f21-adf2-4065f162e286
+
+	measure 'Salário Médio (ativos)' = CALCULATE(AVERAGE('Funcionário'[Salário Atual]), 'Funcionário'[Situação] = "Ativo")
+		formatString: R$ #,##0
+		displayFolder: 4. Custo
+		lineageTag: 7e9a76ec-073c-46ad-a76e-87c2131bc4c5
+
+	measure 'Turnover Ano Anterior %' = CALCULATE([Turnover %], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: 0.0%
+		displayFolder: 5. Comparativos
+		lineageTag: 06aa82d2-b01c-427f-9cee-76efab1b825c
+
+	/// Variação da rotatividade em pontos percentuais. Positivo = a empresa está perdendo mais gente.
+	measure 'Turnover vs Ano Anterior (p.p.)' = IF(ISBLANK([Turnover Ano Anterior %]), BLANK(), ([Turnover %] - [Turnover Ano Anterior %]) * 100)
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 5. Comparativos
+		lineageTag: f3a7140f-7521-407f-b477-9d972c69c48a
+
+	measure 'Custo de Pessoal Ano Anterior' = CALCULATE([Custo de Pessoal], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: R$ #,##0
+		displayFolder: 5. Comparativos
+		lineageTag: dc60affb-d152-4ed6-b4df-ce354a0db835
+
+	measure 'Custo de Pessoal vs Ano Anterior %' = DIVIDE([Custo de Pessoal] - [Custo de Pessoal Ano Anterior], [Custo de Pessoal Ano Anterior])
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5. Comparativos
+		lineageTag: 3e2da3c2-7dc2-45ac-b8f0-29a1aed78581
+
+	/// Vermelho quando a rotatividade sobe em relação ao ano anterior.
+	measure 'Cor do Turnover vs Ano Anterior' =
+			VAR v = [Turnover vs Ano Anterior (p.p.)]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v > 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: 85ab61d5-d26e-481d-923d-ae0b536ace07
+
+	column Coluna
+		dataType: string
+		isHidden
+		lineageTag: c01e7f3a-9964-4235-864c-a9cc708e048c
+		summarizeBy: none
+		sourceColumn: Coluna
+
+	partition Medidas = m
+		mode: import
+		source = #table(type table [Coluna = text], {})
+

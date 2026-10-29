@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_saidas_na_experiencia",
+  "position": {
+    "x": 1064,
+    "y": 88,
+    "z": 10000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Saídas na Experiência"
+                }
+              },
+              "queryRef": "Medidas.% Saídas na Experiência",
+              "nativeQueryRef": "% Saídas na Experiência",
+              "displayName": "Saíram na experiência"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

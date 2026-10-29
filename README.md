@@ -112,7 +112,10 @@ powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatór
 
    ![Painel Financeiro: Resumo](docs/img/financeiro_resumo.png)
 
-2. **People Analytics**: rotatividade, absenteísmo e custo de pessoal
+2. **People Analytics**: headcount, rotatividade, absenteísmo, horas extras e custo de pessoal, em 3 páginas. O modelo tem 34 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_people_analytics.md).
+
+   ![People Analytics: Rotatividade](docs/img/rh_rotatividade.png)
+
 3. **Compras e estoque**: curva ABC, ruptura e pontualidade de fornecedores
 4. **Excel + automação**: consolidação com Power Query e conciliação
 

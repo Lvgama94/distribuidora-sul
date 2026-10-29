@@ -1,6 +1,6 @@
 # Painel Financeiro: roteiro
 
-Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul. O modelo semântico (tabelas, relacionamentos e 55 medidas DAX) está em [`powerbi/Financeiro.SemanticModel`](../powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), em formato PBIP/TMDL (texto, versionado no Git).
+Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul. O modelo semântico (tabelas, relacionamentos e 60 medidas DAX, 5 delas só de formatação condicional) está em [`powerbi/Financeiro.SemanticModel`](../powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), em formato PBIP/TMDL (texto, versionado no Git).
 
 ## Perguntas que o painel responde
 
@@ -11,7 +11,9 @@ Projeto 1 do portfólio, construído sobre o modelo estrela da Distribuidora Sul
 
 ## Páginas
 
-Tela de 1280 × 720 com o tema [`powerbi/tema_distribuidora_sul.json`](../powerbi/tema_distribuidora_sul.json). Os filtros de cada visual ficam dentro das medidas (por exemplo, `Desvio das Despesas` e `A Receber (projeção)`), então nenhum visual tem filtro escondido.
+Tela de 1280 × 720 com grade de 24 px nas bordas e 16 px entre blocos. O estilo base (cartões, filtros, matriz, tabela, eixos, sombras e cantos arredondados) fica no tema [`powerbi/tema_distribuidora_sul.json`](../powerbi/tema_distribuidora_sul.json), não repetido em cada visual. As cores condicionais (verde = melhor que a referência, vermelho = pior) vêm de medidas na pasta "6. Formatação", como `Cor do Desvio`.
+
+Os filtros de cada visual ficam dentro das medidas (por exemplo, `Desvio das Despesas` e `A Receber (projeção)`), então nenhum visual tem filtro escondido.
 
 ### 1. Resumo
 
@@ -67,7 +69,7 @@ O orçamento não é aberto por filial: com uma filial selecionada, Orçado e De
 
 ## Testes
 
-As 55 medidas foram executadas no motor do Power BI Desktop. Os 42 indicadores da view de conferência bateram com o SQL, sem divergência. Também conferimos: orçado vazio com filtro de filial, soma da DRE igual ao resultado e inadimplência que não muda com o filtro de ano.
+As 55 medidas de cálculo foram executadas no motor do Power BI Desktop. Os 42 indicadores da view de conferência bateram com o SQL, sem divergência. Também conferimos: orçado vazio com filtro de filial, soma da DRE igual ao resultado e inadimplência que não muda com o filtro de ano.
 
 ## Decisões de modelagem (bons pontos para entrevista)
 

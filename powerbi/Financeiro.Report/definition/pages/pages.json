@@ -1,10 +1,10 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
   "pageOrder": [
-    "3d3ff413455412208fd9",
-    "9d0895ba23faac9e3d2e",
-    "0f8391b404da393ceeb1",
-    "cf187048ce2dc183a530"
+    "resumo",
+    "dre_orcamento",
+    "contas_receber",
+    "fluxo_caixa"
   ],
-  "activePageName": "3d3ff413455412208fd9"
+  "activePageName": "dre_orcamento"
 }

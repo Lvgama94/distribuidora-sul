@@ -419,6 +419,41 @@ table Medidas
 		displayFolder: 4. Caixa e Contas a Pagar
 		lineageTag: c00fc18e-22f9-49fc-8a0c-aecaa942c3c8
 
+	/// Cor usada na formatação condicional: vermelho quando o realizado está pior que o orçado.
+	measure 'Cor do Desvio' = IF(ISBLANK([Desvio]), BLANK(), IF([Desvio] < 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: c9462c36-2590-4c1d-9f29-ddc0a2b07889
+
+	measure 'Cor da Receita vs Ano Anterior' =
+			VAR v = [Receita Líquida vs Ano Anterior %]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: 59eb2fef-893f-4965-8936-c0e9c7fa8d09
+
+	measure 'Cor da Margem vs Ano Anterior' =
+			VAR v = [Margem Líquida vs Ano Anterior (p.p.)]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: cb2afd75-a3a2-41d1-b920-8599d8418529
+
+	/// Âmbar abaixo de 100% do orçado, verde a partir de 100%.
+	measure 'Cor do Atingimento' =
+			VAR v = [Atingimento da Receita %]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 1, "#B26A00", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: 67dbf866-8313-4a95-9bf7-15943aa318b2
+
+	measure 'Cor do Desvio do Resultado' =
+			VAR v = [Desvio do Resultado]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: 6ae52da0-f263-4e0a-9d03-436824dafc1e
+
 	column Coluna
 		dataType: string
 		isHidden

@@ -108,7 +108,7 @@ powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatór
 
 ## Painéis sobre esta base
 
-1. **Financeiro**: DRE, orçado × realizado, contas a receber e fluxo de caixa, em 4 páginas. O modelo tem 55 medidas DAX ([`Medidas.tmdl`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl)), todas conferidas contra o SQL. O [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência.
+1. **Financeiro**: DRE, orçado × realizado, contas a receber e fluxo de caixa, em 4 páginas. O modelo tem 60 medidas DAX ([`Medidas.tmdl`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl)), e todas as de cálculo foram conferidas contra o SQL. O [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência.
 
    ![Painel Financeiro: Resumo](docs/img/financeiro_resumo.png)
 

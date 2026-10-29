@@ -1,0 +1,421 @@
+cod_cliente,razao_social,cnpj,tipo_cliente,cidade,uf,id_filial,data_cadastro,condicao_pagamento,limite_credito,situacao
+C00001,Supermercados Bertoldi Moraes ME,84155213000182,Supermercado,Caxias do Sul,RS,2,2012-01-09,28 dias,48000.0,INATIVO
+C00002,Pousada Costa Comércio de Alimentos Ltda,69284972000151,Hotel,Pelotas,RS,3,2012-01-17,14 dias,13000.0,ATIVO
+C00003,Supermercado Souza Ltda,76133937000105,Supermercado,Rio Grande,RS,3,2012-01-25,28/56 dias,39000.0,ATIVO
+C00004,Churrascaria Fagundes EIRELI,93288736000198,Restaurante,Novo Hamburgo,RS,1,2012-02-04,7 dias,11000.0,ATIVO
+C00005,Churrascaria Santos Comércio de Alimentos Ltda,39485125000194,Restaurante,Garibaldi,RS,2,2012-02-07,14 dias,11000.0,INATIVO
+C00006,Supermercados Colonial Comércio de Alimentos Ltda,69208419000130,Supermercado,Pelotas,RS,3,2012-02-28,28 dias,36000.0,ATIVO
+C00007,Supermercados Nunes Ltda,41172895000129,Supermercado,Porto Alegre,RS,1,2012-03-26,28 dias,35000.0,ATIVO
+C00008,Lanchonete Bortolini Ltda,25509970000148,Lanchonete,Caxias do Sul,RS,2,2012-04-09,7 dias,7000.0,INATIVO
+C00009,Galeteria Ribeiro Ltda,84656619000149,Restaurante,Porto Alegre,RS,1,2012-04-11,7 dias,9000.0,ATIVO
+C00010,Mercado Nunes Ltda,71641621000100,Mercado de bairro,Caxias do Sul,RS,2,2012-05-09,14 dias,12000.0,INATIVO
+C00011,Lancheria Pinto Ltda,14450526000188,Lanchonete,Farroupilha,RS,2,2012-06-12,7 dias,8000.0,ATIVO
+C00012,Restaurante Fagundes ME,59392987000180,Restaurante,Porto Alegre,RS,1,2012-07-03,14 dias,7000.0,ATIVO
+C00013,Restaurante Família EIRELI,15530148000105,Restaurante,Capão do Leão,RS,3,2012-07-15,14 dias,8000.0,INATIVO
+C00014,Mercearia Mendes Brum EIRELI,47108670000190,Mercado de bairro,Pelotas,RS,3,2012-08-13,À vista,12000.0,ATIVO
+C00015,Bar e Lancheria Kunz EIRELI,78377086000163,Lanchonete,Novo Hamburgo,RS,1,2012-08-28,À vista,4000.0,INATIVO
+C00016,Confeitaria Schmidt ME,81038046000100,Padaria,Pelotas,RS,3,2012-08-28,À vista,7000.0,ATIVO
+C00017,Padaria Colonial EIRELI,46443973000104,Padaria,São Leopoldo,RS,1,2012-09-01,7 dias,16000.0,ATIVO
+C00018,Mercado Lima ME,93795025000100,Mercado de bairro,Porto Alegre,RS,1,2012-10-18,À vista,15000.0,ATIVO
+C00019,Churrascaria do Bairro EIRELI,05955189000190,Restaurante,Farroupilha,RS,2,2012-10-30,14 dias,13000.0,ATIVO
+C00020,Lanchonete Pinto Ltda,62028897000119,Lanchonete,Farroupilha,RS,2,2012-11-23,7 dias,8000.0,ATIVO
+C00021,Mercearia Schmidt Ltda,70377639000176,Mercado de bairro,Canoas,RS,1,2012-11-28,7 dias,18000.0,ATIVO
+C00022,Supermercado Primavera Lima Comércio de Alimentos Ltda,49237135000164,Supermercado,Gravataí,RS,1,2012-12-22,28/56 dias,46000.0,ATIVO
+C00023,Armazém São Jorge Ribeiro ME,67646923000196,Mercado de bairro,Bento Gonçalves,RS,2,2012-12-25,14 dias,11000.0,INATIVO
+C00024,Restaurante Ferreira EIRELI,63958094000126,Restaurante,Caxias do Sul,RS,2,2013-01-03,14 dias,14000.0,ATIVO
+C00025,Bar e Lancheria Ribeiro Ltda,08834003000132,Lanchonete,Cachoeirinha,RS,1,2013-01-11,À vista,6000.0,ATIVO
+C00026,Restaurante Barbosa Moraes ME,22207925000140,Restaurante,Pelotas,RS,3,2013-01-13,7 dias,9000.0,ATIVO
+C00027,Armazém Ribeiro ME,31983359000150,Mercado de bairro,Novo Hamburgo,RS,1,2013-02-09,14 dias,10000.0,ATIVO
+C00028,Bar e Lancheria Bela Vista Lima ME,17209255000161,Lanchonete,Garibaldi,RS,2,2013-02-11,À vista,5000.0,ATIVO
+C00029,Supermercado Santos Ltda,29631769000190,Supermercado,Gravataí,RS,1,2013-02-15,28 dias,36000.0,ATIVO
+C00030,Supermercados Brum ME,17207381000187,Supermercado,Porto Alegre,RS,1,2013-03-02,28 dias,59000.0,ATIVO
+C00031,Mercearia Costa Ltda,66473015000185,Mercado de bairro,São Leopoldo,RS,1,2013-03-30,14 dias,18000.0,ATIVO
+C00032,Lanchonete Ferreira Ltda,36290063000177,Lanchonete,Viamão,RS,1,2013-04-04,7 dias,10000.0,ATIVO
+C00033,Restaurante Bela Vista ME,59346130000123,Restaurante,Pelotas,RS,3,2013-04-21,7 dias,14000.0,ATIVO
+C00034,Armazém Pinto ME,87153019000156,Mercado de bairro,Canoas,RS,1,2013-04-23,À vista,6000.0,ATIVO
+C00035,Mercearia Machado Ltda,06256352000199,Mercado de bairro,Pelotas,RS,3,2013-05-23,21 dias,17000.0,INATIVO
+C00036,Mercearia Becker Comércio de Alimentos Ltda,67384987000166,Mercado de bairro,Porto Alegre,RS,1,2013-06-23,21 dias,9000.0,ATIVO
+C00037,Mercado Hoffmann ME,07724052000150,Mercado de bairro,Pelotas,RS,3,2013-07-01,21 dias,12000.0,ATIVO
+C00038,Supermercado do Bairro ME,12766917000180,Supermercado,Farroupilha,RS,2,2013-07-30,28 dias,44000.0,ATIVO
+C00039,Panificadora São Jorge Ltda,27374041000102,Padaria,Pelotas,RS,3,2013-08-19,7 dias,7000.0,INATIVO
+C00040,Confeitaria Bertoldi ME,22173115000110,Padaria,Bento Gonçalves,RS,2,2013-08-29,7 dias,9000.0,INATIVO
+C00041,Minimercado Barbosa Fontana Ltda,25697089000118,Mercado de bairro,Bento Gonçalves,RS,2,2013-09-23,14 dias,11000.0,ATIVO
+C00042,Mercearia do Bairro Müller EIRELI,58289535000104,Mercado de bairro,Gravataí,RS,1,2013-09-27,7 dias,24000.0,ATIVO
+C00043,Minimercado Nova Esperança ME,18832959000159,Mercado de bairro,Gravataí,RS,1,2013-09-29,21 dias,25000.0,ATIVO
+C00044,Mercearia do Bairro Fontana Ltda,40785420000145,Mercado de bairro,Novo Hamburgo,RS,1,2013-10-03,7 dias,28000.0,ATIVO
+C00045,Lanchonete Kunz Ltda,31906342000107,Lanchonete,Gravataí,RS,1,2013-10-27,À vista,9000.0,ATIVO
+C00046,Super Rossi ME,50759906000162,Supermercado,Caxias do Sul,RS,2,2013-11-02,28/56 dias,33000.0,ATIVO
+C00047,Churrascaria Carvalho Pinto Ltda,32511260000118,Restaurante,Viamão,RS,1,2013-11-06,7 dias,10000.0,ATIVO
+C00048,Mercearia Mendes Lima Ltda,62337081000177,Mercado de bairro,Porto Alegre,RS,1,2013-12-03,7 dias,16000.0,INATIVO
+C00049,Pousada Bom Preço EIRELI,67020001000179,Hotel,Bento Gonçalves,RS,2,2013-12-08,14 dias,19000.0,ATIVO
+C00050,Mercado Boa Vista Carvalho Comércio de Alimentos Ltda,70572678000124,Mercado de bairro,Pelotas,RS,3,2013-12-12,À vista,15000.0,ATIVO
+C00051,Lanchonete Moraes Ltda,93439916000123,Lanchonete,Porto Alegre,RS,1,2013-12-19,7 dias,8000.0,ATIVO
+C00052,Churrascaria Boa Vista Ltda,36379298000130,Restaurante,Capão do Leão,RS,3,2013-12-25,7 dias,11000.0,ATIVO
+C00053,Bar e Lancheria Nova Esperança EIRELI,59611764000166,Lanchonete,Porto Alegre,RS,1,2013-12-30,À vista,5000.0,ATIVO
+C00054,Hotel Gaúcho Ltda,78820977000142,Hotel,Farroupilha,RS,2,2013-12-31,14 dias,8000.0,ATIVO
+C00055,Super Estrela Ltda,55291866000190,Supermercado,Porto Alegre,RS,1,2014-01-09,28 dias,50000.0,ATIVO
+C00056,Churrascaria Carvalho Ltda,06407850000195,Restaurante,Porto Alegre,RS,1,2014-01-15,7 dias,16000.0,ATIVO
+C00057,Mercado Bom Preço Comércio de Alimentos Ltda,08731702000157,Mercado de bairro,Viamão,RS,1,2014-01-18,21 dias,13000.0,ATIVO
+C00058,Super Pereira Ltda,48946420000191,Supermercado,Flores da Cunha,RS,2,2014-02-22,28 dias,67000.0,ATIVO
+C00059,Minimercado Dalla Costa EIRELI,18067400000180,Mercado de bairro,Pelotas,RS,3,2014-03-02,14 dias,14000.0,INATIVO
+C00060,Padaria Lima Fagundes Ltda,86554187000190,Padaria,Caxias do Sul,RS,2,2014-03-04,À vista,22000.0,ATIVO
+C00061,Hotel Souza Comércio de Alimentos Ltda,89919176000155,Hotel,Flores da Cunha,RS,2,2014-04-10,14 dias,12000.0,ATIVO
+C00062,Panificadora Rodrigues Comércio de Alimentos Ltda,93023050000175,Padaria,Pelotas,RS,3,2014-05-02,7 dias,4000.0,ATIVO
+C00063,Lancheria Querência Ltda,85925757000149,Lanchonete,Porto Alegre,RS,1,2014-05-12,7 dias,7000.0,ATIVO
+C00064,Lancheria Barbosa Comércio de Alimentos Ltda,02089211000178,Lanchonete,Porto Alegre,RS,1,2014-06-05,À vista,6000.0,ATIVO
+C00065,Lanchonete Hoffmann Ltda,37308647000195,Lanchonete,Viamão,RS,1,2014-06-09,7 dias,3000.0,ATIVO
+C00066,Restaurante Lima Comércio de Alimentos Ltda,36094698000107,Restaurante,Capão do Leão,RS,3,2014-06-21,7 dias,18000.0,ATIVO
+C00067,Panificadora Pereira Rossi Comércio de Alimentos Ltda,05236594000158,Padaria,Rio Grande,RS,3,2014-06-24,À vista,9000.0,ATIVO
+C00068,Super Silva Comércio de Alimentos Ltda,09378710000124,Supermercado,São Leopoldo,RS,1,2014-06-28,28 dias,54000.0,INATIVO
+C00069,Lancheria Nunes Müller ME,80414277000108,Lanchonete,Novo Hamburgo,RS,1,2014-07-18,7 dias,5000.0,ATIVO
+C00070,Armazém Silva Kunz ME,47731500000167,Mercado de bairro,Porto Alegre,RS,1,2014-07-20,7 dias,23000.0,INATIVO
+C00071,Hotel Recanto Machado Comércio de Alimentos Ltda,24267519000107,Hotel,Caxias do Sul,RS,2,2014-07-26,14 dias,15000.0,ATIVO
+C00072,Bar e Lancheria Moraes EIRELI,28996647000134,Lanchonete,Gravataí,RS,1,2014-07-29,7 dias,9000.0,INATIVO
+C00073,Minimercado Família EIRELI,60723271000105,Mercado de bairro,Garibaldi,RS,2,2014-07-31,14 dias,14000.0,ATIVO
+C00074,Lancheria Carvalho Ltda,95050335000120,Lanchonete,Capão do Leão,RS,3,2014-08-01,7 dias,7000.0,ATIVO
+C00075,Bar e Lancheria Bertoldi Ltda,90745712000122,Lanchonete,Caxias do Sul,RS,2,2014-08-24,À vista,9000.0,ATIVO
+C00076,Churrascaria Weber Souza EIRELI,29017232000134,Restaurante,Caxias do Sul,RS,2,2014-10-07,14 dias,12000.0,ATIVO
+C00077,Lancheria Nova Esperança Comércio de Alimentos Ltda,53618518000150,Lanchonete,Porto Alegre,RS,1,2014-10-17,À vista,9000.0,ATIVO
+C00078,Super Santa Rita Comércio de Alimentos Ltda,72955727000133,Supermercado,Porto Alegre,RS,1,2014-11-03,28/56 dias,41000.0,ATIVO
+C00079,Armazém Pinto Fontana Comércio de Alimentos Ltda,23591896000126,Mercado de bairro,Garibaldi,RS,2,2014-11-27,À vista,20000.0,ATIVO
+C00080,Mercearia Rocha Comércio de Alimentos Ltda,06355679000118,Mercado de bairro,Viamão,RS,1,2014-12-04,21 dias,16000.0,ATIVO
+C00081,Bar e Lancheria Teixeira Rocha Ltda,81186475000116,Lanchonete,Caxias do Sul,RS,2,2014-12-22,7 dias,5000.0,ATIVO
+C00082,Armazém Família Moraes ME,18499361000190,Mercado de bairro,Caxias do Sul,RS,2,2014-12-29,21 dias,14000.0,ATIVO
+C00083,Minimercado Rodrigues ME,02621025000138,Mercado de bairro,Porto Alegre,RS,1,2015-01-15,À vista,18000.0,ATIVO
+C00084,Mercado Costa Ltda,72303581000141,Mercado de bairro,Canoas,RS,1,2015-01-30,À vista,16000.0,ATIVO
+C00085,Padaria Boa Vista ME,60954855000183,Padaria,Novo Hamburgo,RS,1,2015-04-02,7 dias,10000.0,ATIVO
+C00086,Panificadora Souza Ltda,08983833000121,Padaria,Novo Hamburgo,RS,1,2015-04-03,À vista,9000.0,ATIVO
+C00087,Minimercado Souza Ltda,15512097000199,Mercado de bairro,Novo Hamburgo,RS,1,2015-04-25,21 dias,13000.0,ATIVO
+C00088,Confeitaria Pereira ME,12457219000101,Padaria,Pelotas,RS,3,2015-05-06,14 dias,7000.0,INATIVO
+C00089,Churrascaria Bortolini EIRELI,46461557000120,Restaurante,Caxias do Sul,RS,2,2015-05-20,7 dias,9000.0,ATIVO
+C00090,Mercearia Carvalho Nunes ME,89373838000134,Mercado de bairro,Porto Alegre,RS,1,2015-06-03,14 dias,11000.0,ATIVO
+C00091,Supermercado Barbosa ME,59114450000158,Supermercado,Novo Hamburgo,RS,1,2015-06-05,28 dias,65000.0,ATIVO
+C00092,Lancheria Zanella ME,33363418000112,Lanchonete,Porto Alegre,RS,1,2015-06-13,À vista,8000.0,ATIVO
+C00093,Supermercado Müller ME,88860564000145,Supermercado,Porto Alegre,RS,1,2015-06-30,28/56 dias,69000.0,ATIVO
+C00094,Restaurante Kunz Ltda,66261884000146,Restaurante,Gravataí,RS,1,2015-07-12,7 dias,9000.0,ATIVO
+C00095,Armazém Boa Vista Ltda,97979426000170,Mercado de bairro,Cachoeirinha,RS,1,2015-08-10,7 dias,17000.0,ATIVO
+C00096,Pousada Bertoldi Ltda,79646221000191,Hotel,Capão do Leão,RS,3,2015-09-15,28 dias,13000.0,ATIVO
+C00097,Bar e Lancheria Almeida Rossi Ltda,34310475000104,Lanchonete,Viamão,RS,1,2015-09-28,7 dias,5000.0,ATIVO
+C00098,Supermercado Oliveira Ltda,22738983000109,Supermercado,São Leopoldo,RS,1,2015-10-07,28/56 dias,55000.0,ATIVO
+C00099,Armazém Progresso Ltda,18706784000133,Mercado de bairro,Canguçu,RS,3,2015-10-24,7 dias,16000.0,ATIVO
+C00100,Restaurante Colonial EIRELI,17110788000191,Restaurante,São Leopoldo,RS,1,2015-10-25,14 dias,6000.0,ATIVO
+C00101,Bar e Lancheria Teixeira ME,47290040000189,Lanchonete,São Leopoldo,RS,1,2015-11-01,À vista,8000.0,INATIVO
+C00102,Mercearia Müller Müller ME,38554540000190,Mercado de bairro,Rio Grande,RS,3,2015-11-02,À vista,10000.0,ATIVO
+C00103,Lancheria Santa Rita ME,69461134000106,Lanchonete,Viamão,RS,1,2015-12-16,7 dias,6000.0,ATIVO
+C00104,Bar e Lancheria Ribeiro Ferreira ME,20592305000147,Lanchonete,Porto Alegre,RS,1,2016-01-14,À vista,5000.0,ATIVO
+C00105,Galeteria Dalla Costa Comércio de Alimentos Ltda,43530947000117,Restaurante,Gravataí,RS,1,2016-01-14,7 dias,17000.0,ATIVO
+C00106,Armazém Costa Ltda,11175524000130,Mercado de bairro,Porto Alegre,RS,1,2016-01-18,14 dias,8000.0,ATIVO
+C00107,Mercearia do Bairro Becker Ltda,92719388000101,Mercado de bairro,Pelotas,RS,3,2016-02-20,À vista,22000.0,ATIVO
+C00108,Armazém Querência Pinto Ltda,34183472000149,Mercado de bairro,Caxias do Sul,RS,2,2016-02-26,À vista,19000.0,ATIVO
+C00109,Mercearia Rossi Comércio de Alimentos Ltda,45216811000162,Mercado de bairro,Caxias do Sul,RS,2,2016-03-26,14 dias,9000.0,INATIVO
+C00110,Panificadora Pereira EIRELI,83493452000180,Padaria,Novo Hamburgo,RS,1,2016-03-31,14 dias,6000.0,ATIVO
+C00111,Pousada Sabor do Sul ME,45757081000107,Hotel,Caxias do Sul,RS,2,2016-04-01,14 dias,10000.0,ATIVO
+C00112,Armazém Santos ME,71697917000135,Mercado de bairro,Novo Hamburgo,RS,1,2016-04-08,14 dias,19000.0,ATIVO
+C00113,Lanchonete Pereira Comércio de Alimentos Ltda,49156119000147,Lanchonete,Novo Hamburgo,RS,1,2016-04-13,7 dias,4000.0,ATIVO
+C00114,Mercearia Recanto EIRELI,33290209000196,Mercado de bairro,Garibaldi,RS,2,2016-04-26,À vista,28000.0,ATIVO
+C00115,Lancheria Barbosa Nunes Comércio de Alimentos Ltda,54123669000108,Lanchonete,Rio Grande,RS,3,2016-05-03,7 dias,4000.0,ATIVO
+C00116,Supermercado Progresso Ltda,33629814000149,Supermercado,São Leopoldo,RS,1,2016-05-16,28 dias,34000.0,ATIVO
+C00117,Padaria Central Comércio de Alimentos Ltda,35774352000189,Padaria,Pelotas,RS,3,2016-05-25,7 dias,9000.0,ATIVO
+C00118,Lanchonete Primavera Hoffmann ME,18890857000190,Lanchonete,Garibaldi,RS,2,2016-05-28,À vista,4000.0,INATIVO
+C00119,Minimercado Recanto EIRELI,40245547000171,Mercado de bairro,Gravataí,RS,1,2016-06-14,14 dias,9000.0,ATIVO
+C00120,Galeteria Teixeira Teixeira Comércio de Alimentos Ltda,46980613000133,Restaurante,Caxias do Sul,RS,2,2016-08-04,7 dias,10000.0,ATIVO
+C00121,Minimercado Boa Vista EIRELI,48459615000107,Mercado de bairro,Viamão,RS,1,2016-08-15,À vista,21000.0,INATIVO
+C00122,Galeteria Bertoldi Ltda,21136146000139,Restaurante,Cachoeirinha,RS,1,2016-08-22,7 dias,7000.0,ATIVO
+C00123,Mercado Rossi Ribeiro Comércio de Alimentos Ltda,86364723000195,Mercado de bairro,Pelotas,RS,3,2016-09-09,7 dias,25000.0,ATIVO
+C00124,Restaurante Becker EIRELI,73018714000109,Restaurante,Porto Alegre,RS,1,2016-09-10,7 dias,16000.0,ATIVO
+C00125,Churrascaria São Jorge ME,23143962000103,Restaurante,Porto Alegre,RS,1,2016-09-12,14 dias,11000.0,INATIVO
+C00126,Supermercado Ribeiro Ltda,48624870000168,Supermercado,Porto Alegre,RS,1,2016-10-09,28 dias,33000.0,ATIVO
+C00127,Minimercado Imigrante Rocha EIRELI,11190604000164,Mercado de bairro,Pelotas,RS,3,2016-10-31,7 dias,9000.0,ATIVO
+C00128,Confeitaria Zanella Ltda,81270830000130,Padaria,Cachoeirinha,RS,1,2016-11-06,À vista,9000.0,ATIVO
+C00129,Pousada Rossi Ltda,27612341000174,Hotel,Cachoeirinha,RS,1,2016-11-10,28 dias,24000.0,ATIVO
+C00130,Super Pinto EIRELI,79720317000152,Supermercado,Caxias do Sul,RS,2,2016-11-12,28/56 dias,54000.0,ATIVO
+C00131,Minimercado Avenida Ltda,80081783000114,Mercado de bairro,Porto Alegre,RS,1,2016-11-17,7 dias,12000.0,INATIVO
+C00132,Minimercado Brum Silva EIRELI,90766691000121,Mercado de bairro,Novo Hamburgo,RS,1,2016-11-25,7 dias,19000.0,ATIVO
+C00133,Pousada Nunes EIRELI,37995834000194,Hotel,Novo Hamburgo,RS,1,2016-11-28,28 dias,14000.0,ATIVO
+C00134,Lancheria Nunes Carvalho Comércio de Alimentos Ltda,01114763000126,Lanchonete,Pelotas,RS,3,2016-12-16,À vista,12000.0,ATIVO
+C00135,Minimercado Machado EIRELI,40272930000119,Mercado de bairro,Novo Hamburgo,RS,1,2016-12-19,21 dias,14000.0,INATIVO
+C00136,Minimercado Imigrante Brum Ltda,22874130000196,Mercado de bairro,Garibaldi,RS,2,2016-12-20,21 dias,8000.0,INATIVO
+C00137,Padaria Rodrigues Comércio de Alimentos Ltda,90700016000108,Padaria,Bento Gonçalves,RS,2,2016-12-22,7 dias,8000.0,ATIVO
+C00138,Armazém Almeida Machado Ltda,38330032000128,Mercado de bairro,Caxias do Sul,RS,2,2016-12-29,21 dias,15000.0,INATIVO
+C00139,Armazém Schmidt Ltda,64779205000108,Mercado de bairro,São Leopoldo,RS,1,2017-01-05,7 dias,30000.0,INATIVO
+C00140,Minimercado Tonin Pereira EIRELI,60017949000126,Mercado de bairro,Garibaldi,RS,2,2017-01-18,14 dias,14000.0,ATIVO
+C00141,Bar e Lancheria Ribeiro Costa EIRELI,89542926000112,Lanchonete,Porto Alegre,RS,1,2017-01-21,7 dias,11000.0,ATIVO
+C00142,Minimercado Recanto Müller Comércio de Alimentos Ltda,49730837000185,Mercado de bairro,Cachoeirinha,RS,1,2017-02-23,À vista,14000.0,INATIVO
+C00143,Bar e Lancheria Central Bortolini Ltda,77569261000151,Lanchonete,Pelotas,RS,3,2017-03-10,7 dias,5000.0,INATIVO
+C00144,Galeteria Pereira ME,68033501000108,Restaurante,Viamão,RS,1,2017-03-11,14 dias,6000.0,INATIVO
+C00145,Mercearia Mendes Ltda,45412996000180,Mercado de bairro,Porto Alegre,RS,1,2017-03-13,14 dias,14000.0,ATIVO
+C00146,Minimercado Ponto Certo Comércio de Alimentos Ltda,14233254000164,Mercado de bairro,Flores da Cunha,RS,2,2017-03-19,À vista,17000.0,ATIVO
+C00147,Galeteria Fontana Comércio de Alimentos Ltda,29975367000102,Restaurante,Canguçu,RS,3,2017-03-20,7 dias,11000.0,ATIVO
+C00148,Bar e Lancheria Colonial Carvalho Comércio de Alimentos Ltda,90888028000108,Lanchonete,Caxias do Sul,RS,2,2017-03-27,7 dias,7000.0,ATIVO
+C00149,Churrascaria Progresso Comércio de Alimentos Ltda,26284360000156,Restaurante,Garibaldi,RS,2,2017-04-24,7 dias,6000.0,ATIVO
+C00150,Mercado São Jorge Barbosa EIRELI,09676480000180,Mercado de bairro,Pelotas,RS,3,2017-06-14,21 dias,20000.0,INATIVO
+C00151,Lanchonete Rocha Comércio de Alimentos Ltda,66132485000185,Lanchonete,Novo Hamburgo,RS,1,2017-06-18,7 dias,11000.0,ATIVO
+C00152,Confeitaria Família Comércio de Alimentos Ltda,72478064000103,Padaria,Garibaldi,RS,2,2017-07-20,14 dias,16000.0,ATIVO
+C00153,Minimercado Rodrigues Rossi Ltda,33119197000131,Mercado de bairro,Caxias do Sul,RS,2,2017-08-13,14 dias,9000.0,ATIVO
+C00154,Supermercados Fontana Ltda,85065527000157,Supermercado,Porto Alegre,RS,1,2017-08-22,28/56 dias,64000.0,ATIVO
+C00155,Mercearia Brum Comércio de Alimentos Ltda,06990783000184,Mercado de bairro,Viamão,RS,1,2017-09-09,7 dias,27000.0,ATIVO
+C00156,Armazém Ferreira Rossi ME,42482048000123,Mercado de bairro,Caxias do Sul,RS,2,2017-10-03,7 dias,16000.0,INATIVO
+C00157,Mercearia Santos ME,34038939000167,Mercado de bairro,Caxias do Sul,RS,2,2017-10-08,14 dias,14000.0,ATIVO
+C00158,Mercearia do Bairro ME,28620320000163,Mercado de bairro,Viamão,RS,1,2017-10-21,14 dias,14000.0,ATIVO
+C00159,Lanchonete Família Ltda,85778109000107,Lanchonete,Capão do Leão,RS,3,2017-11-03,7 dias,4000.0,ATIVO
+C00160,Super Ferreira Comércio de Alimentos Ltda,75014218000102,Supermercado,Canoas,RS,1,2017-11-10,28/56 dias,48000.0,ATIVO
+C00161,Confeitaria Fontana Ltda,10745550000193,Padaria,Canguçu,RS,3,2017-11-13,14 dias,12000.0,ATIVO
+C00162,Supermercados Tonin ME,57128185000131,Supermercado,Porto Alegre,RS,1,2017-11-16,28 dias,68000.0,ATIVO
+C00163,Super Rodrigues EIRELI,45931284000178,Supermercado,Gravataí,RS,1,2017-11-16,28 dias,71000.0,INATIVO
+C00164,Minimercado Progresso EIRELI,51522551000156,Mercado de bairro,Capão do Leão,RS,3,2017-12-03,21 dias,19000.0,INATIVO
+C00165,Mercearia Fagundes EIRELI,86897181000116,Mercado de bairro,Pelotas,RS,3,2017-12-12,À vista,10000.0,ATIVO
+C00166,Mercado Boa Vista EIRELI,52429208000124,Mercado de bairro,Viamão,RS,1,2017-12-17,7 dias,11000.0,ATIVO
+C00167,Lanchonete Carvalho Ltda,81018316000102,Lanchonete,Canoas,RS,1,2017-12-25,7 dias,5000.0,ATIVO
+C00168,Mercado Família ME,12362774000141,Mercado de bairro,Pelotas,RS,3,2018-01-05,21 dias,7000.0,ATIVO
+C00169,Bar e Lancheria Weber Ltda,42681897000106,Lanchonete,Pelotas,RS,3,2018-01-14,À vista,4000.0,INATIVO
+C00170,Bar e Lancheria Pereira ME,26286247000100,Lanchonete,Viamão,RS,1,2018-01-23,7 dias,7000.0,ATIVO
+C00171,Super Avenida Ltda,85978933000100,Supermercado,Viamão,RS,1,2018-01-28,28 dias,34000.0,INATIVO
+C00172,Super Recanto Ltda,04179435000104,Supermercado,Garibaldi,RS,2,2018-01-30,28 dias,58000.0,ATIVO
+C00173,Galeteria Gaúcho Nunes EIRELI,19264016000130,Restaurante,Porto Alegre,RS,1,2018-03-11,14 dias,22000.0,ATIVO
+C00174,Mercearia Barbosa Hoffmann ME,65501050000106,Mercado de bairro,Capão do Leão,RS,3,2018-03-28,21 dias,16000.0,ATIVO
+C00175,Lancheria Almeida Ltda,09876532000161,Lanchonete,Caxias do Sul,RS,2,2018-04-04,À vista,6000.0,ATIVO
+C00176,Supermercado Becker Comércio de Alimentos Ltda,29518490000102,Supermercado,Garibaldi,RS,2,2018-05-29,28 dias,35000.0,ATIVO
+C00177,Padaria Ferreira ME,25936194000162,Padaria,Flores da Cunha,RS,2,2018-06-03,14 dias,4000.0,ATIVO
+C00178,Restaurante São Jorge Comércio de Alimentos Ltda,44574641000125,Restaurante,Gravataí,RS,1,2018-06-04,14 dias,12000.0,ATIVO
+C00179,Mercearia Moraes Dalla Costa ME,36889437000175,Mercado de bairro,Pelotas,RS,3,2018-06-11,14 dias,21000.0,ATIVO
+C00180,Super Rodrigues Lima Ltda,08800130000110,Supermercado,Caxias do Sul,RS,2,2018-07-02,28 dias,15000.0,ATIVO
+C00181,Mercearia Schmidt Rossi Comércio de Alimentos Ltda,44092099000174,Mercado de bairro,Novo Hamburgo,RS,1,2018-07-06,À vista,12000.0,ATIVO
+C00182,Supermercado Querência EIRELI,44795311000160,Supermercado,Porto Alegre,RS,1,2018-07-18,28 dias,35000.0,INATIVO
+C00183,Mercearia Bom Preço EIRELI,18975321000177,Mercado de bairro,Canguçu,RS,3,2018-07-21,21 dias,21000.0,ATIVO
+C00184,Lanchonete Ribeiro Ltda,43824214000195,Lanchonete,São Leopoldo,RS,1,2018-07-26,7 dias,8000.0,ATIVO
+C00185,Restaurante Primavera ME,61536688000113,Restaurante,São Leopoldo,RS,1,2018-08-03,7 dias,9000.0,ATIVO
+C00186,Lancheria Müller Rocha Ltda,50406357000142,Lanchonete,Porto Alegre,RS,1,2018-08-26,7 dias,8000.0,INATIVO
+C00187,Restaurante Recanto Barbosa Comércio de Alimentos Ltda,79661750000164,Restaurante,Pelotas,RS,3,2018-08-31,7 dias,9000.0,ATIVO
+C00188,Restaurante Barbosa EIRELI,76029208000103,Restaurante,Porto Alegre,RS,1,2018-09-14,7 dias,6000.0,INATIVO
+C00189,Minimercado Gaúcho ME,99813026000116,Mercado de bairro,Farroupilha,RS,2,2018-10-10,À vista,13000.0,ATIVO
+C00190,Minimercado Bortolini Ltda,27366904000191,Mercado de bairro,Garibaldi,RS,2,2018-10-22,21 dias,21000.0,ATIVO
+C00191,Armazém Avenida Comércio de Alimentos Ltda,91925856000123,Mercado de bairro,Gravataí,RS,1,2018-11-29,À vista,20000.0,INATIVO
+C00192,Bar e Lancheria Almeida Ltda,03317215000129,Lanchonete,Porto Alegre,RS,1,2018-12-05,À vista,5000.0,ATIVO
+C00193,Bar e Lancheria Lima Comércio de Alimentos Ltda,31330101000154,Lanchonete,Caxias do Sul,RS,2,2018-12-11,À vista,3000.0,ATIVO
+C00194,Panificadora Gaúcho ME,89418498000110,Padaria,Viamão,RS,1,2019-01-19,À vista,12000.0,ATIVO
+C00195,Supermercado Bertoldi ME,92448772000109,Supermercado,Porto Alegre,RS,1,2019-02-24,28 dias,49000.0,ATIVO
+C00196,Padaria Santos Ltda,94090647000103,Padaria,Caxias do Sul,RS,2,2019-03-26,14 dias,11000.0,ATIVO
+C00197,Restaurante Bertoldi Ltda,85927955000141,Restaurante,Novo Hamburgo,RS,1,2019-03-30,7 dias,6000.0,ATIVO
+C00198,Galeteria Souza Ltda,39899181000175,Restaurante,Porto Alegre,RS,1,2019-04-11,14 dias,11000.0,ATIVO
+C00199,Minimercado Sabor do Sul Ribeiro Comércio de Alimentos Ltda,13797027000107,Mercado de bairro,Cachoeirinha,RS,1,2019-04-14,21 dias,11000.0,ATIVO
+C00200,Restaurante Carvalho Comércio de Alimentos Ltda,50056137000136,Restaurante,Farroupilha,RS,2,2019-04-18,7 dias,13000.0,ATIVO
+C00201,Restaurante Tonin Pereira Ltda,28603169000155,Restaurante,Garibaldi,RS,2,2019-04-21,7 dias,19000.0,ATIVO
+C00202,Padaria Recanto Ltda,83156120000100,Padaria,Caxias do Sul,RS,2,2019-04-26,14 dias,8000.0,ATIVO
+C00203,Lancheria Progresso ME,21766954000180,Lanchonete,Capão do Leão,RS,3,2019-04-28,7 dias,9000.0,INATIVO
+C00204,Lanchonete São Jorge EIRELI,35246165000122,Lanchonete,Pelotas,RS,3,2019-05-09,7 dias,5000.0,ATIVO
+C00205,Supermercado Moraes Ltda,25056936000165,Supermercado,Bento Gonçalves,RS,2,2019-07-22,28/56 dias,34000.0,ATIVO
+C00206,Mercado Recanto Müller EIRELI,46833260000149,Mercado de bairro,Pelotas,RS,3,2019-08-14,7 dias,15000.0,ATIVO
+C00207,Supermercados Ferreira Souza Comércio de Alimentos Ltda,68858820000152,Supermercado,Garibaldi,RS,2,2019-08-16,28/56 dias,62000.0,INATIVO
+C00208,Lanchonete Primavera Ltda,50373481000159,Lanchonete,Novo Hamburgo,RS,1,2019-08-17,À vista,4000.0,ATIVO
+C00209,Armazém Família Dalla Costa Ltda,69872382000140,Mercado de bairro,Caxias do Sul,RS,2,2019-08-18,21 dias,8000.0,ATIVO
+C00210,Supermercados Progresso EIRELI,57976641000101,Supermercado,Porto Alegre,RS,1,2019-08-24,28/56 dias,64000.0,INATIVO
+C00211,Minimercado Primavera Comércio de Alimentos Ltda,22411679000144,Mercado de bairro,Gravataí,RS,1,2019-08-26,21 dias,16000.0,INATIVO
+C00212,Bar e Lancheria Santa Rita Comércio de Alimentos Ltda,29447023000120,Lanchonete,Gravataí,RS,1,2019-09-08,7 dias,4000.0,ATIVO
+C00213,Pousada Zanella EIRELI,06924265000162,Hotel,Viamão,RS,1,2019-09-23,28 dias,10000.0,ATIVO
+C00214,Restaurante Oliveira Weber ME,39436157000108,Restaurante,Porto Alegre,RS,1,2019-10-03,14 dias,9000.0,INATIVO
+C00215,Armazém Barbosa ME,11574397000141,Mercado de bairro,Pelotas,RS,3,2019-10-04,21 dias,16000.0,ATIVO
+C00216,Pousada Imigrante EIRELI,67346867000174,Hotel,Pelotas,RS,3,2019-10-13,28 dias,25000.0,ATIVO
+C00217,Supermercados Avenida Ltda,88537714000184,Supermercado,Capão do Leão,RS,3,2019-10-17,28/56 dias,66000.0,INATIVO
+C00218,Armazém Silva Ltda,70074745000180,Mercado de bairro,Cachoeirinha,RS,1,2019-10-30,7 dias,7000.0,INATIVO
+C00219,Restaurante Almeida Comércio de Alimentos Ltda,17278528000120,Restaurante,Gravataí,RS,1,2019-11-06,7 dias,13000.0,ATIVO
+C00220,Supermercado Rossi EIRELI,75477894000104,Supermercado,Cachoeirinha,RS,1,2019-11-07,28/56 dias,40000.0,ATIVO
+C00221,Minimercado Costa ME,20044372000127,Mercado de bairro,Caxias do Sul,RS,2,2019-11-12,7 dias,13000.0,ATIVO
+C00222,Armazém Querência ME,04066352000109,Mercado de bairro,Novo Hamburgo,RS,1,2019-11-27,À vista,12000.0,INATIVO
+C00223,Bar e Lancheria Imigrante Ltda,07392352000189,Lanchonete,Porto Alegre,RS,1,2019-11-28,7 dias,6000.0,ATIVO
+C00224,Mercearia Ribeiro ME,93343323000169,Mercado de bairro,Porto Alegre,RS,1,2019-12-05,21 dias,25000.0,INATIVO
+C00225,Mercado Müller ME,69563858000160,Mercado de bairro,Farroupilha,RS,2,2020-01-09,À vista,11000.0,ATIVO
+C00226,Restaurante Imigrante Comércio de Alimentos Ltda,31185230000104,Restaurante,Porto Alegre,RS,1,2020-01-30,7 dias,9000.0,ATIVO
+C00227,Lanchonete Mendes Comércio de Alimentos Ltda,15584128000117,Lanchonete,Caxias do Sul,RS,2,2020-02-02,7 dias,5000.0,INATIVO
+C00228,Minimercado Nova Esperança Souza Ltda,68572072000147,Mercado de bairro,Rio Grande,RS,3,2020-02-06,14 dias,13000.0,INATIVO
+C00229,Galeteria Teixeira ME,79574670000171,Restaurante,Cachoeirinha,RS,1,2020-02-08,14 dias,9000.0,ATIVO
+C00230,Supermercado São Jorge Comércio de Alimentos Ltda,12262948000102,Supermercado,Gravataí,RS,1,2020-02-23,28 dias,24000.0,ATIVO
+C00231,Supermercados Silva Comércio de Alimentos Ltda,49104636000172,Supermercado,Capão do Leão,RS,3,2020-03-08,28/56 dias,73000.0,ATIVO
+C00232,Supermercado Nunes Ltda,34450417000178,Supermercado,Novo Hamburgo,RS,1,2020-03-13,28/56 dias,58000.0,ATIVO
+C00233,Restaurante Oliveira ME,00097826000110,Restaurante,Canoas,RS,1,2020-03-16,7 dias,10000.0,INATIVO
+C00234,Hotel Weber Ltda,44293615000129,Hotel,Porto Alegre,RS,1,2020-03-16,14 dias,20000.0,ATIVO
+C00235,Pousada Bortolini Comércio de Alimentos Ltda,83831555000102,Hotel,Novo Hamburgo,RS,1,2020-03-19,28 dias,12000.0,ATIVO
+C00236,Bar e Lancheria Bela Vista ME,42288107000127,Lanchonete,Gravataí,RS,1,2020-04-04,À vista,7000.0,ATIVO
+C00237,Churrascaria Imigrante EIRELI,39227560000119,Restaurante,Caxias do Sul,RS,2,2020-04-15,14 dias,13000.0,ATIVO
+C00238,Bar e Lancheria Família ME,40885420000117,Lanchonete,São Leopoldo,RS,1,2020-05-10,7 dias,7000.0,INATIVO
+C00239,Mercearia Bela Vista EIRELI,79361579000178,Mercado de bairro,Gravataí,RS,1,2020-05-13,14 dias,20000.0,ATIVO
+C00240,Mercearia Carvalho Fontana ME,12873722000130,Mercado de bairro,Cachoeirinha,RS,1,2020-05-19,7 dias,9000.0,ATIVO
+C00241,Confeitaria Estrela Comércio de Alimentos Ltda,75194947000180,Padaria,Porto Alegre,RS,1,2020-06-20,14 dias,10000.0,INATIVO
+C00242,Hotel Santos ME,36445718000139,Hotel,Porto Alegre,RS,1,2020-07-04,28 dias,7000.0,INATIVO
+C00243,Mercearia Avenida EIRELI,48768493000130,Mercado de bairro,Gravataí,RS,1,2020-07-10,À vista,11000.0,ATIVO
+C00244,Churrascaria Colonial Comércio de Alimentos Ltda,37801614000182,Restaurante,Farroupilha,RS,2,2020-07-14,7 dias,16000.0,INATIVO
+C00245,Supermercado Schmidt EIRELI,01749923000103,Supermercado,Canguçu,RS,3,2020-07-23,28/56 dias,25000.0,ATIVO
+C00246,Supermercados Weber Comércio de Alimentos Ltda,29852282000137,Supermercado,Canguçu,RS,3,2020-08-16,28/56 dias,27000.0,ATIVO
+C00247,Hotel Carvalho ME,33499686000166,Hotel,Capão do Leão,RS,3,2020-08-28,28 dias,10000.0,ATIVO
+C00248,Lancheria Mendes Ltda,70042207000104,Lanchonete,Garibaldi,RS,2,2020-10-02,7 dias,7000.0,ATIVO
+C00249,Panificadora Souza Schmidt Ltda,32679759000139,Padaria,Rio Grande,RS,3,2020-10-04,À vista,10000.0,ATIVO
+C00250,Super Hoffmann Ltda,99757003000131,Supermercado,Caxias do Sul,RS,2,2020-10-14,28/56 dias,39000.0,ATIVO
+C00251,Churrascaria Lima EIRELI,37994148000107,Restaurante,São Leopoldo,RS,1,2020-11-09,14 dias,12000.0,ATIVO
+C00252,Galeteria Schmidt Comércio de Alimentos Ltda,06125739000106,Restaurante,São Leopoldo,RS,1,2020-11-20,14 dias,10000.0,ATIVO
+C00253,Mercearia Teixeira Comércio de Alimentos Ltda,11058201000166,Mercado de bairro,Porto Alegre,RS,1,2020-11-26,7 dias,16000.0,ATIVO
+C00254,Minimercado Imigrante Comércio de Alimentos Ltda,94231187000188,Mercado de bairro,Gravataí,RS,1,2020-12-02,14 dias,26000.0,ATIVO
+C00255,Padaria Tonin Comércio de Alimentos Ltda,86015488000146,Padaria,Porto Alegre,RS,1,2020-12-13,À vista,14000.0,ATIVO
+C00256,Pousada Ribeiro Comércio de Alimentos Ltda,41654349000124,Hotel,Gravataí,RS,1,2021-01-13,14 dias,23000.0,ATIVO
+C00257,Lancheria Ponto Certo Rossi Ltda,14793537000160,Lanchonete,Rio Grande,RS,3,2021-01-16,7 dias,6000.0,ATIVO
+C00258,Churrascaria Oliveira Ltda,35640094000148,Restaurante,Farroupilha,RS,2,2021-01-18,7 dias,13000.0,ATIVO
+C00259,Minimercado Central Ltda,53009060000131,Mercado de bairro,Rio Grande,RS,3,2021-01-30,7 dias,27000.0,ATIVO
+C00260,Churrascaria Mendes Ltda,93759884000143,Restaurante,Porto Alegre,RS,1,2021-03-01,14 dias,9000.0,ATIVO
+C00261,Lancheria Weber EIRELI,74382981000115,Lanchonete,Caxias do Sul,RS,2,2021-03-06,7 dias,9000.0,ATIVO
+C00262,Supermercado Recanto EIRELI,00600390000130,Supermercado,Capão do Leão,RS,3,2021-03-13,28 dias,30000.0,INATIVO
+C00263,Confeitaria Zanella Fontana Comércio de Alimentos Ltda,05747713000137,Padaria,Porto Alegre,RS,1,2021-03-15,7 dias,7000.0,ATIVO
+C00264,Panificadora Almeida Ltda,33108495000126,Padaria,Rio Grande,RS,3,2021-03-20,14 dias,14000.0,ATIVO
+C00265,Mercado Barbosa ME,27710489000141,Mercado de bairro,Porto Alegre,RS,1,2021-03-21,À vista,22000.0,ATIVO
+C00266,Restaurante Gaúcho Comércio de Alimentos Ltda,61301289000173,Restaurante,São Leopoldo,RS,1,2021-04-04,14 dias,14000.0,ATIVO
+C00267,Mercado Mendes EIRELI,43002083000160,Mercado de bairro,Caxias do Sul,RS,2,2021-04-30,21 dias,22000.0,ATIVO
+C00268,Mercado Weber Ltda,19182887000104,Mercado de bairro,Pelotas,RS,3,2021-05-18,21 dias,18000.0,INATIVO
+C00269,Churrascaria Carvalho Almeida ME,70589449000112,Restaurante,Caxias do Sul,RS,2,2021-05-27,7 dias,10000.0,ATIVO
+C00270,Supermercado Brum EIRELI,29691535000138,Supermercado,Gravataí,RS,1,2021-06-11,28/56 dias,48000.0,INATIVO
+C00271,Confeitaria Souza Ltda,81613346000167,Padaria,Porto Alegre,RS,1,2021-06-11,7 dias,7000.0,ATIVO
+C00272,Panificadora Imigrante Ltda,18605746000194,Padaria,Garibaldi,RS,2,2021-07-04,14 dias,4000.0,INATIVO
+C00273,Padaria Lima Ltda,42433494000148,Padaria,Novo Hamburgo,RS,1,2021-07-14,7 dias,10000.0,INATIVO
+C00274,Armazém do Bairro Comércio de Alimentos Ltda,05971322000100,Mercado de bairro,Viamão,RS,1,2021-07-18,21 dias,10000.0,ATIVO
+C00275,Mercearia Moraes Comércio de Alimentos Ltda,74151037000157,Mercado de bairro,Caxias do Sul,RS,2,2021-07-24,14 dias,33000.0,ATIVO
+C00276,Super Almeida Ltda,53551104000150,Supermercado,Bento Gonçalves,RS,2,2021-07-28,28 dias,24000.0,ATIVO
+C00277,Supermercados Costa EIRELI,98203514000149,Supermercado,Caxias do Sul,RS,2,2021-08-04,28/56 dias,37000.0,ATIVO
+C00278,Lancheria Colonial Ltda,92485228000137,Lanchonete,Porto Alegre,RS,1,2021-08-19,À vista,5000.0,ATIVO
+C00279,Galeteria Becker Comércio de Alimentos Ltda,45277523000118,Restaurante,São Leopoldo,RS,1,2021-08-25,14 dias,10000.0,ATIVO
+C00280,Armazém Kunz EIRELI,49061328000107,Mercado de bairro,Pelotas,RS,3,2021-08-28,14 dias,14000.0,ATIVO
+C00281,Super Rocha ME,06455841000170,Supermercado,Porto Alegre,RS,1,2021-09-10,28/56 dias,59000.0,ATIVO
+C00282,Supermercado Mendes Ltda,81322372000136,Supermercado,Rio Grande,RS,3,2021-09-19,28 dias,52000.0,ATIVO
+C00283,Restaurante Costa Comércio de Alimentos Ltda,46690833000122,Restaurante,Garibaldi,RS,2,2021-09-20,14 dias,8000.0,ATIVO
+C00284,Armazém Estrela Comércio de Alimentos Ltda,90431730000130,Mercado de bairro,Pelotas,RS,3,2021-09-29,14 dias,24000.0,ATIVO
+C00285,Padaria Kunz Ltda,15630325000125,Padaria,Caxias do Sul,RS,2,2021-11-14,7 dias,14000.0,INATIVO
+C00286,Armazém Mendes ME,44118893000140,Mercado de bairro,Pelotas,RS,3,2021-11-14,14 dias,22000.0,ATIVO
+C00287,Armazém Almeida Ltda,37710981000170,Mercado de bairro,São Leopoldo,RS,1,2021-11-23,7 dias,13000.0,ATIVO
+C00288,Minimercado Fontana Ltda,13132380000160,Mercado de bairro,Caxias do Sul,RS,2,2021-11-24,7 dias,7000.0,ATIVO
+C00289,Lancheria Barbosa Becker ME,87406101000145,Lanchonete,Bento Gonçalves,RS,2,2021-12-30,À vista,7000.0,ATIVO
+C00290,Mercearia Zanella Comércio de Alimentos Ltda,83588495000149,Mercado de bairro,Garibaldi,RS,2,2022-01-03,7 dias,32000.0,ATIVO
+C00291,Bar e Lancheria Nunes Ltda,78727310000108,Lanchonete,Porto Alegre,RS,1,2022-02-07,7 dias,9000.0,ATIVO
+C00292,Bar e Lancheria Sabor do Sul EIRELI,50014827000122,Lanchonete,Porto Alegre,RS,1,2022-04-08,À vista,6000.0,ATIVO
+C00293,Mercearia Schmidt Müller ME,46458907000108,Mercado de bairro,Capão do Leão,RS,3,2022-04-18,14 dias,9000.0,ATIVO
+C00294,Bar e Lancheria Estrela Comércio de Alimentos Ltda,63434611000168,Lanchonete,Flores da Cunha,RS,2,2022-04-30,À vista,6000.0,ATIVO
+C00295,Galeteria Bom Preço Ltda,51998606000107,Restaurante,Viamão,RS,1,2022-05-29,7 dias,10000.0,ATIVO
+C00296,Supermercados Ferreira Ltda,82003462000127,Supermercado,Flores da Cunha,RS,2,2022-06-17,28 dias,57000.0,ATIVO
+C00297,Mercado Kunz Ltda,67174676000172,Mercado de bairro,Viamão,RS,1,2022-06-29,21 dias,12000.0,ATIVO
+C00298,Armazém Fagundes ME,51568555000175,Mercado de bairro,Cachoeirinha,RS,1,2022-07-02,21 dias,13000.0,INATIVO
+C00299,Minimercado Estrela Silva Ltda,30947984000183,Mercado de bairro,Porto Alegre,RS,1,2022-07-13,14 dias,30000.0,ATIVO
+C00300,Bar e Lancheria Colonial Comércio de Alimentos Ltda,06741592000189,Lanchonete,Gravataí,RS,1,2022-07-26,À vista,5000.0,INATIVO
+C00301,Supermercados Santa Rita Comércio de Alimentos Ltda,18853205000185,Supermercado,Farroupilha,RS,2,2022-09-04,28/56 dias,92000.0,ATIVO
+C00302,Mercado Silva ME,08820938000160,Mercado de bairro,Canguçu,RS,3,2022-09-05,À vista,17000.0,ATIVO
+C00303,Mercearia Carvalho Schmidt EIRELI,22693076000182,Mercado de bairro,Canguçu,RS,3,2022-09-08,7 dias,20000.0,ATIVO
+C00304,Super Weber Ltda,18276629000124,Supermercado,Novo Hamburgo,RS,1,2022-09-10,28/56 dias,48000.0,INATIVO
+C00305,Panificadora Hoffmann ME,57131518000181,Padaria,Flores da Cunha,RS,2,2022-09-16,À vista,7000.0,ATIVO
+C00306,Armazém Dalla Costa Tonin Comércio de Alimentos Ltda,77201019000120,Mercado de bairro,Novo Hamburgo,RS,1,2022-09-30,21 dias,15000.0,ATIVO
+C00307,Churrascaria Tonin Comércio de Alimentos Ltda,45554346000170,Restaurante,Gravataí,RS,1,2022-10-19,14 dias,17000.0,ATIVO
+C00308,Mercearia Progresso Comércio de Alimentos Ltda,79297188000131,Mercado de bairro,Caxias do Sul,RS,2,2022-11-11,7 dias,21000.0,ATIVO
+C00309,Mercearia São Jorge EIRELI,14888213000106,Mercado de bairro,Cachoeirinha,RS,1,2022-12-03,14 dias,20000.0,INATIVO
+C00310,Padaria São Jorge Comércio de Alimentos Ltda,91702692000175,Padaria,Porto Alegre,RS,1,2023-01-08,7 dias,10000.0,ATIVO
+C00311,Hotel Weber Weber ME,61760858000149,Hotel,Caxias do Sul,RS,2,2023-01-21,14 dias,14000.0,ATIVO
+C00312,Hotel Rossi Ltda,62991627000109,Hotel,Farroupilha,RS,2,2023-01-27,14 dias,19000.0,INATIVO
+C00313,Bar e Lancheria Rocha ME,69121377000103,Lanchonete,Rio Grande,RS,3,2023-01-28,7 dias,5000.0,ATIVO
+C00314,Minimercado Brum Ltda,43679241000111,Mercado de bairro,Porto Alegre,RS,1,2023-02-14,14 dias,20000.0,ATIVO
+C00315,Lancheria Nova Esperança Fontana ME,99662945000136,Lanchonete,Pelotas,RS,3,2023-02-28,À vista,8000.0,ATIVO
+C00316,Restaurante Tonin Ltda,52302322000199,Restaurante,São Leopoldo,RS,1,2023-03-16,14 dias,6000.0,ATIVO
+C00317,Galeteria Brum ME,63673249000188,Restaurante,Porto Alegre,RS,1,2023-03-22,14 dias,9000.0,ATIVO
+C00318,Lanchonete Imigrante ME,20152508000112,Lanchonete,Porto Alegre,RS,1,2023-04-08,7 dias,7000.0,ATIVO
+C00319,Armazém Weber ME,46307952000153,Mercado de bairro,Caxias do Sul,RS,2,2023-05-22,À vista,28000.0,ATIVO
+C00320,Panificadora Rocha Ltda,89672120000149,Padaria,Caxias do Sul,RS,2,2023-06-23,À vista,11000.0,ATIVO
+C00321,Restaurante Recanto ME,66624839000109,Restaurante,Novo Hamburgo,RS,1,2023-07-08,7 dias,7000.0,ATIVO
+C00322,Mercearia Müller Ltda,95808759000101,Mercado de bairro,Flores da Cunha,RS,2,2023-07-14,À vista,15000.0,INATIVO
+C00323,Supermercado Carvalho ME,98574719000130,Supermercado,Garibaldi,RS,2,2023-07-18,28 dias,30000.0,INATIVO
+C00324,Lancheria Brum EIRELI,75887784000110,Lanchonete,Canoas,RS,1,2023-07-24,7 dias,5000.0,ATIVO
+C00325,Minimercado Imigrante Tonin Ltda,66737064000188,Mercado de bairro,Pelotas,RS,3,2023-07-30,21 dias,16000.0,INATIVO
+C00326,Lancheria Müller EIRELI,68717331000180,Lanchonete,Porto Alegre,RS,1,2023-08-18,À vista,5000.0,ATIVO
+C00327,Lancheria Ponto Certo ME,82078699000177,Lanchonete,Cachoeirinha,RS,1,2023-09-09,À vista,4000.0,ATIVO
+C00328,Bar e Lancheria Progresso Ltda,76458990000178,Lanchonete,Capão do Leão,RS,3,2023-09-14,À vista,6000.0,ATIVO
+C00329,Lancheria Silva ME,13249674000176,Lanchonete,Canguçu,RS,3,2023-11-04,À vista,7000.0,ATIVO
+C00330,Lancheria Nunes Comércio de Alimentos Ltda,23476116000105,Lanchonete,Porto Alegre,RS,1,2023-11-09,À vista,3000.0,INATIVO
+C00331,Mercado Bom Preço Oliveira Comércio de Alimentos Ltda,58743945000183,Mercado de bairro,Porto Alegre,RS,1,2023-11-15,21 dias,13000.0,ATIVO
+C00332,Mercado Recanto Ltda,09705358000194,Mercado de bairro,Flores da Cunha,RS,2,2023-12-19,À vista,27000.0,INATIVO
+C00333,Mercado Santa Rita ME,41341842000194,Mercado de bairro,Pelotas,RS,3,2024-01-04,14 dias,11000.0,ATIVO
+C00334,Mercearia Oliveira ME,90377850000104,Mercado de bairro,Pelotas,RS,3,2024-01-07,7 dias,17000.0,ATIVO
+C00335,Hotel São Jorge Ltda,67221099000122,Hotel,Pelotas,RS,3,2024-01-25,28 dias,12000.0,ATIVO
+C00336,Supermercados Machado Comércio de Alimentos Ltda,22673154000187,Supermercado,Porto Alegre,RS,1,2024-02-02,28/56 dias,40000.0,ATIVO
+C00337,Super Bertoldi ME,36447694000157,Supermercado,Canoas,RS,1,2024-02-02,28 dias,47000.0,ATIVO
+C00338,Mercearia Carvalho ME,25052994000110,Mercado de bairro,Canoas,RS,1,2024-02-03,21 dias,15000.0,ATIVO
+C00339,Supermercados Müller ME,71032814000156,Supermercado,Caxias do Sul,RS,2,2024-02-19,28/56 dias,45000.0,INATIVO
+C00340,Supermercado Primavera Comércio de Alimentos Ltda,72931644000104,Supermercado,Novo Hamburgo,RS,1,2024-03-19,28/56 dias,50000.0,ATIVO
+C00341,Minimercado Querência Ltda,90717126000174,Mercado de bairro,Garibaldi,RS,2,2024-03-26,14 dias,23000.0,ATIVO
+C00342,Mercado São Jorge ME,31689543000191,Mercado de bairro,Caxias do Sul,RS,2,2024-04-02,14 dias,25000.0,INATIVO
+C00343,Lancheria Boa Vista Comércio de Alimentos Ltda,81754956000180,Lanchonete,Caxias do Sul,RS,2,2024-04-02,7 dias,4000.0,ATIVO
+C00344,Mercearia Kunz Comércio de Alimentos Ltda,45530262000104,Mercado de bairro,Porto Alegre,RS,1,2024-04-07,21 dias,12000.0,ATIVO
+C00345,Minimercado Bertoldi Comércio de Alimentos Ltda,09031599000103,Mercado de bairro,Pelotas,RS,3,2024-04-07,À vista,9000.0,INATIVO
+C00346,Mercado Rossi Rocha Ltda,00782579000191,Mercado de bairro,Caxias do Sul,RS,2,2024-04-15,21 dias,12000.0,ATIVO
+C00347,Hotel Lima Ltda,43500289000110,Hotel,Viamão,RS,1,2024-04-16,14 dias,20000.0,INATIVO
+C00348,Minimercado Barbosa Comércio de Alimentos Ltda,98800151000129,Mercado de bairro,Farroupilha,RS,2,2024-04-19,À vista,16000.0,ATIVO
+C00349,Supermercados Dalla Costa ME,25478017000180,Supermercado,Caxias do Sul,RS,2,2024-04-21,28 dias,59000.0,INATIVO
+C00350,Pousada Weber Comércio de Alimentos Ltda,17802536000123,Hotel,Porto Alegre,RS,1,2024-04-25,14 dias,15000.0,ATIVO
+C00351,Galeteria Kunz Ltda,94561956000106,Restaurante,Pelotas,RS,3,2024-04-28,14 dias,6000.0,ATIVO
+C00352,Panificadora Recanto Comércio de Alimentos Ltda,71265702000145,Padaria,Caxias do Sul,RS,2,2024-05-07,14 dias,6000.0,ATIVO
+C00353,Mercearia Mendes Zanella ME,30758590000187,Mercado de bairro,Caxias do Sul,RS,2,2024-05-09,À vista,16000.0,ATIVO
+C00354,Super Recanto Almeida ME,97198548000120,Supermercado,Capão do Leão,RS,3,2024-05-09,28 dias,55000.0,ATIVO
+C00355,Minimercado Estrela Ltda,22214464000133,Mercado de bairro,Porto Alegre,RS,1,2024-05-10,7 dias,15000.0,ATIVO
+C00356,Armazém Ferreira Comércio de Alimentos Ltda,16163560000105,Mercado de bairro,Cachoeirinha,RS,1,2024-06-10,21 dias,13000.0,INATIVO
+C00357,Churrascaria Weber EIRELI,33957635000130,Restaurante,Porto Alegre,RS,1,2024-06-18,14 dias,13000.0,ATIVO
+C00358,Minimercado Tonin EIRELI,02018099000184,Mercado de bairro,Caxias do Sul,RS,2,2024-06-28,21 dias,20000.0,ATIVO
+C00359,Mercado Gaúcho Ltda,70490633000100,Mercado de bairro,Porto Alegre,RS,1,2024-07-15,7 dias,12000.0,ATIVO
+C00360,Mercearia Sabor do Sul Ltda,06023072000130,Mercado de bairro,Canoas,RS,1,2024-07-20,21 dias,14000.0,ATIVO
+C00361,Bar e Lancheria Machado Ltda,16179991000151,Lanchonete,Bento Gonçalves,RS,2,2024-07-22,À vista,5000.0,ATIVO
+C00362,Padaria Dalla Costa Ltda,22975221000118,Padaria,Caxias do Sul,RS,2,2024-07-25,14 dias,8000.0,ATIVO
+C00363,Mercearia do Bairro Ribeiro EIRELI,84469010000160,Mercado de bairro,Rio Grande,RS,3,2024-07-27,7 dias,17000.0,ATIVO
+C00364,Minimercado Sabor do Sul Ltda,08034163000105,Mercado de bairro,Cachoeirinha,RS,1,2024-07-29,21 dias,10000.0,ATIVO
+C00365,Mercado Ribeiro Ltda,57477386000144,Mercado de bairro,Canoas,RS,1,2024-07-31,7 dias,17000.0,ATIVO
+C00366,Armazém Sabor do Sul Ltda,35142517000108,Mercado de bairro,São Leopoldo,RS,1,2024-08-02,14 dias,18000.0,ATIVO
+C00367,Hotel Recanto Comércio de Alimentos Ltda,60958220000154,Hotel,Viamão,RS,1,2024-08-04,28 dias,12000.0,ATIVO
+C00368,Armazém Dalla Costa ME,29668471000154,Mercado de bairro,Porto Alegre,RS,1,2024-08-20,14 dias,22000.0,ATIVO
+C00369,Galeteria Machado Ltda,58258424000130,Restaurante,Pelotas,RS,3,2024-08-27,14 dias,13000.0,ATIVO
+C00370,Galeteria Oliveira EIRELI,75148025000136,Restaurante,Pelotas,RS,3,2024-09-17,14 dias,11000.0,ATIVO
+C00371,Churrascaria Ponto Certo Comércio de Alimentos Ltda,17466034000179,Restaurante,Gravataí,RS,1,2024-09-19,14 dias,10000.0,ATIVO
+C00372,Bar e Lancheria Central ME,77733100000151,Lanchonete,Novo Hamburgo,RS,1,2024-09-28,À vista,7000.0,ATIVO
+C00373,Supermercados Bertoldi ME,67935554000151,Supermercado,Farroupilha,RS,2,2024-10-01,28 dias,34000.0,ATIVO
+C00374,Padaria Ponto Certo EIRELI,02449179000194,Padaria,Capão do Leão,RS,3,2024-10-06,7 dias,10000.0,INATIVO
+C00375,Hotel Lima Kunz EIRELI,29181628000112,Hotel,Caxias do Sul,RS,2,2024-10-21,14 dias,19000.0,ATIVO
+C00376,Pousada Pinto Ltda,16490472000100,Hotel,Caxias do Sul,RS,2,2024-10-22,14 dias,18000.0,ATIVO
+C00377,Mercado Rossi Ltda,97058686000103,Mercado de bairro,Caxias do Sul,RS,2,2024-10-23,À vista,23000.0,ATIVO
+C00378,Supermercado Central ME,53439994000103,Supermercado,Viamão,RS,1,2024-11-05,28 dias,62000.0,ATIVO
+C00379,Armazém Primavera Ltda,41688028000140,Mercado de bairro,Porto Alegre,RS,1,2024-11-17,À vista,17000.0,ATIVO
+C00380,Lancheria Rossi Ltda,40246780000179,Lanchonete,Novo Hamburgo,RS,1,2024-11-19,À vista,4000.0,ATIVO
+C00381,Supermercado Colonial EIRELI,48618792000199,Supermercado,Garibaldi,RS,2,2024-11-19,28/56 dias,61000.0,ATIVO
+C00382,Mercearia Becker Santos ME,33301127000108,Mercado de bairro,Porto Alegre,RS,1,2024-11-26,14 dias,14000.0,ATIVO
+C00383,Super Ferreira Bortolini Comércio de Alimentos Ltda,49696841000174,Supermercado,Caxias do Sul,RS,2,2024-12-03,28/56 dias,23000.0,ATIVO
+C00384,Mercado Sabor do Sul EIRELI,77353581000170,Mercado de bairro,Caxias do Sul,RS,2,2024-12-06,À vista,11000.0,ATIVO
+C00385,Supermercados Gaúcho Ltda,06456822000168,Supermercado,Canoas,RS,1,2024-12-16,28 dias,35000.0,INATIVO
+C00386,Armazém Becker Comércio de Alimentos Ltda,49582979000142,Mercado de bairro,Porto Alegre,RS,1,2024-12-26,21 dias,11000.0,INATIVO
+C00387,Mercearia Dalla Costa Ltda,46602936000193,Mercado de bairro,Caxias do Sul,RS,2,2025-01-07,14 dias,9000.0,ATIVO
+C00388,Mercearia Barbosa Comércio de Alimentos Ltda,40149687000146,Mercado de bairro,Novo Hamburgo,RS,1,2025-01-20,14 dias,12000.0,INATIVO
+C00389,Padaria Souza EIRELI,17814933000115,Padaria,Porto Alegre,RS,1,2025-01-28,À vista,6000.0,ATIVO
+C00390,Mercearia Rodrigues EIRELI,14291549000197,Mercado de bairro,Porto Alegre,RS,1,2025-02-01,21 dias,15000.0,ATIVO
+C00391,Super Moraes ME,27553994000120,Supermercado,Caxias do Sul,RS,2,2025-02-11,28/56 dias,50000.0,INATIVO
+C00392,Minimercado Weber Ltda,64891912000183,Mercado de bairro,Viamão,RS,1,2025-02-19,21 dias,11000.0,ATIVO
+C00393,Super Imigrante Ltda,04979921000107,Supermercado,Caxias do Sul,RS,2,2025-02-22,28/56 dias,32000.0,ATIVO
+C00394,Mercearia Bortolini EIRELI,30323642000192,Mercado de bairro,Caxias do Sul,RS,2,2025-03-04,7 dias,10000.0,ATIVO
+C00395,Pousada Becker Ltda,11397101000164,Hotel,Caxias do Sul,RS,2,2025-03-05,28 dias,23000.0,INATIVO
+C00396,Lanchonete Nova Esperança Ltda,17865269000133,Lanchonete,Pelotas,RS,3,2025-03-14,À vista,4000.0,ATIVO
+C00397,Armazém Souza Ltda,82940175000143,Mercado de bairro,Caxias do Sul,RS,2,2025-03-17,7 dias,12000.0,ATIVO
+C00398,Churrascaria Rodrigues ME,00806507000137,Restaurante,Farroupilha,RS,2,2025-04-02,7 dias,12000.0,ATIVO
+C00399,Armazém Família Ltda,35161853000190,Mercado de bairro,Viamão,RS,1,2025-04-10,À vista,13000.0,ATIVO
+C00400,Confeitaria Müller Comércio de Alimentos Ltda,52639342000150,Padaria,São Leopoldo,RS,1,2025-04-12,7 dias,6000.0,INATIVO
+C00401,Mercado Zanella EIRELI,33983395000149,Mercado de bairro,Farroupilha,RS,2,2025-04-21,21 dias,14000.0,ATIVO
+C00402,Supermercados do Bairro Ltda,64176125000150,Supermercado,Cachoeirinha,RS,1,2025-05-09,28/56 dias,35000.0,ATIVO
+C00403,Mercearia do Bairro Teixeira Comércio de Alimentos Ltda,88950577000105,Mercado de bairro,Novo Hamburgo,RS,1,2025-05-10,21 dias,10000.0,ATIVO
+C00404,Super Nunes ME,86566002000168,Supermercado,Pelotas,RS,3,2025-05-19,28 dias,25000.0,ATIVO
+C00405,Lanchonete Schmidt ME,48105329000143,Lanchonete,Bento Gonçalves,RS,2,2025-06-01,À vista,4000.0,ATIVO
+C00406,Lanchonete Bertoldi EIRELI,65079215000195,Lanchonete,Caxias do Sul,RS,2,2025-06-22,7 dias,6000.0,ATIVO
+C00407,Bar e Lancheria Querência ME,90138043000120,Lanchonete,Novo Hamburgo,RS,1,2025-06-23,7 dias,6000.0,ATIVO
+C00408,Hotel Moraes EIRELI,09822879000121,Hotel,São Leopoldo,RS,1,2025-06-29,14 dias,22000.0,ATIVO
+C00409,Galeteria Gaúcho EIRELI,73668583000105,Restaurante,Porto Alegre,RS,1,2025-07-03,14 dias,10000.0,INATIVO
+C00410,Lanchonete Teixeira Ltda,48421134000102,Lanchonete,São Leopoldo,RS,1,2025-08-03,À vista,4000.0,INATIVO
+C00411,Lanchonete Kunz Mendes Ltda,00091810000109,Lanchonete,Canguçu,RS,3,2025-08-08,À vista,4000.0,ATIVO
+C00412,Lancheria Central Ltda,01578779000190,Lanchonete,Caxias do Sul,RS,2,2025-08-09,7 dias,12000.0,INATIVO
+C00413,Supermercado Müller Fagundes EIRELI,74795960000121,Supermercado,Bento Gonçalves,RS,2,2025-08-18,28/56 dias,39000.0,INATIVO
+C00414,Armazém Bela Vista Ltda,22985876000177,Mercado de bairro,Flores da Cunha,RS,2,2025-08-25,21 dias,10000.0,ATIVO
+C00415,Mercearia Brum Rossi EIRELI,78467628000199,Mercado de bairro,Canguçu,RS,3,2025-09-11,À vista,22000.0,ATIVO
+C00416,Armazém São Jorge ME,54123114000158,Mercado de bairro,Canoas,RS,1,2025-09-20,14 dias,29000.0,ATIVO
+C00417,Galeteria Rodrigues Ltda,55407029000184,Restaurante,Garibaldi,RS,2,2025-10-11,14 dias,17000.0,ATIVO
+C00418,Hotel Bertoldi EIRELI,47389073000180,Hotel,Porto Alegre,RS,1,2025-10-15,14 dias,10000.0,ATIVO
+C00419,Lanchonete Recanto Ltda,02865566000101,Lanchonete,Bento Gonçalves,RS,2,2025-10-18,À vista,5000.0,ATIVO
+C00420,Churrascaria Rocha ME,61950935000123,Restaurante,Porto Alegre,RS,1,2025-10-20,7 dias,14000.0,ATIVO

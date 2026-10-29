@@ -1,0 +1,41 @@
+cod_fornecedor,razao_social,cnpj,tipo,cidade,prazo_pagamento_dias,lead_time_dias
+F001,Gaúcha Bebidas Atacado Ltda,43648375000175,Mercadorias,Joinville,28,5
+F002,Fronteira Bebidas Ltda,37283605000147,Mercadorias,Teutônia,35,6
+F003,Gaúcha Bebidas Distribuidora Ltda,65535665000145,Mercadorias,Chapecó,28,9
+F004,Sul Bebidas S.A.,04859691000134,Mercadorias,Passo Fundo,28,4
+F005,Serra Alimentos Indústria e Comércio Ltda,28355098000119,Mercadorias,Joinville,21,3
+F006,Gaúcha Alimentos S.A.,91823792000150,Mercadorias,Lajeado,21,4
+F007,Vale do Taquari Alimentos Atacado Ltda,90918285000137,Mercadorias,Porto Alegre,21,5
+F008,Guaíba Laticínios Distribuidora Ltda,08584239000168,Mercadorias,Caxias do Sul,35,3
+F009,Planalto Laticínios Distribuidora Ltda,47257679000162,Mercadorias,Passo Fundo,28,3
+F010,Guaíba Laticínios S.A.,81060431000145,Mercadorias,Passo Fundo,28,4
+F011,Serra Produtos de Limpeza Distribuidora Ltda,36794437000191,Mercadorias,Teutônia,21,5
+F012,Guaíba Produtos de Limpeza Atacado Ltda,25482183000150,Mercadorias,Curitiba,28,5
+F013,Guaíba Produtos de Limpeza Distribuidora Ltda,27509612000160,Mercadorias,Caxias do Sul,35,7
+F014,Pampa Higiene e Cosméticos S.A.,93242612000171,Mercadorias,Passo Fundo,35,5
+F015,Serra Higiene e Cosméticos Ltda,94629428000141,Mercadorias,Santa Cruz do Sul,28,7
+F016,Coxilha Higiene e Cosméticos Atacado Ltda,32234091000116,Mercadorias,Joinville,35,3
+F017,Coxilha Higiene e Cosméticos Distribuidora Ltda,75479780000101,Mercadorias,Teutônia,28,4
+F018,Missões Higiene e Cosméticos Distribuidora Ltda,87521884000108,Mercadorias,Estrela,28,6
+F019,Coxilha Frios e Congelados Atacado Ltda,73454502000166,Mercadorias,Chapecó,28,5
+F020,Planalto Frios e Congelados Ltda,95532478000179,Mercadorias,Porto Alegre,28,3
+F021,Guaíba Frios e Congelados Ltda,63225075000190,Mercadorias,Joinville,28,3
+F022,Missões Frios e Congelados Distribuidora Ltda,09867321000162,Mercadorias,São Paulo,35,6
+F023,Coxilha Frios e Congelados S.A.,07814158000144,Mercadorias,Passo Fundo,21,5
+F024,Imobiliária Guaíba Administração de Bens Ltda,15719328000130,Serviços,Porto Alegre,,
+F025,Energia Sul Distribuidora S.A.,27199679000146,Serviços,Porto Alegre,,
+F026,Papelaria e Informática Central Ltda,96775959000178,Serviços,Porto Alegre,,
+F027,Farroupilha Assessoria Contábil Ltda,83239608000109,Serviços,Porto Alegre,,
+F028,Bertoldi & Zanella Advogados Associados,78504294000186,Serviços,Porto Alegre,,
+F029,Vigilância e Facilities Pampa Ltda,33996758000180,Serviços,Canoas,,
+F030,TecnoSul Sistemas de Gestão Ltda,17845093000158,Serviços,Novo Hamburgo,,
+F031,ConectaRS Telecomunicações Ltda,73476812000181,Serviços,Porto Alegre,,
+F032,Rede de Postos Rota Sul Ltda,78644851000164,Serviços,Porto Alegre,,
+F033,Auto Center Pampa Peças e Serviços Ltda,23188097000103,Serviços,Canoas,,
+F034,Agência Chimarrão Comunicação Ltda,32214628000186,Serviços,Porto Alegre,,
+F035,Banco Horizonte Sul S.A.,54557273000160,Serviços,Porto Alegre,,
+F036,Cartão Benefício Sul Ltda,67180064000192,Serviços,Porto Alegre,,
+F037,Secretaria da Fazenda do RS - ICMS,23019231000142,Governo,Porto Alegre,,
+F038,Receita Federal - PIS/COFINS,21150183000100,Governo,Brasília,,
+F039,INSS e FGTS - guias de recolhimento,99873730000164,Governo,Brasília,,
+F040,Folha de pagamento - funcionários,45640187000126,Folha,Porto Alegre,,

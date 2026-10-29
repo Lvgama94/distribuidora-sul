@@ -1,0 +1,18 @@
+cod_conta,descricao,grupo_dre
+1.05,Estoque de mercadorias,Balanço (não entra na DRE)
+3.01,Receita bruta de vendas,Receita bruta
+3.02,Devoluções de vendas,Deduções da receita
+3.03,Impostos sobre vendas,Deduções da receita
+4.01,Custo das mercadorias vendidas,CMV
+5.01,Salários e ordenados,Despesas com pessoal
+5.02,Encargos sociais,Despesas com pessoal
+5.03,Benefícios,Despesas com pessoal
+5.04,Aluguel,Despesas administrativas
+5.05,Energia elétrica e água,Despesas administrativas
+5.06,Material de escritório,Despesas administrativas
+5.07,Serviços de terceiros,Despesas administrativas
+5.08,Tecnologia e software,Despesas administrativas
+5.09,Combustível,Despesas logísticas
+5.10,Manutenção de frota,Despesas logísticas
+5.11,Marketing e trade,Despesas comerciais
+6.01,Tarifas bancárias e juros,Resultado financeiro

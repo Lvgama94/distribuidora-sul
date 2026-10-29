@@ -1,0 +1,95 @@
+﻿matricula;nome;setor;dias_trabalhados;faltas;atestado_dias;horas_extras
+1001;Natália Carvalho Zanella;Comercial;21;0;0;03:00
+1002;Vinícius Bortolini Ribeiro;Comercial;20;1;0;11:15
+1003;Carolina Bertoldi Almeida;Comercial;21;0;0;02:45
+1004;Gabriela Teixeira Rossi;Comercial;19;2;0;05:30
+1005;Natália Silva Pereira;Administrativo;21;0;0;01:45
+1006;Felipe Rodrigues Barbosa;Diretoria;21;0;0;00:00
+1007;Renata Machado Bortolini;Logística;20;1;0;22:15
+1008;Maurício Carvalho Pereira;Comercial;19;1;1;04:15
+1009;Diego Silva Ferreira;Comercial;21;0;0;04:30
+1010;Gabriela Nunes Moraes;Compras;21;0;0;06:00
+1011;Larissa Ribeiro Pereira;Financeiro;20;1;0;04:15
+1012;Maurício Pinto Mendes;Logística;21;0;0;13:00
+1013;Felipe Almeida Costa;Tecnologia da Informação;21;0;0;05:00
+1014;Pedro Becker Dalla Costa;Administrativo;19;2;0;00:00
+1015;Lucas Pinto Costa;Compras;17;1;3;01:15
+1017;César Pinto Ferreira;Comercial;21;0;0;03:45
+1018;Rodrigo Carvalho Becker;Diretoria;20;1;0;00:00
+1019;Tatiane Kunz Lima;Comercial;21;0;0;09:15
+1020;Lucas Tonin Müller;Comercial;21;0;0;00:00
+1021;Eduardo Rodrigues Barbosa;Logística;21;0;0;17:45
+1022;Maria Müller Schmidt;Administrativo;21;0;0;03:45
+1023;Ana Carvalho Souza;Financeiro;21;0;0;01:15
+1024;André Santos Tonin;Recursos Humanos;19;2;0;03:00
+1025;André Becker Schmidt;Comercial;21;0;0;08:00
+1026;Tatiane Fagundes Barbosa;Financeiro;21;0;0;03:00
+1027;Daniel Ferreira Tonin;Recursos Humanos;19;1;1;02:15
+1028;André Becker Oliveira;Logística;21;0;0;07:30
+1029;Matheus Barbosa Pereira;Logística;20;1;0;15:15
+1030;Gabriel Schmidt Souza;Logística;20;1;0;11:30
+1031;Carolina Becker Kunz;Recursos Humanos;21;0;0;01:45
+1032;Eduardo Carvalho Souza;Logística;20;1;0;27:45
+1033;Maria Rossi Tonin;Administrativo;21;0;0;02:45
+1034;Júlio Costa Teixeira;Logística;21;0;0;11:30
+1035;Carlos Mendes Kunz;Comercial;21;0;0;01:30
+1036;Marcelo Ferreira Rodrigues;Logística;20;1;0;07:15
+1038;João Rossi Bertoldi;Logística;20;1;0;12:45
+1039;Maurício Becker Pereira;Logística;19;2;0;16:00
+1040;Eduardo Mendes Silva;Logística;19;2;0;24:00
+1042;Fernanda Rocha Carvalho;Logística;21;0;0;18:30
+1043;Gabriel Kunz Souza;Comercial;20;1;0;08:00
+1044;Alexandre Schmidt Dalla Costa;Logística;20;1;0;05:45
+1046;Thiago Costa Moraes;Comercial;21;0;0;02:15
+1047;Carlos Brum Almeida;Logística;21;0;0;23:00
+1048;Sabrina Rodrigues Bortolini;Logística;21;0;0;04:45
+1049;Felipe Müller Brum;Logística;20;1;0;10:30
+1050;Paulo Oliveira Müller;Administrativo;18;3;0;00:00
+1051;Lucas Fagundes Pereira;Logística;20;1;0;21:15
+1054;André Becker Oliveira;Logística;21;0;0;26:15
+1056;Fábio Bertoldi Fagundes;Tecnologia da Informação;21;0;0;07:15
+1057;Leonardo Pereira Ferreira;Logística;18;0;3;17:15
+1058;César Costa Nunes;Diretoria;21;0;0;00:00
+1059;Daniel Becker Nunes;Logística;20;1;0;18:00
+1060;Natália Silva Brum;Logística;20;1;0;23:45
+1061;Letícia Bertoldi Fontana;Administrativo;21;0;0;00:30
+1062;Maurício Ferreira Tonin;Logística;21;0;0;21:45
+1064;Daniela Kunz Müller;Administrativo;21;0;0;00:00
+1067;Beatriz Tonin Teixeira;Comercial;21;0;0;06:00
+1068;Fernando Ferreira Becker;Logística;21;0;0;26:15
+1069;Fernando Pinto Souza;Financeiro;20;1;0;07:45
+1070;Daniel Rossi Fagundes;Administrativo;18;0;3;01:15
+1071;Simone Müller Silva;Logística;21;0;0;13:15
+1072;Larissa Ferreira Müller;Logística;21;0;0;11:00
+1073;Alexandre Dalla Costa Zanella;Logística;20;1;0;08:45
+1075;Bruno Pereira Müller;Logística;10;0;0;07:00
+1076;Isadora Machado Pereira;Logística;21;0;0;09:30
+1078;Natália Silva Fagundes;Logística;21;0;0;20:30
+1079;Isadora Teixeira Moraes;Compras;21;0;0;08:15
+1080;Leandro Carvalho Machado;Logística;21;0;0;08:30
+1081;Matheus Rossi Kunz;Logística;20;1;0;05:00
+1082;Lucas Schmidt Müller;Comercial;20;1;0;03:45
+1084;Maurício Tonin Mendes;Logística;20;1;0;14:15
+1085;Ana Teixeira Ribeiro;Financeiro;21;0;0;06:00
+1086;Gabriel Brum Becker;Logística;21;0;0;11:00
+1087;Leonardo Souza Ferreira;Logística;21;0;0;14:30
+1088;Aline Silva Pereira;Comercial;9;0;0;02:00
+1089;Carlos Oliveira Ribeiro;Logística;21;0;0;33:30
+1090;Beatriz Zanella Rodrigues;Comercial;21;0;0;03:30
+1091;César Moraes Costa;Logística;19;2;0;14:00
+1092;Daniel Teixeira Hoffmann;Comercial;21;0;0;07:30
+1094;Matheus Weber Teixeira;Comercial;21;0;0;04:30
+1095;Leandro Becker Weber;Logística;20;1;0;20:45
+1096;Otávio Kunz Santos;Logística;20;1;0;23:45
+1097;André Zanella Hoffmann;Logística;21;0;0;08:15
+1098;Carlos Machado Barbosa;Logística;20;1;0;33:45
+1099;Carlos Ferreira Nunes;Logística;17;0;4;13:30
+1100;Lucas Bortolini Carvalho;Compras;20;1;0;06:00
+1101;Bruna Fagundes Teixeira;Comercial;21;0;0;02:45
+1102;Juliana Rocha Ribeiro;Logística;6;1;0;07:45
+1103;Daniel Barbosa Machado;Logística;19;0;0;07:00
+1104;Simone Souza Fagundes;Comercial;20;1;0;05:45
+1105;Vanessa Fagundes Ribeiro;Tecnologia da Informação;21;0;0;04:15
+1106;César Dalla Costa Hoffmann;Logística;2;0;2;03:15
+1107;Lucas Zanella Becker;Logística;19;1;0;07:15
+1108;Paulo Barbosa Becker;Logística;19;0;0;11:30

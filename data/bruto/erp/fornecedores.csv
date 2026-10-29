@@ -1,0 +1,41 @@
+cod_fornecedor;razao_social;cnpj;tipo;cidade;prazo_pagamento_dias;lead_time_dias
+F001;Gaúcha Bebidas Atacado Ltda;43.648.375/0001-75;Mercadorias;Joinville;28;5
+F002;Fronteira Bebidas Ltda;37.283.605/0001-47;Mercadorias;Teutônia;35;6
+F003;Gaúcha Bebidas Distribuidora Ltda;65535665000145;Mercadorias;Chapecó;28;9
+F004;Sul Bebidas S.A.;04859691000134;Mercadorias;Passo Fundo;28;4
+F005;Serra Alimentos Indústria e Comércio Ltda;28355098000119;Mercadorias;Joinville;21;3
+F006;Gaúcha Alimentos S.A.;91823792000150;Mercadorias;Lajeado;21;4
+F007;Vale do Taquari Alimentos Atacado Ltda;90918285000137;Mercadorias;Porto Alegre;21;5
+F008;Guaíba Laticínios Distribuidora Ltda;08.584.239/0001-68;Mercadorias;Caxias do Sul;35;3
+F009;Planalto Laticínios Distribuidora Ltda;47.257.679/0001-62;Mercadorias;Passo Fundo;28;3
+F010;Guaíba Laticínios S.A.;81.060.431/0001-45;Mercadorias;Passo Fundo;28;4
+F011;Serra Produtos de Limpeza Distribuidora Ltda;36.794.437/0001-91;Mercadorias;Teutônia;21;5
+F012;Guaíba Produtos de Limpeza Atacado Ltda;25.482.183/0001-50;Mercadorias;Curitiba;28;5
+F013;Guaíba Produtos de Limpeza Distribuidora Ltda;27509612000160;Mercadorias;Caxias do Sul;35;7
+F014;Pampa Higiene e Cosméticos S.A.;93.242.612/0001-71;Mercadorias;Passo Fundo;35;5
+F015;Serra Higiene e Cosméticos Ltda;94.629.428/0001-41;Mercadorias;Santa Cruz do Sul;28;7
+F016;Coxilha Higiene e Cosméticos Atacado Ltda;32234091000116;Mercadorias;Joinville;35;3
+F017;Coxilha Higiene e Cosméticos Distribuidora Ltda;75.479.780/0001-01;Mercadorias;Teutônia;28;4
+F018;Missões Higiene e Cosméticos Distribuidora Ltda;87521884000108;Mercadorias;Estrela;28;6
+F019;Coxilha Frios e Congelados Atacado Ltda;73.454.502/0001-66;Mercadorias;Chapecó;28;5
+F020;Planalto Frios e Congelados Ltda;95.532.478/0001-79;Mercadorias;Porto Alegre;28;3
+F021;Guaíba Frios e Congelados Ltda;63.225.075/0001-90;Mercadorias;Joinville;28;3
+F022;Missões Frios e Congelados Distribuidora Ltda;09867321000162;Mercadorias;São Paulo;35;6
+F023;Coxilha Frios e Congelados S.A.;07814158000144;Mercadorias;Passo Fundo;21;5
+F024;Imobiliária Guaíba Administração de Bens Ltda;15.719.328/0001-30;Serviços;Porto Alegre;;
+F025;Energia Sul Distribuidora S.A.;27.199.679/0001-46;Serviços;Porto Alegre;;
+F026;Papelaria e Informática Central Ltda;96.775.959/0001-78;Serviços;Porto Alegre;;
+F027;Farroupilha Assessoria Contábil Ltda;83.239.608/0001-09;Serviços;Porto Alegre;;
+F028;Bertoldi & Zanella Advogados Associados;78.504.294/0001-86;Serviços;Porto Alegre;;
+F029;Vigilância e Facilities Pampa Ltda;33996758000180;Serviços;Canoas;;
+F030;TecnoSul Sistemas de Gestão Ltda;17.845.093/0001-58;Serviços;Novo Hamburgo;;
+F031;ConectaRS Telecomunicações Ltda;73476812000181;Serviços;Porto Alegre;;
+F032;Rede de Postos Rota Sul Ltda;78.644.851/0001-64;Serviços;Porto Alegre;;
+F033;Auto Center Pampa Peças e Serviços Ltda;23.188.097/0001-03;Serviços;Canoas;;
+F034;Agência Chimarrão Comunicação Ltda;32214628000186;Serviços;Porto Alegre;;
+F035;Banco Horizonte Sul S.A.;54557273000160;Serviços;Porto Alegre;;
+F036;Cartão Benefício Sul Ltda;67180064000192;Serviços;Porto Alegre;;
+F037;Secretaria da Fazenda do RS - ICMS;23019231000142;Governo;Porto Alegre;;
+F038;Receita Federal - PIS/COFINS;21.150.183/0001-00;Governo;Brasília;;
+F039;INSS e FGTS - guias de recolhimento;99.873.730/0001-64;Governo;Brasília;;
+F040;Folha de pagamento - funcionários;45.640.187/0001-26;Folha;Porto Alegre;;

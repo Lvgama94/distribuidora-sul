@@ -1,0 +1,91 @@
+cod_produto,descricao,categoria,unidade,cod_fornecedor,preco_tabela_jan2024,ativo
+P0001,Refrigerante cola 2L - fardo 6un,Bebidas,FD,F004,60.09,S
+P0002,Refrigerante guaraná 2L - fardo 6un,Bebidas,FD,F002,54.64,S
+P0003,Refrigerante laranja 2L - fardo 6un,Bebidas,FD,F003,48.6,S
+P0004,Refrigerante cola lata 350ml - fardo 12un,Bebidas,FD,F004,47.84,S
+P0005,Água mineral 500ml - fardo 12un,Bebidas,FD,F002,23.82,S
+P0006,Água mineral com gás 500ml - fardo 12un,Bebidas,FD,F002,26.43,S
+P0007,Cerveja pilsen lata 350ml - fardo 12un,Bebidas,FD,F001,69.35,S
+P0008,Cerveja puro malte lata 350ml - fardo 12un,Bebidas,FD,F002,79.58,S
+P0009,Cerveja long neck 330ml - caixa 24un,Bebidas,CX,F002,147.09,S
+P0010,Cerveja sem álcool lata 350ml - fardo 12un,Bebidas,FD,F002,76.47,S
+P0011,Suco de uva integral 1L - caixa 6un,Bebidas,CX,F001,85.16,S
+P0012,Suco néctar pêssego 1L - caixa 12un,Bebidas,CX,F003,92.27,S
+P0013,Energético 250ml - fardo 6un,Bebidas,FD,F004,55.9,S
+P0014,"Chá gelado limão 1,5L - fardo 6un",Bebidas,FD,F004,48.48,S
+P0015,Isotônico 500ml - fardo 6un,Bebidas,FD,F004,39.25,S
+P0016,Vinho tinto suave 750ml - caixa 6un,Bebidas,CX,F004,118.52,S
+P0017,Espumante moscatel 750ml - caixa 6un,Bebidas,CX,F001,183.76,S
+P0018,Água tônica 350ml - fardo 6un,Bebidas,FD,F003,31.17,S
+P0019,Água de coco 1L - caixa 12un,Bebidas,CX,F003,100.97,S
+P0020,Suco em pó laranja - caixa 15un,Bebidas,CX,F004,15.19,S
+P0021,Arroz branco tipo 1 5kg - fardo 6un,Mercearia,FD,F007,181.22,S
+P0022,Feijão preto 1kg - fardo 10un,Mercearia,FD,F007,115.21,S
+P0023,Feijão carioca 1kg - fardo 10un,Mercearia,FD,F005,111.95,S
+P0024,Açúcar refinado 1kg - fardo 10un,Mercearia,FD,F006,68.13,S
+P0025,Café torrado e moído 500g - caixa 10un,Mercearia,CX,F006,237.31,S
+P0026,Óleo de soja 900ml - caixa 20un,Mercearia,CX,F006,201.24,S
+P0027,Macarrão espaguete 500g - fardo 20un,Mercearia,FD,F007,97.72,S
+P0028,Macarrão parafuso 500g - fardo 20un,Mercearia,FD,F005,100.97,S
+P0029,Farinha de trigo 1kg - fardo 10un,Mercearia,FD,F006,71.14,S
+P0030,Sal refinado 1kg - fardo 10un,Mercearia,FD,F007,25.69,S
+P0031,Molho de tomate 340g - caixa 24un,Mercearia,CX,F005,66.35,S
+P0032,Extrato de tomate 190g - caixa 24un,Mercearia,CX,F006,72.93,S
+P0033,Biscoito recheado 140g - caixa 48un,Mercearia,CX,F005,130.72,S
+P0034,Biscoito cream cracker 400g - caixa 20un,Mercearia,CX,F007,141.9,S
+P0035,Erva-mate chimarrão 1kg - fardo 10un,Mercearia,FD,F006,223.99,S
+P0036,Achocolatado em pó 400g - caixa 24un,Mercearia,CX,F005,270.34,S
+P0037,Milho verde lata 200g - caixa 24un,Mercearia,CX,F006,82.94,S
+P0038,Atum ralado lata 170g - caixa 24un,Mercearia,CX,F005,261.54,S
+P0039,Maionese 500g - caixa 12un,Mercearia,CX,F006,120.06,S
+P0040,Azeite extra virgem 500ml - caixa 12un,Mercearia,CX,F007,468.76,S
+P0041,Leite UHT integral 1L - caixa 12un,Laticínios,CX,F010,85.97,S
+P0042,Leite UHT desnatado 1L - caixa 12un,Laticínios,CX,F009,92.37,S
+P0043,Queijo mussarela fatiado 150g - caixa 20un,Laticínios,CX,F008,205.82,S
+P0044,Queijo prato fatiado 150g - caixa 20un,Laticínios,CX,F008,231.86,S
+P0045,Manteiga com sal 200g - caixa 24un,Laticínios,CX,F008,337.15,S
+P0046,Iogurte natural 170g - caixa 24un,Laticínios,CX,F010,86.6,S
+P0047,Iogurte grego 100g - caixa 24un,Laticínios,CX,F010,111.11,S
+P0048,Requeijão cremoso 200g - caixa 24un,Laticínios,CX,F010,249.35,S
+P0049,Creme de leite 200g - caixa 27un,Laticínios,CX,F010,126.91,S
+P0050,Leite condensado 395g - caixa 27un,Laticínios,CX,F009,270.64,S
+P0051,Bebida láctea morango 900ml - caixa 12un,Laticínios,CX,F009,100.85,S
+P0052,Margarina 500g - caixa 12un,Laticínios,CX,F009,113.78,S
+P0053,Doce de leite 400g - caixa 12un,Laticínios,CX,F009,138.76,S
+P0054,Nata 300g - caixa 12un,Laticínios,CX,F009,142.72,S
+P0055,Queijo colonial peça - kg,Laticínios,KG,F010,60.45,S
+P0056,Detergente líquido 500ml - caixa 24un,Limpeza,CX,F011,66.42,S
+P0057,"Sabão em pó 1,6kg - fardo 8un",Limpeza,FD,F012,215.02,S
+P0058,Amaciante 2L - caixa 6un,Limpeza,CX,F013,89.98,S
+P0059,Água sanitária 2L - caixa 6un,Limpeza,CX,F013,39.92,S
+P0060,Desinfetante 2L - caixa 6un,Limpeza,CX,F011,60.38,S
+P0061,Esponja dupla face - pacote 60un,Limpeza,PCT,F012,76.65,S
+P0062,Saco de lixo 100L - fardo 10 pacotes,Limpeza,FD,F013,99.13,S
+P0063,Limpador multiuso 500ml - caixa 12un,Limpeza,CX,F012,60.31,S
+P0064,Papel toalha - fardo 12 rolos,Limpeza,FD,F011,72.43,S
+P0065,Álcool 70% 1L - caixa 12un,Limpeza,CX,F012,106.39,S
+P0066,Lustra móveis 200ml - caixa 12un,Limpeza,CX,F012,83.77,S
+P0067,Sabão em barra - fardo 20 pacotes,Limpeza,FD,F013,158.36,S
+P0068,Papel higiênico folha dupla 12 rolos - fardo 4 pacotes,Higiene,FD,F014,112.46,S
+P0069,Sabonete 85g - caixa 72un,Higiene,CX,F016,158.99,S
+P0070,Creme dental 90g - caixa 24un,Higiene,CX,F014,115.98,S
+P0071,Shampoo 350ml - caixa 12un,Higiene,CX,F014,180.49,S
+P0072,Condicionador 350ml - caixa 12un,Higiene,CX,F017,187.83,S
+P0073,Desodorante aerossol 150ml - caixa 12un,Higiene,CX,F018,254.45,S
+P0074,Fralda descartável G - fardo 4 pacotes,Higiene,FD,F015,320.49,S
+P0075,Absorvente - caixa 24 pacotes,Higiene,CX,F016,139.87,S
+P0076,Escova dental - caixa 12un,Higiene,CX,F016,57.22,S
+P0077,Fio dental - caixa 12un,Higiene,CX,F018,63.81,S
+P0078,Sabonete líquido refil 1L - caixa 6un,Higiene,CX,F015,120.83,S
+P0079,Pão de queijo 1kg - caixa 10un,Congelados,CX,F021,287.22,S
+P0080,Batata pré-frita 2kg - caixa 6un,Congelados,CX,F022,187.13,S
+P0081,Lasanha bolonhesa 600g - caixa 12un,Congelados,CX,F021,239.91,S
+P0082,Pizza mussarela 460g - caixa 10un,Congelados,CX,F019,202.11,S
+P0083,Hambúrguer bovino 672g - caixa 12un,Congelados,CX,F023,293.89,S
+P0084,Nuggets de frango 300g - caixa 20un,Congelados,CX,F022,236.04,S
+P0085,Sorvete 2L - caixa 6un,Congelados,CX,F020,145.62,S
+P0086,Polpa de fruta 1kg - caixa 10un,Congelados,CX,F019,130.26,S
+P0087,Peito de frango congelado 1kg - caixa 10un,Congelados,CX,F019,263.53,S
+P0088,Linguiça toscana 1kg - caixa 10un,Congelados,CX,F020,250.19,S
+P0089,Coxa e sobrecoxa 1kg - caixa 10un,Congelados,CX,F023,169.21,S
+P0090,Picolé sortido - caixa 30un,Congelados,CX,F019,93.46,S

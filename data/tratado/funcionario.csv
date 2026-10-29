@@ -1,0 +1,172 @@
+matricula,nome,sexo,data_nascimento,cargo,data_admissao,data_desligamento,motivo_desligamento,salario_atual,cod_centro_custo,id_filial
+1001,Natália Carvalho Zanella,F,1982-01-15,Supervisor de vendas,2009-11-24,,,8014.82,CC02,1
+1002,Vinícius Bortolini Ribeiro,M,1989-01-10,Vendedor externo,2009-11-28,,,4603.99,CC02,1
+1003,Carolina Bertoldi Almeida,F,1988-02-13,Vendedor externo,2010-01-01,2025-04-20,Dispensa sem justa causa,4648.02,CC02,1
+1004,Gabriela Teixeira Rossi,F,1990-12-18,Vendedor externo,2010-03-02,,,4078.19,CC02,2
+1005,Natália Silva Pereira,F,1985-01-09,Assistente administrativo,2011-11-08,,,3099.73,CC08,3
+1006,Felipe Rodrigues Barbosa,M,1974-06-25,Diretor comercial,2013-05-14,,,27325.96,CC01,1
+1007,Renata Machado Bortolini,F,1973-01-28,Motorista entregador,2014-04-29,,,3973.48,CC03,1
+1008,Maurício Carvalho Pereira,M,1986-10-24,Vendedor externo,2014-10-14,,,4105.32,CC02,1
+1009,Diego Silva Ferreira,M,1995-04-24,Vendedor externo,2015-04-12,2024-12-17,Pedido de demissão,4254.84,CC02,3
+1010,Gabriela Nunes Moraes,F,1984-11-03,Comprador,2015-09-20,,,5978.97,CC06,1
+1011,Larissa Ribeiro Pereira,F,1990-03-04,Assistente financeiro,2015-10-07,2025-08-08,Pedido de demissão,3193.16,CC04,1
+1012,Maurício Pinto Mendes,M,1982-11-09,Motorista entregador,2015-10-09,,,3679.35,CC03,2
+1013,Felipe Almeida Costa,M,1994-07-21,Analista de TI,2015-12-09,,,7745.98,CC07,1
+1014,Pedro Becker Dalla Costa,M,1999-02-05,Recepcionista,2016-06-25,,,2290.43,CC08,1
+1015,Lucas Pinto Costa,M,1990-08-03,Comprador,2016-10-09,,,5886.84,CC06,1
+1016,Fábio Pereira Ferreira,M,1997-01-03,Vendedor externo,2017-04-15,2024-03-22,Pedido de demissão,3900.79,CC02,3
+1017,César Pinto Ferreira,M,1997-10-15,Vendedor externo,2017-05-09,,,4183.15,CC02,2
+1018,Rodrigo Carvalho Becker,M,1968-04-16,Diretor financeiro,2017-05-25,,,27566.8,CC01,1
+1019,Tatiane Kunz Lima,F,1988-06-24,Vendedor externo,2017-07-30,,,3881.87,CC02,2
+1020,Lucas Tonin Müller,M,1972-10-08,Gerente comercial,2018-06-03,,,14348.06,CC02,1
+1021,Eduardo Rodrigues Barbosa,M,1972-09-28,Motorista entregador,2018-07-19,,,3550.21,CC03,3
+1022,Maria Müller Schmidt,F,1989-06-03,Assistente administrativo,2018-08-27,2025-12-27,Pedido de demissão,2950.0,CC08,1
+1023,Ana Carvalho Souza,F,1979-12-18,Gerente financeiro,2019-01-25,,,12796.91,CC04,1
+1024,André Santos Tonin,M,1993-02-23,Analista de RH,2019-02-09,,,5220.69,CC05,1
+1025,André Becker Schmidt,M,1984-04-24,Vendedor externo,2019-02-22,,,3816.77,CC02,1
+1026,Tatiane Fagundes Barbosa,F,1994-09-26,Assistente financeiro,2019-04-27,,,3009.48,CC04,1
+1027,Daniel Ferreira Tonin,M,1989-11-15,Analista de RH,2019-07-25,,,5207.83,CC05,1
+1028,André Becker Oliveira,M,1994-12-16,Ajudante de entrega,2019-09-15,,,2060.78,CC03,3
+1029,Matheus Barbosa Pereira,M,2003-03-18,Ajudante de entrega,2020-01-10,,,1994.2,CC03,3
+1030,Gabriel Schmidt Souza,M,1997-03-20,Motorista entregador,2020-02-16,,,3503.54,CC03,1
+1031,Carolina Becker Kunz,F,2001-03-06,Assistente de departamento pessoal,2020-03-30,,,2964.28,CC05,1
+1032,Eduardo Carvalho Souza,M,1996-09-11,Ajudante de entrega,2020-04-16,,,2032.86,CC03,3
+1033,Maria Rossi Tonin,F,1985-04-20,Assistente administrativo,2020-05-05,2024-09-11,Dispensa sem justa causa,2662.89,CC08,1
+1034,Júlio Costa Teixeira,M,1989-09-10,Ajudante de entrega,2020-06-05,,,2008.89,CC03,1
+1035,Carlos Mendes Kunz,M,1975-12-04,Supervisor de vendas,2020-07-22,,,7292.38,CC02,2
+1036,Marcelo Ferreira Rodrigues,M,2001-07-24,Ajudante de entrega,2020-08-04,2025-06-12,Dispensa sem justa causa,2002.32,CC03,1
+1037,Alexandre Machado Weber,M,2000-08-15,Ajudante de entrega,2020-10-08,2024-04-26,Pedido de demissão,2001.9,CC03,1
+1038,João Rossi Bertoldi,M,1975-09-13,Supervisor de logística,2021-01-29,2025-03-07,Pedido de demissão,5860.93,CC03,1
+1039,Maurício Becker Pereira,M,1997-01-11,Estoquista,2021-02-06,2025-10-15,Pedido de demissão,2453.39,CC03,1
+1040,Eduardo Mendes Silva,M,1991-11-06,Motorista entregador,2021-03-09,,,3418.7,CC03,2
+1041,Vinícius Rocha Mendes,M,2003-02-11,Ajudante de entrega,2021-03-13,2024-02-23,Pedido de demissão,1968.58,CC03,2
+1042,Fernanda Rocha Carvalho,F,1975-02-19,Motorista entregador,2021-03-22,2025-10-20,Pedido de demissão,3444.69,CC03,1
+1043,Gabriel Kunz Souza,M,1980-02-01,Vendedor externo,2021-05-03,,,3587.63,CC02,1
+1044,Alexandre Schmidt Dalla Costa,M,1982-06-07,Conferente,2021-05-04,,,2739.6,CC03,1
+1045,Leandro Oliveira Rossi,M,1985-10-04,Estoquista,2021-05-29,2024-03-14,Pedido de demissão,2436.71,CC03,1
+1046,Thiago Costa Moraes,M,1989-11-02,Vendedor externo,2021-06-15,2025-05-15,Dispensa sem justa causa,3415.63,CC02,3
+1047,Carlos Brum Almeida,M,1973-08-18,Motorista entregador,2021-06-15,,,3421.81,CC03,1
+1048,Sabrina Rodrigues Bortolini,F,1971-01-26,Gerente de logística,2021-06-28,,,11921.43,CC03,1
+1049,Felipe Müller Brum,M,1970-02-11,Motorista entregador,2021-07-31,,,3383.02,CC03,1
+1050,Paulo Oliveira Müller,M,1999-07-11,Recepcionista,2021-08-14,,,2097.21,CC08,2
+1051,Lucas Fagundes Pereira,M,1984-01-03,Motorista entregador,2021-09-16,,,3402.4,CC03,1
+1052,Leonardo Ferreira Rodrigues,M,1989-12-24,Ajudante de entrega,2021-10-29,2024-01-31,Dispensa sem justa causa,1969.17,CC03,2
+1053,Marcelo Lima Pereira,M,,Ajudante de entrega,2021-11-02,2024-03-17,Pedido de demissão,1962.23,CC03,1
+1054,André Becker Oliveira,M,1986-01-18,Motorista entregador,2021-11-17,,,3360.72,CC03,2
+1055,Rafael Fagundes Bortolini,M,2004-11-04,Ajudante de entrega,2021-12-08,2024-02-18,Pedido de demissão,1949.23,CC03,1
+1056,Fábio Bertoldi Fagundes,M,1994-09-07,Analista de TI,2021-12-30,,,6018.43,CC07,1
+1057,Leonardo Pereira Ferreira,M,1994-04-05,Estoquista,2022-01-26,,,2448.1,CC03,1
+1058,César Costa Nunes,M,1968-05-24,Diretor geral,2022-01-28,,,31720.63,CC01,1
+1059,Daniel Becker Nunes,M,1996-06-12,Conferente,2022-01-30,2025-01-02,Dispensa sem justa causa,2654.51,CC03,1
+1060,Natália Silva Brum,F,1987-01-23,Motorista entregador,2022-02-03,,,3334.58,CC03,3
+1061,Letícia Bertoldi Fontana,F,1979-12-06,Gerente administrativo,2022-02-22,,,10299.54,CC08,1
+1062,Maurício Ferreira Tonin,M,,Motorista entregador,2022-03-18,,,3384.08,CC03,3
+1063,Carolina Hoffmann Pinto,F,1996-03-19,Comprador,2022-04-27,2024-02-18,Dispensa sem justa causa,4697.06,CC06,1
+1064,Daniela Kunz Müller,F,2004-04-08,Recepcionista,2022-04-30,2025-01-29,Dispensa sem justa causa,2083.67,CC08,3
+1065,Henrique Teixeira Machado,M,2005-06-01,Ajudante de entrega,2022-05-14,2024-04-03,Dispensa sem justa causa,1943.87,CC03,1
+1066,Maria Silva Fontana,F,1992-06-20,Vendedor externo,2022-07-17,2024-03-07,Pedido de demissão,3320.77,CC02,1
+1067,Beatriz Tonin Teixeira,F,1988-02-22,Vendedor externo,2022-08-01,,,3364.98,CC02,3
+1068,Fernando Ferreira Becker,M,1972-12-01,Motorista entregador,2022-08-05,,,3330.12,CC03,2
+1069,Fernando Pinto Souza,M,1986-07-18,Analista financeiro,2022-08-05,,,5263.89,CC04,1
+1070,Daniel Rossi Fagundes,M,1991-04-12,Assistente administrativo,2022-08-30,,,2541.27,CC08,2
+1071,Simone Müller Silva,F,1990-03-28,Conferente,2022-09-16,,,2629.13,CC03,1
+1072,Larissa Ferreira Müller,F,1986-03-04,Supervisor de logística,2022-10-25,2025-03-15,Pedido de demissão,5732.76,CC03,2
+1073,Alexandre Dalla Costa Zanella,M,1986-02-19,Estoquista,2022-11-07,2025-03-11,Pedido de demissão,2393.15,CC03,1
+1074,Diego Barbosa Moraes,M,1979-07-20,Conferente,2023-02-04,2024-01-27,Pedido de demissão,2603.89,CC03,1
+1075,Bruno Pereira Müller,M,1991-10-10,Ajudante de entrega,2023-02-23,2024-05-15,Dispensa sem justa causa,1904.84,CC03,1
+1076,Isadora Machado Pereira,F,1996-04-17,Ajudante de entrega,2023-02-28,,,1914.7,CC03,1
+1077,João Silva Rodrigues,M,1985-06-20,Coordenador de TI,2023-03-26,2024-03-04,Pedido de demissão,9626.03,CC07,1
+1078,Natália Silva Fagundes,F,1997-06-05,Conferente,2023-07-05,,,2578.27,CC03,1
+1079,Isadora Teixeira Moraes,F,1969-11-23,Gerente de compras,2023-07-16,,,11177.04,CC06,1
+1080,Leandro Carvalho Machado,M,2000-11-04,Motorista entregador,2023-07-26,2025-11-24,Pedido de demissão,3249.75,CC03,3
+1081,Matheus Rossi Kunz,M,1999-11-25,Ajudante de entrega,2023-08-01,2024-06-30,Dispensa por justa causa,1898.22,CC03,2
+1082,Lucas Schmidt Müller,M,1974-10-28,Supervisor de vendas,2023-08-06,,,6727.36,CC02,3
+1083,Rafael Barbosa Santos,M,1988-08-05,Motorista entregador,2023-08-21,2024-01-14,Pedido de demissão,3238.47,CC03,1
+1084,Maurício Tonin Mendes,M,1993-10-18,Motorista entregador,2023-08-25,,,3238.66,CC03,2
+1085,Ana Teixeira Ribeiro,F,1994-10-03,Analista financeiro,2023-08-27,2024-08-23,Dispensa sem justa causa,5030.43,CC04,1
+1086,Gabriel Brum Becker,M,1999-07-11,Ajudante de entrega,2023-09-24,2024-10-24,Pedido de demissão,1891.32,CC03,2
+1087,Leonardo Souza Ferreira,M,1989-11-26,Estoquista,2023-10-04,,,2339.25,CC03,1
+1088,Aline Silva Pereira,F,1979-08-26,Vendedor externo,2023-10-06,2024-05-14,Dispensa por justa causa,3140.7,CC02,2
+1089,Carlos Oliveira Ribeiro,M,1982-03-21,Motorista entregador,2023-10-07,,,3232.31,CC03,1
+1090,Beatriz Zanella Rodrigues,F,2002-01-10,Vendedor externo,2023-10-15,,,3140.65,CC02,1
+1091,César Moraes Costa,M,1993-08-27,Conferente,2023-10-25,2024-06-30,Dispensa sem justa causa,2561.07,CC03,1
+1092,Daniel Teixeira Hoffmann,M,,Vendedor externo,2023-10-27,2025-07-05,Pedido de demissão,3124.26,CC02,1
+1093,Leandro Silva Silva,M,1974-09-13,Motorista entregador,2023-10-27,2024-04-02,Dispensa sem justa causa,3227.41,CC03,1
+1094,Matheus Weber Teixeira,M,,Vendedor externo,2023-12-01,2024-12-22,Dispensa sem justa causa,3111.63,CC02,2
+1095,Leandro Becker Weber,M,2005-04-05,Ajudante de entrega,2024-02-16,2024-08-04,Dispensa sem justa causa,2033.22,CC03,2
+1096,Otávio Kunz Santos,M,1987-06-18,Conferente,2024-02-17,,,2606.1,CC03,1
+1097,André Zanella Hoffmann,M,1993-08-01,Motorista entregador,2024-01-29,2024-07-11,Dispensa sem justa causa,3229.1,CC03,1
+1098,Carlos Machado Barbosa,M,2003-03-03,Ajudante de entrega,2024-03-29,2024-12-04,Dispensa sem justa causa,2002.03,CC03,2
+1099,Carlos Ferreira Nunes,M,2000-07-16,Ajudante de entrega,2024-03-29,2024-06-12,Pedido de demissão,1914.92,CC03,1
+1100,Lucas Bortolini Carvalho,M,1994-08-22,Comprador,2024-03-31,,,4687.02,CC06,1
+1101,Bruna Fagundes Teixeira,F,2001-04-20,Vendedor externo,2024-04-11,2025-01-22,Pedido de demissão,3296.63,CC02,3
+1102,Juliana Rocha Ribeiro,F,2003-12-20,Estoquista,2024-03-25,2024-05-10,Término do contrato de experiência,2425.34,CC03,1
+1103,Daniel Barbosa Machado,M,1996-09-12,Ajudante de entrega,2024-04-25,2024-05-28,Pedido de demissão,1886.15,CC03,1
+1104,Simone Souza Fagundes,F,2001-04-26,Vendedor externo,2024-04-06,2025-05-28,Pedido de demissão,3241.58,CC02,1
+1105,Vanessa Fagundes Ribeiro,F,1992-12-24,Coordenador de TI,2024-03-31,,,10047.64,CC07,1
+1106,César Dalla Costa Hoffmann,M,2003-07-12,Ajudante de entrega,2024-05-25,2024-09-13,Pedido de demissão,1917.16,CC03,1
+1107,Lucas Zanella Becker,M,,Ajudante de entrega,2024-05-03,2025-04-28,Pedido de demissão,2022.34,CC03,1
+1108,Paulo Barbosa Becker,M,,Motorista entregador,2024-05-06,2024-12-04,Dispensa sem justa causa,3289.3,CC03,1
+1109,Ana Rocha Costa,F,2006-10-21,Ajudante de entrega,2024-06-15,2024-06-26,Término do contrato de experiência,1892.16,CC03,1
+1110,Lucas Tonin Santos,M,1989-08-23,Vendedor externo,2024-06-03,,,3138.51,CC02,2
+1111,Marcelo Brum Fontana,M,2001-09-27,Estoquista,2024-05-31,2024-07-21,Término do contrato de experiência,2334.5,CC03,1
+1112,Matheus Müller Fontana,M,,Ajudante de entrega,2024-06-09,2025-01-08,Pedido de demissão,1875.6,CC03,1
+1113,Carlos Mendes Silva,M,2006-11-06,Ajudante de entrega,2024-07-24,,,1875.33,CC03,2
+1114,Carolina Fontana Barbosa,F,2005-12-16,Ajudante de entrega,2024-06-26,,,1857.37,CC03,1
+1115,Maurício Mendes Hoffmann,M,2001-10-16,Ajudante de entrega,2024-07-28,2024-08-25,Término do contrato de experiência,1873.08,CC03,1
+1116,Diego Ferreira Hoffmann,M,1994-10-01,Conferente,2024-08-08,,,2535.78,CC03,1
+1117,Júlio Souza Lima,M,1997-08-10,Motorista entregador,2024-07-31,2024-10-26,Término do contrato de experiência,3072.81,CC03,1
+1118,Carlos Mendes Mendes,M,2005-04-21,Estoquista,2024-09-04,2024-09-11,Pedido de demissão,2233.84,CC03,1
+1119,Beatriz Lima Costa,F,2000-10-20,Analista financeiro,2024-09-17,2025-03-28,Dispensa sem justa causa,5015.8,CC04,1
+1120,Júlio Nunes Barbosa,M,2000-08-08,Ajudante de entrega,2024-09-04,,,1851.07,CC03,2
+1121,João Schmidt Rossi,M,2003-06-08,Ajudante de entrega,2024-09-27,2024-09-29,Término do contrato de experiência,1923.48,CC03,1
+1122,Gabriel Rocha Santos,M,1997-03-22,Assistente administrativo,2024-10-06,2024-10-16,Término do contrato de experiência,2435.02,CC08,1
+1123,Lucas Hoffmann Almeida,M,2006-01-28,Ajudante de entrega,2024-10-27,2025-02-22,Dispensa sem justa causa,1890.37,CC03,1
+1124,Pedro Becker Zanella,M,2004-10-09,Estoquista,2024-09-28,2025-03-29,Dispensa por justa causa,2269.96,CC03,1
+1125,Leandro Kunz Barbosa,M,1994-08-23,Ajudante de entrega,2024-10-31,,,1899.3,CC03,1
+1126,Fábio Brum Tonin,M,1993-11-26,Ajudante de entrega,2024-11-05,,,1820.93,CC03,2
+1127,Débora Almeida Brum,F,1995-12-17,Motorista entregador,2024-11-13,2025-10-29,Dispensa sem justa causa,3179.98,CC03,1
+1128,Luciana Almeida Weber,F,1998-10-11,Assistente administrativo,2024-10-31,2024-11-29,Término do contrato de experiência,2372.16,CC08,1
+1129,Fernanda Machado Müller,F,1998-03-03,Assistente administrativo,2024-12-26,2025-06-06,Dispensa por justa causa,2449.36,CC08,1
+1130,César Nunes Fontana,M,2002-01-11,Vendedor externo,2025-01-09,2025-03-20,Pedido de demissão,3035.91,CC02,3
+1131,Sabrina Nunes Pereira,F,1994-08-27,Vendedor externo,2025-01-12,2025-04-11,Término do contrato de experiência,3049.4,CC02,2
+1132,André Müller Rossi,M,2005-12-20,Ajudante de entrega,2025-01-04,2025-09-24,Dispensa sem justa causa,1802.78,CC03,2
+1133,Felipe Zanella Fagundes,M,1996-08-28,Motorista entregador,2025-01-12,,,3226.11,CC03,1
+1134,César Barbosa Pinto,M,1991-04-14,Conferente,2025-02-12,2025-04-07,Término do contrato de experiência,2502.26,CC03,1
+1135,Renata Barbosa Oliveira,F,,Vendedor externo,2025-02-11,2025-06-24,Pedido de demissão,3009.0,CC02,3
+1136,Henrique Barbosa Lima,M,2007-05-07,Ajudante de entrega,2025-02-22,2025-02-25,Pedido de demissão,1829.09,CC03,1
+1137,Patrícia Pereira Lima,F,2006-06-02,Recepcionista,2025-03-07,2025-04-10,Pedido de demissão,1980.69,CC08,3
+1138,Alexandre Machado Bortolini,M,2002-05-14,Ajudante de entrega,2025-03-28,,,1844.33,CC03,1
+1139,Eduardo Mendes Ferreira,M,2000-04-18,Ajudante de entrega,2025-04-04,2025-12-27,Dispensa sem justa causa,1911.3,CC03,1
+1140,Otávio Fagundes Machado,M,1993-01-18,Supervisor de logística,2025-04-07,,,5576.22,CC03,1
+1141,João Kunz Pereira,M,1993-01-23,Supervisor de logística,2025-04-15,2025-07-22,Dispensa sem justa causa,5574.93,CC03,2
+1142,Rodrigo Barbosa Souza,M,2005-04-26,Estoquista,2025-03-27,,,2385.46,CC03,1
+1143,Bianca Schmidt Moraes,F,2001-11-27,Analista financeiro,2025-04-13,,,4876.35,CC04,1
+1144,Tatiane Barbosa Lima,F,2006-10-19,Estoquista,2025-04-22,2025-05-04,Pedido de demissão,2352.35,CC03,1
+1145,Sabrina Pereira Souza,F,2001-08-28,Vendedor externo,2025-04-13,,,3042.94,CC02,3
+1146,Juliana Moraes Weber,F,1998-12-23,Vendedor externo,2025-05-23,,,3062.39,CC02,1
+1147,Daniela Pereira Nunes,F,2004-01-21,Vendedor externo,2025-05-07,2025-08-21,Dispensa sem justa causa,3011.24,CC02,2
+1148,Maurício Becker Lima,M,1995-09-21,Conferente,2025-04-23,2025-09-30,Pedido de demissão,2544.65,CC03,1
+1149,Mariana Lima Müller,F,2005-03-07,Recepcionista,2025-05-20,2025-08-26,Pedido de demissão,1970.24,CC08,3
+1150,Marcelo Rocha Santos,M,2001-08-02,Ajudante de entrega,2025-06-04,,,1767.09,CC03,1
+1151,Maurício Zanella Weber,M,2001-01-06,Vendedor externo,2025-06-15,2025-07-15,Término do contrato de experiência,2906.9,CC02,3
+1152,Rodrigo Pinto Silva,M,2004-08-06,Estoquista,2025-06-10,,,2141.19,CC03,1
+1153,Patrícia Tonin Ferreira,F,2003-12-08,Vendedor externo,2025-07-10,2025-07-15,Término do contrato de experiência,3013.2,CC02,1
+1154,Otávio Santos Almeida,M,1998-06-11,Ajudante de entrega,2025-06-24,,,1808.12,CC03,1
+1155,Simone Barbosa Costa,F,2003-09-01,Assistente administrativo,2025-06-23,,,2336.52,CC08,1
+1156,Henrique Lima Tonin,M,1998-01-21,Vendedor externo,2025-07-20,,,2928.11,CC02,3
+1157,Fernanda Carvalho Mendes,F,2002-10-01,Vendedor externo,2025-08-11,2025-09-13,Término do contrato de experiência,3023.5,CC02,1
+1158,Daniela Weber Ribeiro,F,1994-06-19,Supervisor de logística,2025-08-15,,,5288.81,CC03,2
+1159,Juliana Machado Lima,F,1999-05-23,Vendedor externo,2025-07-26,2025-12-03,Dispensa sem justa causa,2866.91,CC02,3
+1160,Luciana Carvalho Teixeira,F,1998-10-06,Vendedor externo,2025-08-27,,,2920.94,CC02,1
+1161,Pedro Dalla Costa Ribeiro,M,2000-04-11,Assistente financeiro,2025-09-04,2025-09-15,Término do contrato de experiência,2491.94,CC04,1
+1162,Luciana Barbosa Schmidt,F,2004-12-11,Vendedor externo,2025-09-27,,,2986.8,CC02,2
+1163,Gabriela Lima Rossi,F,2003-01-08,Recepcionista,2025-10-08,,,1845.94,CC08,3
+1164,Henrique Fagundes Fagundes,M,2002-03-01,Ajudante de entrega,2025-10-06,,,1708.36,CC03,2
+1165,Bruno Brum Lima,M,2002-01-10,Conferente,2025-10-20,,,2449.0,CC03,1
+1166,César Rodrigues Müller,M,1987-04-20,Vendedor externo,2025-09-23,,,2898.7,CC02,1
+1167,Mariana Brum Teixeira,F,2004-12-07,Assistente financeiro,2025-10-12,,,2428.29,CC04,1
+1168,Bianca Mendes Brum,F,2005-06-24,Estoquista,2025-10-30,,,2179.8,CC03,1
+1169,Paulo Rodrigues Barbosa,M,1976-06-14,Motorista entregador,2025-12-03,,,2926.02,CC03,1
+1170,Ana Fagundes Mendes,F,,Motorista entregador,2025-12-03,,,3021.71,CC03,1
+1171,Carlos Dalla Costa Pinto,M,1987-03-17,Motorista entregador,2025-12-05,,,2947.02,CC03,3

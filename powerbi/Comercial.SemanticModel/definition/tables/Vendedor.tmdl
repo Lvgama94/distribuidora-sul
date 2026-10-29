@@ -1,0 +1,42 @@
+/// Equipe comercial (vendedores externos e supervisores), com a situação atual. As vendas ficam com quem vendeu.
+table Vendedor
+	lineageTag: 87cbed6d-39d7-47a7-bc91-78a14018a505
+
+	column vendedor_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a8e31844-83b5-4493-9cd6-1551cfe0585b
+		summarizeBy: none
+		sourceColumn: funcionario_key
+
+	column Vendedor
+		dataType: string
+		lineageTag: c8fa6e2c-522c-4588-a526-05c4f216fc6f
+		summarizeBy: none
+		sourceColumn: nome
+
+	column Cargo
+		dataType: string
+		lineageTag: baea0d84-fe35-4b46-89d1-70eb8956d1f5
+		summarizeBy: none
+		sourceColumn: cargo
+
+	column Situação
+		dataType: string
+		lineageTag: 73585d52-3fec-46f1-a3cc-d434cc6b9b60
+		summarizeBy: none
+		sourceColumn: situacao
+
+	partition Vendedor = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_funcionario"]}[Data],
+				    Comercial = Table.SelectRows(Dados, each List.Contains({"Vendedor externo", "Supervisor de vendas"}, [cargo])),
+				    ComSituacao = Table.AddColumn(Comercial, "situacao", each if [ativo] then "Ativo" else "Desligado", type text),
+				    Colunas = Table.SelectColumns(ComSituacao, {"funcionario_key", "nome", "cargo", "situacao"})
+				in
+				    Colunas
+

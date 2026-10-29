@@ -126,6 +126,10 @@ excel/            pastas de trabalho com Power Query e o código M de cada consu
 
    ![Excel: conciliação bancária](docs/img/excel_conciliacao_bancaria.png)
 
+5. **Comercial**: faturamento, margem, ticket médio, vendedores, concentração e clientes que pararam de comprar, em 3 páginas, com o mesmo faturamento da DRE. O modelo tem 25 medidas DAX conferidas contra o SQL ([`sql/10_comercial.sql`](sql/10_comercial.sql)). Veja o [roteiro do painel](docs/painel_comercial.md) ou explore a [versão web interativa](https://lucasgama.vercel.app/comercial.html).
+
+   ![Comercial: Visão Geral](docs/img/comercial_visao_geral.png)
+
 ---
 
 Lucas Gama · Analista de Dados & BI · [LinkedIn](https://www.linkedin.com/in/lucasvianagama)

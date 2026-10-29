@@ -1,0 +1,76 @@
+/// Clientes com tipo, cidade e condição de pagamento. Cada cliente compra sempre na mesma filial.
+table Cliente
+	lineageTag: 8f1f3cb0-2ac3-47c9-9d55-954bc45b9c18
+
+	column cliente_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 286706cb-c7f0-4be7-ac86-9656619d3eef
+		summarizeBy: none
+		sourceColumn: cliente_key
+
+	column 'Código Cliente'
+		dataType: string
+		lineageTag: 1b1742db-ac00-4e19-b0fd-1078ed156e65
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+	column Cliente
+		dataType: string
+		lineageTag: dfdae2d3-e166-465b-88db-0f8a8b203a10
+		summarizeBy: none
+		sourceColumn: razao_social
+
+	column 'Tipo de Cliente'
+		dataType: string
+		lineageTag: ed06b718-5a77-44f8-b9c3-068bb814646d
+		summarizeBy: none
+		sourceColumn: tipo_cliente
+
+	column Cidade
+		dataType: string
+		lineageTag: f012d269-be0b-4815-bf47-c576d2104438
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+	column UF
+		dataType: string
+		lineageTag: 958fe987-d977-43af-911f-09c9c987d4b5
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: uf
+
+	column 'Data de Cadastro'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: c39b0502-2e93-46d6-a5b6-042d549eb53d
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Condição de Pagamento'
+		dataType: string
+		lineageTag: eadc4759-7976-4d56-8001-586c42f84c70
+		summarizeBy: none
+		sourceColumn: condicao_pagamento
+
+	column Situação
+		dataType: string
+		lineageTag: 0ece7f07-8944-43ab-99be-7a2f9d3596de
+		summarizeBy: none
+		sourceColumn: situacao
+
+	partition Cliente = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_cliente"]}[Data],
+				    Colunas = Table.SelectColumns(Dados, {"cliente_key", "cod_cliente", "razao_social", "tipo_cliente", "cidade", "uf",
+				        "data_cadastro", "condicao_pagamento", "situacao"})
+				in
+				    Colunas
+

@@ -1,0 +1,34 @@
+/// Produtos e categorias.
+table Produto
+	lineageTag: 76acfe97-84d4-40ae-99b5-a4aa8b2e6a26
+
+	column produto_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9ddaf625-2c4e-4a67-be21-1c729570762f
+		summarizeBy: none
+		sourceColumn: produto_key
+
+	column Produto
+		dataType: string
+		lineageTag: d6c7901e-cfc1-4bce-8678-97595f9278cb
+		summarizeBy: none
+		sourceColumn: descricao
+
+	column Categoria
+		dataType: string
+		lineageTag: dd109f87-0ce8-4748-8191-4131b32aff85
+		summarizeBy: none
+		sourceColumn: categoria
+
+	partition Produto = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_produto"]}[Data],
+				    Colunas = Table.SelectColumns(Dados, {"produto_key", "descricao", "categoria"})
+				in
+				    Colunas
+

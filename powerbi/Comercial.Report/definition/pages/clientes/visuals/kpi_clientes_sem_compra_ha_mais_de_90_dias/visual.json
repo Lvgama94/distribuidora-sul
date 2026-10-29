@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_clientes_sem_compra_ha_mais_de_90_dias",
+  "position": {
+    "x": 648,
+    "y": 88,
+    "z": 8000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Clientes sem Compra há Mais de 90 Dias"
+                }
+              },
+              "queryRef": "Medidas.Clientes sem Compra há Mais de 90 Dias",
+              "nativeQueryRef": "Clientes sem Compra há Mais de 90 Dias",
+              "displayName": "Parados há mais de 90 dias"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

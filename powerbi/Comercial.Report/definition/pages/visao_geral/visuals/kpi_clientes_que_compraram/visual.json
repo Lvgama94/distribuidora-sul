@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_clientes_que_compraram",
+  "position": {
+    "x": 856,
+    "y": 88,
+    "z": 9000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Clientes que Compraram"
+                }
+              },
+              "queryRef": "Medidas.Clientes que Compraram",
+              "nativeQueryRef": "Clientes que Compraram",
+              "displayName": "Clientes que compraram"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,109 @@
+/// Itens de nota fiscal (vendas e devoluções, com quantidade negativa na devolução). A nota só é única com a filial: a numeração é por série, e a série é a filial.
+table Venda
+	lineageTag: 040583bb-dfff-45f9-a4c6-8984caf3b349
+
+	column data_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 06322762-d92d-44bf-83c3-76a9d2b5bf29
+		summarizeBy: none
+		sourceColumn: data_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f13c7d64-ae94-4342-a985-1858d10ce335
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column cliente_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2489252f-4f77-4025-ad5b-14e0aa9d067e
+		summarizeBy: none
+		sourceColumn: cliente_key
+
+	column produto_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82f52315-97c5-4a77-a3ad-dd4e80e9432e
+		summarizeBy: none
+		sourceColumn: produto_key
+
+	column vendedor_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0595b66e-ccfe-4440-8c01-a35e425880d0
+		summarizeBy: none
+		sourceColumn: vendedor_key
+
+	column 'Número da Nota'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 16d3e30f-d310-4f21-9ed4-b5cbad05929c
+		summarizeBy: none
+		sourceColumn: nf_numero
+
+	column Nota
+		dataType: string
+		isHidden
+		lineageTag: 3c711242-336a-4dab-863a-245dccb350b4
+		summarizeBy: none
+		sourceColumn: nota
+
+	column 'Tipo de Operação'
+		dataType: string
+		lineageTag: 4bbcbac9-2133-48dc-ab5d-a24135fe52e3
+		summarizeBy: none
+		sourceColumn: tipo_operacao
+
+	column 'Valor de Tabela'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		lineageTag: b8b33bf1-973b-4bb4-aa04-a49cf63456b1
+		summarizeBy: sum
+		sourceColumn: valor_bruto
+
+	column 'Valor do Desconto'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		lineageTag: 3ea4323b-a7f0-44e5-b967-c3b502695593
+		summarizeBy: sum
+		sourceColumn: valor_desconto
+
+	column 'Valor Líquido'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		lineageTag: 82276e72-83b3-4d0d-add2-425488d0265e
+		summarizeBy: sum
+		sourceColumn: receita_liquida
+
+	column 'Custo Total'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		lineageTag: 7c562611-b66d-43bd-9f2e-da264b062e24
+		summarizeBy: sum
+		sourceColumn: custo_total
+
+	partition Venda = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_venda"]}[Data],
+				    Colunas = Table.SelectColumns(Dados, {"data_key", "filial_key", "cliente_key", "produto_key", "vendedor_key", "nf_numero",
+				        "tipo_operacao", "valor_bruto", "valor_desconto", "receita_liquida", "custo_total"}),
+				    ComNota = Table.AddColumn(Colunas, "nota", each Text.From([filial_key]) & "-" & Text.From([nf_numero]), type text)
+				in
+				    ComNota
+

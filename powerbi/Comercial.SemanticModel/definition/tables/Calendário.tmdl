@@ -1,0 +1,129 @@
+/// Um dia por linha (2023 a 2026), com feriados nacionais e do RS. Marcada como tabela de datas.
+table Calendário
+	lineageTag: 6c494f2f-e9c8-45a4-9fb8-3a7c8d5e80af
+	dataCategory: Time
+
+	column data_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0510ee47-6465-4d5a-866f-7e344eff75bd
+		summarizeBy: none
+		sourceColumn: data_key
+
+	column Data
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: c087e60d-9cbf-480e-9e33-a8d2a301127f
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e240939-111e-4fad-af91-a3283847e396
+		summarizeBy: none
+		sourceColumn: ano
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 205dc82e-e98e-4669-b9c1-775c06ee4401
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column 'Mês Nº'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 48d90345-521a-45b7-8315-388c086eb982
+		summarizeBy: none
+		sourceColumn: mes
+
+	column Mês
+		dataType: string
+		lineageTag: ee773c0d-2d58-4aa0-9935-a0edc2864b09
+		summarizeBy: none
+		sourceColumn: nome_mes
+		sortByColumn: 'Mês Nº'
+
+	column 'Mês Abreviado'
+		dataType: string
+		lineageTag: 78bd106b-a6f7-4aad-b871-718fa0e4f89c
+		summarizeBy: none
+		sourceColumn: mes_abrev
+		sortByColumn: 'Mês Nº'
+
+	column 'Ano/Mês Nº'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a2f09eb-9da7-4b64-90e0-500a5d440350
+		summarizeBy: none
+		sourceColumn: ano_mes
+
+	column Mês/Ano
+		dataType: string
+		lineageTag: 255713f6-0f36-4468-b932-a8e3e0c8c552
+		summarizeBy: none
+		sourceColumn: mes_ano
+		sortByColumn: 'Ano/Mês Nº'
+
+	column 'Semana ISO'
+		dataType: int64
+		formatString: 0
+		lineageTag: b8086dfa-aec2-4575-aa42-a53d6ee2a70f
+		summarizeBy: none
+		sourceColumn: semana_iso
+
+	column 'Dia da Semana Nº'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8b47b993-ae67-448c-93f5-7c5c33bf0a52
+		summarizeBy: none
+		sourceColumn: dia_semana
+
+	column 'Dia da Semana'
+		dataType: string
+		lineageTag: 2aa81700-0c05-4b2d-92ac-cc40576b49cd
+		summarizeBy: none
+		sourceColumn: nome_dia_semana
+		sortByColumn: 'Dia da Semana Nº'
+
+	column Feriado
+		dataType: boolean
+		formatString: """Sim"";""Sim"";""Não"""
+		lineageTag: af61ff6a-8423-45ba-9b8e-75620cefc468
+		summarizeBy: none
+		sourceColumn: feriado
+
+	column 'Dia Útil'
+		dataType: boolean
+		formatString: """Sim"";""Sim"";""Não"""
+		lineageTag: 95d1fb9e-7a30-4c70-8dbd-d11daf660feb
+		summarizeBy: none
+		sourceColumn: dia_util
+
+	column 'Primeiro Dia do Mês'
+		dataType: dateTime
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: a9e4093e-2ed1-494d-9175-3af9aae84f59
+		summarizeBy: none
+		sourceColumn: primeiro_dia_mes
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Calendário = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_calendario"]}[Data]
+				in
+				    Dados
+

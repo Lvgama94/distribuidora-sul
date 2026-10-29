@@ -365,6 +365,110 @@ def indicadores_compras(dados: dict) -> dict:
     return resultado
 
 
+# ------------------------------------------------------------ Comercial
+
+def exportar_comercial(cursor) -> dict:
+    filiais = consultar(cursor, "SELECT filial_key, cidade FROM dw.dim_filial ORDER BY filial_key")
+    clientes = consultar(cursor, """
+        SELECT c.cliente_key, c.razao_social, c.tipo_cliente, c.cidade, c.filial_key, MAX(cal.data)
+        FROM dw.dim_cliente c
+        LEFT JOIN dw.fato_venda v      ON v.cliente_key = c.cliente_key AND v.tipo_operacao = 'VENDA'
+        LEFT JOIN dw.dim_calendario cal ON cal.data_key = v.data_key
+        GROUP BY c.cliente_key, c.razao_social, c.tipo_cliente, c.cidade, c.filial_key
+        ORDER BY c.cliente_key""")
+    vendedores = consultar(cursor, """
+        SELECT DISTINCT f.funcionario_key, f.nome, f.cargo
+        FROM dw.fato_venda v JOIN dw.dim_funcionario f ON f.funcionario_key = v.vendedor_key
+        ORDER BY f.nome""")
+    # Mês × cliente × vendedor: dá para filtrar por filial, tipo de cliente e vendedor e ainda contar clientes distintos.
+    # O cliente compra sempre na mesma filial, e a numeração das notas é por filial.
+    # O valor de tabela não vai no JSON: é faturamento + desconto
+    vendas = consultar(cursor, """
+        SELECT data_key / 100 * 100 + 1, cliente_key, vendedor_key,
+               SUM(valor_desconto), SUM(receita_liquida), SUM(custo_total), COUNT(DISTINCT nf_numero)
+        FROM dw.fato_venda WHERE tipo_operacao = 'VENDA'
+        GROUP BY data_key / 100 * 100 + 1, cliente_key, vendedor_key""")
+    devolucoes = consultar(cursor, """
+        SELECT data_key / 100 * 100 + 1, cliente_key, vendedor_key, -SUM(receita_liquida), -SUM(custo_total)
+        FROM dw.fato_venda WHERE tipo_operacao = 'DEVOLUCAO'
+        GROUP BY data_key / 100 * 100 + 1, cliente_key, vendedor_key""")
+    mix = consultar(cursor, """
+        SELECT v.data_key / 100 * 100 + 1, v.filial_key, c.tipo_cliente, p.categoria, SUM(v.receita_liquida)
+        FROM dw.fato_venda v
+        JOIN dw.dim_cliente c ON c.cliente_key = v.cliente_key
+        JOIN dw.dim_produto p ON p.produto_key = v.produto_key
+        WHERE v.tipo_operacao = 'VENDA'
+        GROUP BY v.data_key / 100 * 100 + 1, v.filial_key, c.tipo_cliente, p.categoria""")
+
+    meses = sorted({mes(k) for k, *_ in vendas})
+    indice_mes = {m: i for i, m in enumerate(meses)}
+    indice_cliente = {k: i for i, (k, *_) in enumerate(clientes)}
+    indice_vendedor = {k: i for i, (k, *_) in enumerate(vendedores)}
+    tipos = sorted({t for _, _, t, *_ in clientes})
+    categorias = sorted({c for _, _, _, c, *_ in mix})
+    return {
+        "gerado_em": date.today().isoformat(),
+        "data_corte": "2025-12-31",
+        "meses": meses,
+        "filiais": [{"id": f, "nome": nome} for f, nome in filiais],
+        "tipos_cliente": tipos,
+        "categorias": categorias,
+        "clientes": [{"nome": nome, "tipo": tipos.index(t), "cidade": cidade, "filial": f,
+                      "ultima_compra": ultima.isoformat() if ultima else None}
+                     for _, nome, t, cidade, f, ultima in clientes],
+        "vendedores": [{"nome": nome, "cargo": cargo} for _, nome, cargo in vendedores],
+        # [mês, cliente, vendedor, desconto, faturamento (já com desconto), custo, notas]
+        "vendas": [[indice_mes[mes(k)], indice_cliente[c], indice_vendedor[v], reais(d), reais(fat), reais(cu), int(n)]
+                   for k, c, v, d, fat, cu, n in vendas],
+        # [mês, cliente, vendedor, valor devolvido, custo devolvido]
+        "devolucoes": [[indice_mes[mes(k)], indice_cliente[c], indice_vendedor[v], reais(dv), reais(dc)] for k, c, v, dv, dc in devolucoes],
+        # [mês, filial, tipo de cliente, categoria, faturamento]
+        "mix": [[indice_mes[mes(k)], f, tipos.index(t), categorias.index(c), reais(fat)] for k, f, t, c, fat in mix],
+    }
+
+
+def indicadores_comercial(dados: dict) -> dict:
+    """Recalcula, só com o JSON, os indicadores de dw.vw_conferencia_comercial (empresa toda)."""
+    ano = lambda i: int(dados["meses"][i][:4])
+    soma = defaultdict(float)
+    por_cliente = defaultdict(lambda: defaultdict(float))       # ano -> cliente -> faturamento
+    for m, c, _, desconto, fat, custo, notas in dados["vendas"]:
+        a = ano(m)
+        for nome, x in (("bruto", fat + desconto), ("desconto", desconto), ("fat", fat), ("custo", custo), ("notas", notas)):
+            soma[a, nome] += x
+        por_cliente[a][c] += fat
+    for m, _, _, devol, custo_devol in dados["devolucoes"]:
+        soma[ano(m), "devol"] += devol
+        soma[ano(m), "custo"] -= custo_devol
+
+    resultado = {}
+    for a in sorted(por_cliente):
+        s = lambda nome: soma[a, nome]
+        liquida = s("fat") - s("devol")
+        ranking = sorted(por_cliente[a].values(), reverse=True)
+        topo = -(-len(ranking) // 5)                              # NTILE(5): o primeiro quinto leva a sobra
+        resultado.update({
+            (a, "Faturamento"): s("fat"),
+            (a, "Descontos Concedidos"): s("desconto"),
+            (a, "Desconto Médio %"): s("desconto") / s("bruto"),
+            (a, "Devoluções"): s("devol"),
+            (a, "Venda Líquida"): liquida,
+            (a, "Custo das Vendas"): s("custo"),
+            (a, "Margem Comercial %"): (liquida - s("custo")) / liquida,
+            (a, "Notas Fiscais"): s("notas"),
+            (a, "Ticket Médio"): s("fat") / s("notas"),
+            (a, "Clientes que Compraram"): len(ranking),
+            (a, "Faturamento dos 20% Maiores %"): sum(ranking[:topo]) / sum(ranking),
+        })
+        if a - 1 in por_cliente:
+            resultado[a, "Clientes Novos"] = len(por_cliente[a].keys() - por_cliente[a - 1].keys())
+            resultado[a, "Clientes Perdidos"] = len(por_cliente[a - 1].keys() - por_cliente[a].keys())
+    corte = date.fromisoformat(dados["data_corte"])
+    resultado[None, "Clientes sem Compra há Mais de 90 Dias"] = sum(
+        1 for c in dados["clientes"] if c["ultima_compra"] and (corte - date.fromisoformat(c["ultima_compra"])).days > 90)
+    return resultado
+
+
 # ------------------------------------------------------------ Excel + automação
 
 PASTA_PONTO = RAIZ / "data" / "bruto" / "rh" / "ponto"
@@ -487,6 +591,7 @@ PAINEIS = {
                                                    ("Clientes Inadimplentes", "A Pagar em Aberto")), "dw.vw_conferencia_financeiro"),
     "rh": (exportar_rh, pela_view(indicadores_rh, "dw.vw_conferencia_rh"), "dw.vw_conferencia_rh"),
     "compras": (exportar_compras, pela_view(indicadores_compras, "dw.vw_conferencia_compras"), "dw.vw_conferencia_compras"),
+    "comercial": (exportar_comercial, pela_view(indicadores_comercial, "dw.vw_conferencia_comercial"), "dw.vw_conferencia_comercial"),
     "excel": (exportar_excel, verificar_excel, "dw.fato_ponto, títulos no SQL e CSV do banco"),
 }
 

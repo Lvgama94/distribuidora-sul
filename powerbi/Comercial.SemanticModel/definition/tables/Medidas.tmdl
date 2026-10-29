@@ -1,0 +1,163 @@
+/// Tabela só de medidas (a coluna é oculta). Pastas: 1. Vendas, 2. Clientes, 3. Comparativos, 4. Formatação.
+table Medidas
+	lineageTag: 991c86f6-a3c9-44c2-b11c-33b74c26750e
+
+	/// Vendas já com desconto, antes das devoluções e dos impostos. É a receita bruta da DRE (conta 3.01).
+	measure Faturamento = CALCULATE(SUM(Venda[Valor Líquido]), Venda[Tipo de Operação] = "VENDA")
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: c8beba82-ce75-44b0-94c0-de4fa4ac2674
+
+	measure 'Valor de Tabela' = CALCULATE(SUM(Venda[Valor de Tabela]), Venda[Tipo de Operação] = "VENDA")
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: 4a825e76-01a9-4197-b77c-b16d8618dcc3
+
+	measure 'Descontos Concedidos' = CALCULATE(SUM(Venda[Valor do Desconto]), Venda[Tipo de Operação] = "VENDA")
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: 55b3fa7b-2bab-4bcd-adef-026e819b0ebe
+
+	measure 'Desconto Médio %' = DIVIDE([Descontos Concedidos], [Valor de Tabela])
+		formatString: 0.0%
+		displayFolder: 1. Vendas
+		lineageTag: 177e9dcc-faa9-4e80-8c87-68600b8cb996
+
+	measure Devoluções = CALCULATE(-SUM(Venda[Valor Líquido]), Venda[Tipo de Operação] = "DEVOLUCAO")
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: dff9471e-1705-47c1-a288-7e95aecae0de
+
+	/// Faturamento menos devoluções.
+	measure 'Venda Líquida' = SUM(Venda[Valor Líquido])
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: 5ba85aaa-934c-4ee5-89db-dfc5c63730ae
+
+	/// Custo das vendas menos o custo das devoluções. É o CMV da DRE.
+	measure 'Custo das Vendas' = SUM(Venda[Custo Total])
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: a43b5b55-0b31-4aee-8b97-0b9458a95df0
+
+	/// Antes dos impostos sobre vendas, por isso é maior que a margem bruta da DRE.
+	measure 'Margem Comercial %' = DIVIDE([Venda Líquida] - [Custo das Vendas], [Venda Líquida])
+		formatString: 0.0%
+		displayFolder: 1. Vendas
+		lineageTag: 70703fdd-0925-4a6a-a81f-65785a18c685
+
+	measure 'Notas Fiscais' = CALCULATE(DISTINCTCOUNT(Venda[Nota]), Venda[Tipo de Operação] = "VENDA")
+		formatString: #,##0
+		displayFolder: 1. Vendas
+		lineageTag: aa1961bf-d093-4496-b1a7-0e452573717f
+
+	measure 'Ticket Médio' = DIVIDE([Faturamento], [Notas Fiscais])
+		formatString: R$ #,##0
+		displayFolder: 1. Vendas
+		lineageTag: 49b1ed6e-2fea-4f89-a83b-1ce71d9d035f
+
+	measure 'Clientes que Compraram' = CALCULATE(DISTINCTCOUNT(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA")
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: c35cf23b-23db-4e35-8e2a-c6b6a173882c
+
+	measure 'Faturamento por Cliente' = DIVIDE([Faturamento], [Clientes que Compraram])
+		formatString: R$ #,##0
+		displayFolder: 2. Clientes
+		lineageTag: 54cb5af8-1d47-4373-800b-bb291145cb00
+
+	/// Compraram no período e não no mesmo período do ano anterior. Em branco no primeiro ano da série.
+	measure 'Clientes Novos' =
+			VAR Agora = CALCULATETABLE(VALUES(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA")
+			VAR Antes = CALCULATETABLE(VALUES(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA", SAMEPERIODLASTYEAR('Calendário'[Data]))
+			RETURN IF(ISEMPTY(Antes), BLANK(), COUNTROWS(EXCEPT(Agora, Antes)))
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: aaa26c27-09df-4afe-8e6e-9401eb7f5396
+
+	/// Compraram no mesmo período do ano anterior e não no período. Em branco no primeiro ano da série.
+	measure 'Clientes Perdidos' =
+			VAR Agora = CALCULATETABLE(VALUES(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA")
+			VAR Antes = CALCULATETABLE(VALUES(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA", SAMEPERIODLASTYEAR('Calendário'[Data]))
+			RETURN IF(ISEMPTY(Antes), BLANK(), COUNTROWS(EXCEPT(Antes, Agora)))
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: 6b5a8d58-77fd-4f61-8b7f-0e17fa2a039b
+
+	/// Fatia do faturamento que vem do primeiro quinto do ranking de clientes (como NTILE(5) no SQL).
+	measure 'Faturamento dos 20% Maiores %' =
+			VAR Clientes = ADDCOLUMNS(CALCULATETABLE(VALUES(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA"), "@fat", [Faturamento])
+			VAR Topo = ROUNDUP(COUNTROWS(Clientes) / 5, 0)
+			RETURN DIVIDE(SUMX(TOPN(Topo, Clientes, [@fat], DESC), [@fat]), [Faturamento])
+		formatString: 0.0%
+		displayFolder: 2. Clientes
+		lineageTag: 982473a6-7810-49a8-b16c-8f82aa7b6d0a
+
+	/// Dias entre a última compra do cliente e a data de corte (31/12/2025).
+	measure 'Dias sem Comprar' =
+			VAR k = CALCULATE(MAX(Venda[data_key]), Venda[Tipo de Operação] = "VENDA", REMOVEFILTERS('Calendário'))
+			RETURN IF(ISBLANK(k), BLANK(), INT(DATE(2025, 12, 31) - DATE(INT(k / 10000), MOD(INT(k / 100), 100), MOD(k, 100))))
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: aa63489f-91d3-4640-9d20-d9920a0d698f
+
+	/// Fotografia em 31/12/2025: clientes que já compraram e estão há mais de 90 dias sem comprar. Não muda com o filtro de ano.
+	measure 'Clientes sem Compra há Mais de 90 Dias' =
+			VAR Limite = DATE(2025, 12, 31) - 90
+			VAR Clientes = ADDCOLUMNS(VALUES(Cliente[cliente_key]), "@ultima", CALCULATE(MAX(Venda[data_key]), Venda[Tipo de Operação] = "VENDA", REMOVEFILTERS('Calendário')))
+			RETURN COUNTROWS(FILTER(Clientes, NOT ISBLANK([@ultima]) && [@ultima] < YEAR(Limite) * 10000 + MONTH(Limite) * 100 + DAY(Limite)))
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: b68bbc6e-ad37-4866-9383-5a727383d0d6
+
+	measure 'Faturamento em 2024 e 2025' = CALCULATE([Faturamento], REMOVEFILTERS('Calendário'))
+		formatString: R$ #,##0
+		displayFolder: 2. Clientes
+		lineageTag: 9286fe30-9e6b-4d7d-81f7-96be64e86484
+
+	/// Faturamento dos dois anos só dos clientes parados há mais de 90 dias: na tabela, os outros clientes ficam de fora.
+	measure 'Faturamento dos Parados' = IF([Dias sem Comprar] > 90, [Faturamento em 2024 e 2025])
+		formatString: R$ #,##0
+		displayFolder: 2. Clientes
+		lineageTag: e0ebae4d-ff37-4fe1-945d-83afda8b683a
+
+	measure 'Dias Parado' = IF([Dias sem Comprar] > 90, [Dias sem Comprar])
+		formatString: #,##0
+		displayFolder: 2. Clientes
+		lineageTag: c9101d85-0910-4f58-adf5-aaf8d7d9acf8
+
+	measure 'Faturamento Ano Anterior' = CALCULATE([Faturamento], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: R$ #,##0
+		displayFolder: 3. Comparativos
+		lineageTag: 574abae6-c537-4c2b-ba5a-c1b8efc0c13a
+
+	measure 'Faturamento vs Ano Anterior %' = DIVIDE([Faturamento] - [Faturamento Ano Anterior], [Faturamento Ano Anterior])
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3. Comparativos
+		lineageTag: 94ec63d2-944d-427a-8a5d-1e679d20e309
+
+	measure 'Margem vs Ano Anterior (p.p.)' =
+			VAR Antes = CALCULATE([Margem Comercial %], SAMEPERIODLASTYEAR('Calendário'[Data]))
+			RETURN IF(ISBLANK(Antes), BLANK(), ([Margem Comercial %] - Antes) * 100)
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 3. Comparativos
+		lineageTag: 57f4e091-db6a-4595-aa79-35f9ae717287
+
+	measure 'Ticket Médio vs Ano Anterior %' =
+			VAR Antes = CALCULATE([Ticket Médio], SAMEPERIODLASTYEAR('Calendário'[Data]))
+			RETURN DIVIDE([Ticket Médio] - Antes, Antes)
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3. Comparativos
+		lineageTag: bfd60c00-f6b5-4e22-9622-e2d7eb9243cf
+
+	measure 'Cor do Crescimento' =
+			VAR v = [Faturamento vs Ano Anterior %]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 0, "#C62828", "#2E7D32"))
+		isHidden
+		displayFolder: 4. Formatação
+		lineageTag: 5ec21235-8889-413f-b0c9-91a5da678348
+
+	partition Medidas = m
+		mode: import
+		source = #table(type table [Coluna = text], {})
+

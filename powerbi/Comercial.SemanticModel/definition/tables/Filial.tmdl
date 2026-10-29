@@ -1,0 +1,35 @@
+/// Matriz Porto Alegre e filiais de Caxias do Sul e Pelotas.
+table Filial
+	lineageTag: 093c0461-7e14-4c62-88eb-4bf818049525
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6eda405f-c933-4395-970f-24c2bfe09336
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column Filial
+		dataType: string
+		lineageTag: e90bd39b-28a2-40c0-bbfc-e25adf9a21a9
+		summarizeBy: none
+		sourceColumn: nome
+
+	column Cidade
+		dataType: string
+		lineageTag: 1bfaac53-7ce6-4105-a505-c764e36deaa9
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+	partition Filial = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_filial"]}[Data],
+				    Colunas = Table.SelectColumns(Dados, {"filial_key", "nome", "cidade"})
+				in
+				    Colunas
+

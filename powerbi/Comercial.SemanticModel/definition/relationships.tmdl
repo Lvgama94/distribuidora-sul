@@ -1,0 +1,20 @@
+relationship venda_calendario
+	fromColumn: Venda.data_key
+	toColumn: Calendário.data_key
+
+relationship venda_cliente
+	fromColumn: Venda.cliente_key
+	toColumn: Cliente.cliente_key
+
+relationship venda_vendedor
+	fromColumn: Venda.vendedor_key
+	toColumn: Vendedor.vendedor_key
+
+relationship venda_produto
+	fromColumn: Venda.produto_key
+	toColumn: Produto.produto_key
+
+relationship venda_filial
+	fromColumn: Venda.filial_key
+	toColumn: Filial.filial_key
+

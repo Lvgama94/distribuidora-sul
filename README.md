@@ -89,6 +89,7 @@ pip install -r requirements.txt
 python python/gerar_dados.py     # opcional: os dados já estão no repositório
 python python/etl.py             # data/bruto -> data/tratado + relatório de qualidade
 python python/carregar_sql.py    # cria o banco, carrega e roda os testes (~20 s)
+python python/exportar_web.py    # opcional: JSONs das versões web dos painéis (conferidos com o SQL antes de gravar)
 ```
 
 O servidor padrão é `localhost\SQLEXPRESS`. Para outro servidor, use `--servidor "NOME"`.
@@ -109,19 +110,19 @@ excel/            pastas de trabalho com Power Query e o código M de cada consu
 
 ## Painéis sobre esta base
 
-1. **Financeiro**: DRE, orçado × realizado, contas a receber e fluxo de caixa, em 4 páginas. O modelo tem 60 medidas DAX ([`Medidas.tmdl`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl)), e todas as de cálculo foram conferidas contra o SQL. O [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência.
+1. **Financeiro**: DRE, orçado × realizado, contas a receber e fluxo de caixa, em 4 páginas. O modelo tem 60 medidas DAX ([`Medidas.tmdl`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl)), e todas as de cálculo foram conferidas contra o SQL. O [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência. Há também uma [versão web interativa](https://lucasgama.vercel.app/financeiro.html), alimentada por [`python/exportar_web.py`](python/exportar_web.py), que só grava o JSON se os 40 indicadores baterem com a view de conferência.
 
    ![Painel Financeiro: Resumo](docs/img/financeiro_resumo.png)
 
-2. **People Analytics**: headcount, rotatividade, absenteísmo, horas extras e custo de pessoal, em 3 páginas. O modelo tem 34 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_people_analytics.md).
+2. **People Analytics**: headcount, rotatividade, absenteísmo, horas extras e custo de pessoal, em 3 páginas. O modelo tem 34 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_people_analytics.md) ou explore a [versão web interativa](https://lucasgama.vercel.app/rh.html).
 
    ![People Analytics: Rotatividade](docs/img/rh_rotatividade.png)
 
-3. **Compras e Estoque**: pontualidade de fornecedores, giro e cobertura de estoque, ruptura e venda perdida, curva ABC, em 3 páginas. O modelo tem 29 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_compras_estoque.md).
+3. **Compras e Estoque**: pontualidade de fornecedores, giro e cobertura de estoque, ruptura e venda perdida, curva ABC, em 3 páginas. O modelo tem 29 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_compras_estoque.md) ou explore a [versão web interativa](https://lucasgama.vercel.app/compras.html).
 
    ![Compras e Estoque: Estoque e Ruptura](docs/img/compras_estoque_ruptura.png)
 
-4. **Excel + automação**: duas rotinas administrativas que viram um clique em "Atualizar Tudo", só com Excel e Power Query: a consolidação dos 24 arquivos mensais de ponto do RH (com mudança de layout no meio) e a conciliação bancária de dezembro (1.601 lançamentos, 11 pendências encontradas). Veja o [roteiro](docs/excel_automacao.md).
+4. **Excel + automação**: duas rotinas administrativas que viram um clique em "Atualizar Tudo", só com Excel e Power Query: a consolidação dos 24 arquivos mensais de ponto do RH (com mudança de layout no meio) e a conciliação bancária de dezembro (1.601 lançamentos, 11 pendências encontradas). Veja o [roteiro](docs/excel_automacao.md) ou explore o [resultado na web](https://lucasgama.vercel.app/excel.html).
 
    ![Excel: conciliação bancária](docs/img/excel_conciliacao_bancaria.png)
 

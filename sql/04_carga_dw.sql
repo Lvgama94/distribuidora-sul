@@ -78,7 +78,8 @@ BEGIN
         INSERT INTO dw.dim_centro_custo (cc_key, cod_centro_custo, nome)
         SELECT ROW_NUMBER() OVER (ORDER BY cod_centro_custo), cod_centro_custo, nome FROM stg.centro_custo;
 
-        INSERT INTO dw.dim_conta (conta_key, cod_conta, descricao, grupo_dre, ordem_grupo, sinal, entra_dre)
+        INSERT INTO dw.dim_conta (conta_key, cod_conta, descricao, grupo_dre, ordem_grupo, sinal, entra_dre,
+                                  grupo_caixa)
         SELECT ROW_NUMBER() OVER (ORDER BY cod_conta), cod_conta, descricao, grupo_dre,
                CASE grupo_dre
                     WHEN N'Receita bruta'            THEN 1
@@ -91,7 +92,13 @@ BEGIN
                     WHEN N'Resultado financeiro'     THEN 8
                     ELSE 99 END,
                CASE WHEN grupo_dre = N'Receita bruta' THEN 1 ELSE -1 END,
-               CASE WHEN cod_conta LIKE '1.%' THEN 0 ELSE 1 END
+               CASE WHEN cod_conta LIKE '1.%' THEN 0 ELSE 1 END,
+               CASE WHEN cod_conta = '1.05' THEN N'Fornecedores de mercadoria'
+                    WHEN cod_conta = '3.03' THEN N'Impostos'
+                    WHEN grupo_dre = N'Despesas com pessoal' THEN N'Folha e benefícios'
+                    WHEN grupo_dre = N'Resultado financeiro' THEN N'Tarifas e juros'
+                    WHEN cod_conta LIKE '5.%' THEN N'Despesas operacionais'
+                    ELSE N'Receitas' END
         FROM stg.conta;
 
         INSERT INTO dw.dim_fornecedor (fornecedor_key, cod_fornecedor, razao_social, cnpj, tipo, cidade,
@@ -167,7 +174,8 @@ BEGIN
         -- 5. Contas a receber, com status e aging recalculados na data de corte
         INSERT INTO dw.fato_conta_receber (titulo, cliente_key, filial_key, emissao_key, vencimento_key,
                                            pagamento_key, nf_numero, parcela, valor, valor_pago, juros_multa,
-                                           status, dias_atraso, faixa_aging)
+                                           status, dias_atraso, faixa_aging, prazo_concedido_dias,
+                                           prazo_real_dias)
         SELECT r.titulo, cli.cliente_key, r.serie, ce.data_key, cv.data_key, cp.data_key, r.nf_numero, r.parcela,
                r.valor, r.valor_pago, ISNULL(r.valor_pago - r.valor, 0), s.status, a.dias_atraso,
                CASE WHEN s.status = 'PAGO'     THEN N'Liquidado'
@@ -175,7 +183,9 @@ BEGIN
                     WHEN a.dias_atraso <= 30   THEN N'1 a 30 dias'
                     WHEN a.dias_atraso <= 60   THEN N'31 a 60 dias'
                     WHEN a.dias_atraso <= 90   THEN N'61 a 90 dias'
-                    ELSE N'Mais de 90 dias' END
+                    ELSE N'Mais de 90 dias' END,
+               DATEDIFF(DAY, r.data_emissao, r.data_vencimento),
+               DATEDIFF(DAY, r.data_emissao, r.data_pagamento)
         FROM stg.conta_receber r
         JOIN dw.dim_cliente cli    ON cli.cod_cliente = r.cod_cliente
         JOIN dw.dim_calendario ce  ON ce.data = r.data_emissao
@@ -192,14 +202,15 @@ BEGIN
         -- 6. Contas a pagar
         INSERT INTO dw.fato_conta_pagar (id_titulo, fornecedor_key, conta_key, cc_key, filial_key, competencia_key,
                                          emissao_key, vencimento_key, pagamento_key, documento, descricao, valor,
-                                         valor_pago, juros_multa, status, dias_atraso)
+                                         valor_pago, juros_multa, status, dias_atraso, prazo_real_dias)
         SELECT p.id_titulo, f.fornecedor_key, c.conta_key, cc.cc_key, p.id_filial, ccomp.data_key, ce.data_key,
                cv.data_key, cp.data_key, p.documento, p.descricao, p.valor, p.valor_pago,
                ISNULL(p.valor_pago - p.valor, 0), s.status,
                CASE WHEN s.status = 'PAGO' AND p.data_pagamento > p.data_vencimento
                          THEN DATEDIFF(DAY, p.data_vencimento, p.data_pagamento)
                     WHEN s.status = 'VENCIDO' THEN DATEDIFF(DAY, p.data_vencimento, @data_corte)
-                    ELSE 0 END
+                    ELSE 0 END,
+               DATEDIFF(DAY, p.data_emissao, p.data_pagamento)
         FROM stg.conta_pagar p
         JOIN dw.dim_fornecedor f      ON f.cod_fornecedor = p.cod_fornecedor
         JOIN dw.dim_conta c           ON c.cod_conta = p.cod_conta

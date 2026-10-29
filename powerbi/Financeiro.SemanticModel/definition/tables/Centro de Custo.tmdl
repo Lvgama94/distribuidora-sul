@@ -1,0 +1,29 @@
+table 'Centro de Custo'
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column 'Código CC'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cod_centro_custo
+
+	column 'Centro de Custo'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nome
+		sortByColumn: 'Código CC'
+
+	partition 'Centro de Custo' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_centro_custo"]}[Data]
+				in
+				    Dados
+

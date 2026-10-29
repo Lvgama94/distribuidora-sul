@@ -1,0 +1,23 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table Medidas
+ref table DRE
+ref table 'Orçamento'
+ref table 'Contas a Receber'
+ref table 'Contas a Pagar'
+ref table 'Calendário'
+ref table Conta
+ref table 'Centro de Custo'
+ref table Filial
+ref table Cliente
+ref table Fornecedor
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+

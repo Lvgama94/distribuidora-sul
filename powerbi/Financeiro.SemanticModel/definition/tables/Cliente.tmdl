@@ -1,0 +1,73 @@
+table Cliente
+
+	column cliente_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: cliente_key
+
+	column 'Código Cliente'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cod_cliente
+
+	column Cliente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: razao_social
+
+	column CNPJ
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cnpj
+
+	column 'Tipo de Cliente'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_cliente
+
+	column Cidade
+		dataType: string
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+	column UF
+		dataType: string
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: uf
+
+	column 'Data de Cadastro'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: data_cadastro
+
+	column 'Condição de Pagamento'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: condicao_pagamento
+
+	column 'Limite de Crédito'
+		dataType: double
+		formatString: R$ #,##0
+		summarizeBy: none
+		sourceColumn: limite_credito
+
+	column 'Situação'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: situacao
+
+	partition Cliente = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_cliente"]}[Data],
+				    Colunas = Table.RemoveColumns(Dados, {"filial_key", "ano_cadastro"})
+				in
+				    Colunas
+

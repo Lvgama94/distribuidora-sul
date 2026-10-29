@@ -12,6 +12,7 @@ Este é o **projeto 0** do meu portfólio: a fundação que alimenta os painéis
 |---|---|
 | **Python (pandas)**: ETL e qualidade de dados | [`python/etl.py`](python/etl.py) trata 11 tipos de problema e gera um [relatório de qualidade](docs/relatorio_qualidade.md) a cada execução |
 | **SQL Server**: modelagem e carga | [`sql/`](sql/): staging, modelo estrela, procedure de carga com transação, testes automáticos e views com CTE e funções de janela |
+| **Power BI e DAX** | Modelo semântico em PBIP/TMDL com relacionamentos inativos (`USERELATIONSHIP`), inteligência de tempo e medidas conferidas contra o SQL |
 | **Modelagem dimensional** | 8 dimensões e 9 fatos com grão definido ([dicionário de dados](docs/dicionario_de_dados.md)) |
 | **Processos administrativos** | Contas a pagar e a receber, DRE por competência, orçamento, folha, ponto, estoque e compras |
 
@@ -102,12 +103,12 @@ data/tratado/     arquivos limpos e padronizados (entrada do SQL e do Power BI)
 docs/             dicionário de dados e relatório de qualidade
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
-pbix/             painéis do Power BI (próximos projetos)
+powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatório) e tema de cores
 ```
 
-## Próximos projetos sobre esta base
+## Painéis sobre esta base
 
-1. **Financeiro**: DRE, orçado × realizado, fluxo de caixa e inadimplência
+1. **Financeiro** (em construção): DRE, orçado × realizado, contas a receber e fluxo de caixa. O modelo semântico com 51 medidas DAX está em [`powerbi/`](powerbi/Financeiro.SemanticModel/definition/tables/Medidas.tmdl), e o [roteiro do painel](docs/painel_financeiro.md) traz as páginas, as decisões de modelagem e os números de conferência
 2. **People Analytics**: rotatividade, absenteísmo e custo de pessoal
 3. **Compras e estoque**: curva ABC, ruptura e pontualidade de fornecedores
 4. **Excel + automação**: consolidação com Power Query e conciliação

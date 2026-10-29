@@ -1,0 +1,53 @@
+/// DRE realizada por competência: mês x conta x centro de custo x filial.
+/// Valor é sempre positivo; Valor Resultado já tem o sinal da conta (receita soma, custos e despesas subtraem).
+table DRE
+
+	column competencia_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: competencia_key
+
+	column conta_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: conta_key
+
+	column cc_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: cc_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column Valor
+		dataType: double
+		isHidden
+		formatString: R$ #,##0
+		sourceColumn: valor
+
+	column 'Valor Resultado'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0
+		sourceColumn: valor_resultado
+
+	partition DRE = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_dre"]}[Data]
+				in
+				    Dados
+

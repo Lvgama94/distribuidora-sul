@@ -1,0 +1,337 @@
+/// Tabela só de medidas (a coluna é oculta). Pastas: 1. DRE, 2. Orçamento, 3. Contas a Receber,
+/// 4. Caixa e Contas a Pagar, 5. Comparativos.
+table Medidas
+
+	/// Receita das notas faturadas, já sem o desconto comercial.
+	measure 'Receita Bruta' = CALCULATE(SUM(DRE[Valor]), Conta[Código Conta] = "3.01")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Devoluções' = CALCULATE(SUM(DRE[Valor]), Conta[Código Conta] = "3.02")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	/// ICMS e PIS/COFINS apurados no mês (regime simplificado do projeto).
+	measure 'Impostos sobre Vendas' = CALCULATE(SUM(DRE[Valor]), Conta[Código Conta] = "3.03")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Receita Líquida' = [Receita Bruta] - [Devoluções] - [Impostos sobre Vendas]
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	/// Custo médio das mercadorias vendidas (líquido das devoluções).
+	measure CMV = CALCULATE(SUM(DRE[Valor]), Conta[Grupo DRE] = "CMV")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Lucro Bruto' = [Receita Líquida] - [CMV]
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Margem Bruta %' = DIVIDE([Lucro Bruto], [Receita Líquida])
+		formatString: 0.0%
+		displayFolder: 1. DRE
+
+	measure 'Despesas com Pessoal' = CALCULATE(SUM(DRE[Valor]), Conta[Grupo DRE] = "Despesas com pessoal")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	/// Pessoal + administrativas + logísticas + comerciais.
+	measure 'Despesas Operacionais' = CALCULATE(SUM(DRE[Valor]), Conta[Ordem DRE] IN {4, 5, 6, 7})
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Resultado Operacional' = [Lucro Bruto] - [Despesas Operacionais]
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Resultado Financeiro' = -CALCULATE(SUM(DRE[Valor]), Conta[Grupo DRE] = "Resultado financeiro")
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	/// Soma de todas as contas da DRE com sinal: receita menos deduções, CMV e despesas.
+	measure 'Resultado Líquido' = SUM(DRE[Valor Resultado])
+		formatString: R$ #,##0
+		displayFolder: 1. DRE
+
+	measure 'Margem Líquida %' = DIVIDE([Resultado Líquido], [Receita Líquida])
+		formatString: 0.0%
+		displayFolder: 1. DRE
+
+	/// Valor da DRE com sinal, para usar numa matriz com Grupo DRE e Conta nas linhas.
+	measure Realizado = SUM(DRE[Valor Resultado])
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 1. DRE
+
+	/// Análise vertical: peso de cada linha da DRE sobre a receita líquida.
+	measure '% da Receita Líquida' = DIVIDE([Realizado], CALCULATE([Receita Líquida], REMOVEFILTERS(Conta)))
+		formatString: 0.0%
+		displayFolder: 1. DRE
+
+	/// Orçamento com o sinal da conta (receita positiva, custos e despesas negativos).
+	/// Fica em branco quando há filtro de filial, porque o orçamento não é aberto por filial.
+	measure 'Orçado' =
+			IF(
+			    ISFILTERED(Filial),
+			    BLANK(),
+			    SUMX('Orçamento', 'Orçamento'[Valor] * RELATED(Conta[Sinal]))
+			)
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 2. Orçamento
+
+	/// Realizado - Orçado. Negativo = pior que o orçado (vale para receitas e para despesas).
+	measure Desvio = IF(ISBLANK([Orçado]), BLANK(), [Realizado] - [Orçado])
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 2. Orçamento
+
+	measure 'Desvio %' = DIVIDE([Desvio], ABS([Orçado]))
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 2. Orçamento
+
+	measure 'Receita Orçada' = CALCULATE([Orçado], Conta[Código Conta] = "3.01")
+		formatString: R$ #,##0
+		displayFolder: 2. Orçamento
+
+	measure 'Atingimento da Receita %' = DIVIDE([Receita Bruta], [Receita Orçada])
+		formatString: 0.0%
+		displayFolder: 2. Orçamento
+
+	measure 'Resultado Orçado' = CALCULATE([Orçado], REMOVEFILTERS(Conta))
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 2. Orçamento
+
+	measure 'Desvio do Resultado' = IF(ISBLANK([Resultado Orçado]), BLANK(), [Resultado Líquido] - [Resultado Orçado])
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 2. Orçamento
+
+	/// Títulos não pagos na data de corte (31/12/2025). Ignora o filtro de datas.
+	measure 'Carteira em Aberto' =
+			CALCULATE(
+			    SUM('Contas a Receber'[Valor]),
+			    'Contas a Receber'[Status] <> "PAGO",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	measure Vencido =
+			CALCULATE(
+			    SUM('Contas a Receber'[Valor]),
+			    'Contas a Receber'[Status] = "VENCIDO",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	measure 'A Vencer' =
+			CALCULATE(
+			    SUM('Contas a Receber'[Valor]),
+			    'Contas a Receber'[Status] = "A VENCER",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	measure 'Vencido há Mais de 90 Dias' =
+			CALCULATE(
+			    SUM('Contas a Receber'[Valor]),
+			    'Contas a Receber'[Faixa de Aging] = "Mais de 90 dias",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	/// Vencido ÷ carteira em aberto, na data de corte.
+	measure 'Inadimplência %' = DIVIDE([Vencido], [Carteira em Aberto])
+		formatString: 0.0%
+		displayFolder: 3. Contas a Receber
+
+	measure 'Clientes Inadimplentes' =
+			CALCULATE(
+			    DISTINCTCOUNT('Contas a Receber'[cliente_key]),
+			    'Contas a Receber'[Status] = "VENCIDO",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: 0
+		displayFolder: 3. Contas a Receber
+
+	/// Valor do contas a receber por mês de vencimento (o calendário filtra pelo vencimento).
+	measure 'Valor a Receber' = SUM('Contas a Receber'[Valor])
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	/// Entradas de caixa: valor efetivamente recebido, pela data do pagamento.
+	measure Recebido =
+			CALCULATE(
+			    SUM('Contas a Receber'[Valor Pago]),
+			    USERELATIONSHIP('Contas a Receber'[pagamento_key], 'Calendário'[data_key])
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	measure 'Juros e Multas Recebidos' =
+			CALCULATE(
+			    SUM('Contas a Receber'[Juros e Multa]),
+			    USERELATIONSHIP('Contas a Receber'[pagamento_key], 'Calendário'[data_key])
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Contas a Receber
+
+	/// Prazo médio de recebimento: dias entre emissão e pagamento, ponderado pelo valor, títulos pagos no período.
+	measure 'PMR (dias)' =
+			CALCULATE(
+			    DIVIDE(
+			        SUMX('Contas a Receber', 'Contas a Receber'[Valor] * 'Contas a Receber'[Prazo Real (dias)]),
+			        SUM('Contas a Receber'[Valor])
+			    ),
+			    USERELATIONSHIP('Contas a Receber'[pagamento_key], 'Calendário'[data_key]),
+			    NOT ISBLANK('Contas a Receber'[Prazo Real (dias)])
+			)
+		formatString: 0.0
+		displayFolder: 3. Contas a Receber
+
+	/// Prazo combinado com o cliente (emissão até vencimento), mesma base de títulos do PMR.
+	measure 'Prazo Médio Concedido (dias)' =
+			CALCULATE(
+			    DIVIDE(
+			        SUMX('Contas a Receber', 'Contas a Receber'[Valor] * 'Contas a Receber'[Prazo Concedido (dias)]),
+			        SUM('Contas a Receber'[Valor])
+			    ),
+			    USERELATIONSHIP('Contas a Receber'[pagamento_key], 'Calendário'[data_key]),
+			    NOT ISBLANK('Contas a Receber'[Prazo Real (dias)])
+			)
+		formatString: 0.0
+		displayFolder: 3. Contas a Receber
+
+	/// Quantos dias, em média ponderada, os clientes pagam depois do combinado.
+	measure 'Atraso Médio no Recebimento (dias)' = [PMR (dias)] - [Prazo Médio Concedido (dias)]
+		formatString: 0.0
+		displayFolder: 3. Contas a Receber
+
+	/// Saídas de caixa: valor efetivamente pago, pela data do pagamento (inclui compra de mercadoria).
+	measure Pago =
+			CALCULATE(
+			    SUM('Contas a Pagar'[Valor Pago]),
+			    USERELATIONSHIP('Contas a Pagar'[pagamento_key], 'Calendário'[data_key])
+			)
+		formatString: R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	measure 'Geração de Caixa' = [Recebido] - [Pago]
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Soma da geração de caixa desde jan/2024 até a última data do contexto (não inclui o saldo bancário inicial).
+	measure 'Geração de Caixa Acumulada' =
+			VAR UltimaData = MAX('Calendário'[Data])
+			RETURN
+			    CALCULATE(
+			        [Geração de Caixa],
+			        REMOVEFILTERS('Calendário'),
+			        'Calendário'[Data] <= UltimaData
+			    )
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	measure 'A Pagar em Aberto' =
+			CALCULATE(
+			    SUM('Contas a Pagar'[Valor]),
+			    'Contas a Pagar'[Status] <> "PAGO",
+			    REMOVEFILTERS('Calendário')
+			)
+		formatString: R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Valor do contas a pagar por mês de vencimento (o calendário filtra pelo vencimento).
+	measure 'Valor a Pagar' = SUM('Contas a Pagar'[Valor])
+		formatString: R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Projeção: o que entra menos o que sai nos títulos ainda abertos, por mês de vencimento.
+	measure 'Saldo Projetado' =
+			CALCULATE([Valor a Receber], 'Contas a Receber'[Status] <> "PAGO")
+			    - CALCULATE([Valor a Pagar], 'Contas a Pagar'[Status] <> "PAGO")
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	measure 'Juros e Multas Pagos' =
+			CALCULATE(
+			    SUM('Contas a Pagar'[Juros e Multa]),
+			    USERELATIONSHIP('Contas a Pagar'[pagamento_key], 'Calendário'[data_key])
+			)
+		formatString: R$ #,##0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Percentual dos títulos pagos no período que foram pagos depois do vencimento.
+	measure 'Pagamentos em Atraso %' =
+			CALCULATE(
+			    DIVIDE(
+			        COUNTROWS(FILTER('Contas a Pagar', 'Contas a Pagar'[Dias de Atraso] > 0)),
+			        COUNTROWS('Contas a Pagar')
+			    ),
+			    USERELATIONSHIP('Contas a Pagar'[pagamento_key], 'Calendário'[data_key]),
+			    'Contas a Pagar'[Status] = "PAGO"
+			)
+		formatString: 0.0%
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Prazo médio de pagamento a fornecedores de mercadoria (emissão até pagamento, ponderado pelo valor).
+	measure 'PMP (dias)' =
+			CALCULATE(
+			    DIVIDE(
+			        SUMX('Contas a Pagar', 'Contas a Pagar'[Valor] * 'Contas a Pagar'[Prazo Real (dias)]),
+			        SUM('Contas a Pagar'[Valor])
+			    ),
+			    USERELATIONSHIP('Contas a Pagar'[pagamento_key], 'Calendário'[data_key]),
+			    NOT ISBLANK('Contas a Pagar'[Prazo Real (dias)]),
+			    Conta[Código Conta] = "1.05"
+			)
+		formatString: 0.0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	/// Positivo = a empresa recebe dos clientes depois de pagar os fornecedores e precisa financiar a diferença.
+	measure 'PMR - PMP (dias)' = [PMR (dias)] - [PMP (dias)]
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 4. Caixa e Contas a Pagar
+
+	measure 'Receita Líquida Ano Anterior' = CALCULATE([Receita Líquida], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: R$ #,##0
+		displayFolder: 5. Comparativos
+
+	measure 'Receita Líquida vs Ano Anterior %' =
+			DIVIDE([Receita Líquida] - [Receita Líquida Ano Anterior], [Receita Líquida Ano Anterior])
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5. Comparativos
+
+	measure 'Resultado Líquido Ano Anterior' = CALCULATE([Resultado Líquido], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 5. Comparativos
+
+	measure 'Margem Líquida Ano Anterior %' = CALCULATE([Margem Líquida %], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: 0.0%
+		displayFolder: 5. Comparativos
+
+	/// Variação da margem líquida em pontos percentuais.
+	measure 'Margem Líquida vs Ano Anterior (p.p.)' = ([Margem Líquida %] - [Margem Líquida Ano Anterior %]) * 100
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 5. Comparativos
+
+	measure 'Resultado Acumulado no Ano' = TOTALYTD([Resultado Líquido], 'Calendário'[Data])
+		formatString: R$ #,##0;-R$ #,##0
+		displayFolder: 5. Comparativos
+
+	measure 'Data de Corte' = DATE(2025, 12, 31)
+		formatString: dd/mm/yyyy
+		displayFolder: 5. Comparativos
+
+	column Coluna
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Coluna
+
+	partition Medidas = m
+		mode: import
+		source = #table(type table [Coluna = text], {})
+

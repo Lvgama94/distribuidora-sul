@@ -1,0 +1,5 @@
+/// Instância do SQL Server onde o banco DistribuidoraSul foi carregado (python/carregar_sql.py)
+expression Servidor = "localhost\SQLEXPRESS" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+
+expression Banco = "DistribuidoraSul" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+

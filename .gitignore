@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 ~$*.xlsx
 *.pbix.bak
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

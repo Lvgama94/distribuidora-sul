@@ -79,7 +79,8 @@ CREATE TABLE dw.dim_conta (
     grupo_dre   NVARCHAR(60) NOT NULL,
     ordem_grupo TINYINT      NOT NULL,   -- ordem das linhas na DRE
     sinal       SMALLINT     NOT NULL,   -- +1 soma no resultado, -1 subtrai
-    entra_dre   BIT          NOT NULL
+    entra_dre   BIT          NOT NULL,
+    grupo_caixa NVARCHAR(30) NOT NULL    -- agrupamento das saídas no fluxo de caixa
 );
 
 CREATE TABLE dw.dim_fornecedor (
@@ -176,7 +177,9 @@ CREATE TABLE dw.fato_conta_receber (
     juros_multa    DECIMAL(14, 2) NOT NULL,
     status         VARCHAR(10)    NOT NULL,   -- PAGO / A VENCER / VENCIDO na data de corte
     dias_atraso    INT            NOT NULL,
-    faixa_aging    NVARCHAR(16)   NOT NULL
+    faixa_aging    NVARCHAR(16)   NOT NULL,
+    prazo_concedido_dias INT      NOT NULL,   -- vencimento - emissão
+    prazo_real_dias      INT      NULL        -- pagamento - emissão (títulos pagos), base do PMR
 );
 
 CREATE TABLE dw.fato_conta_pagar (
@@ -195,7 +198,8 @@ CREATE TABLE dw.fato_conta_pagar (
     valor_pago     DECIMAL(14, 2) NULL,
     juros_multa    DECIMAL(14, 2) NOT NULL,
     status         VARCHAR(10)    NOT NULL,
-    dias_atraso    INT            NOT NULL
+    dias_atraso    INT            NOT NULL,
+    prazo_real_dias INT           NULL        -- pagamento - emissão (títulos pagos), base do PMP
 );
 
 CREATE TABLE dw.fato_compra (

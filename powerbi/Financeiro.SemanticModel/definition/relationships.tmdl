@@ -1,0 +1,85 @@
+relationship dre_calendario
+	fromColumn: DRE.competencia_key
+	toColumn: 'Calendário'.data_key
+
+relationship dre_conta
+	fromColumn: DRE.conta_key
+	toColumn: Conta.conta_key
+
+relationship dre_centro_custo
+	fromColumn: DRE.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship dre_filial
+	fromColumn: DRE.filial_key
+	toColumn: Filial.filial_key
+
+relationship orcamento_calendario
+	fromColumn: 'Orçamento'.competencia_key
+	toColumn: 'Calendário'.data_key
+
+relationship orcamento_conta
+	fromColumn: 'Orçamento'.conta_key
+	toColumn: Conta.conta_key
+
+relationship orcamento_centro_custo
+	fromColumn: 'Orçamento'.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship receber_vencimento
+	fromColumn: 'Contas a Receber'.vencimento_key
+	toColumn: 'Calendário'.data_key
+
+relationship receber_emissao
+	isActive: false
+	fromColumn: 'Contas a Receber'.emissao_key
+	toColumn: 'Calendário'.data_key
+
+relationship receber_pagamento
+	isActive: false
+	fromColumn: 'Contas a Receber'.pagamento_key
+	toColumn: 'Calendário'.data_key
+
+relationship receber_cliente
+	fromColumn: 'Contas a Receber'.cliente_key
+	toColumn: Cliente.cliente_key
+
+relationship receber_filial
+	fromColumn: 'Contas a Receber'.filial_key
+	toColumn: Filial.filial_key
+
+relationship pagar_vencimento
+	fromColumn: 'Contas a Pagar'.vencimento_key
+	toColumn: 'Calendário'.data_key
+
+relationship pagar_pagamento
+	isActive: false
+	fromColumn: 'Contas a Pagar'.pagamento_key
+	toColumn: 'Calendário'.data_key
+
+relationship pagar_emissao
+	isActive: false
+	fromColumn: 'Contas a Pagar'.emissao_key
+	toColumn: 'Calendário'.data_key
+
+relationship pagar_competencia
+	isActive: false
+	fromColumn: 'Contas a Pagar'.competencia_key
+	toColumn: 'Calendário'.data_key
+
+relationship pagar_fornecedor
+	fromColumn: 'Contas a Pagar'.fornecedor_key
+	toColumn: Fornecedor.fornecedor_key
+
+relationship pagar_conta
+	fromColumn: 'Contas a Pagar'.conta_key
+	toColumn: Conta.conta_key
+
+relationship pagar_centro_custo
+	fromColumn: 'Contas a Pagar'.cc_key
+	toColumn: 'Centro de Custo'.cc_key
+
+relationship pagar_filial
+	fromColumn: 'Contas a Pagar'.filial_key
+	toColumn: Filial.filial_key
+

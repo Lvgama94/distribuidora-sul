@@ -1,0 +1,36 @@
+/// Matriz Porto Alegre e filiais de Caxias do Sul e Pelotas. O orçamento não é aberto por filial.
+table Filial
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column Filial
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nome
+
+	column Cidade
+		dataType: string
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+	column UF
+		dataType: string
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: uf
+
+	partition Filial = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_filial"]}[Data]
+				in
+				    Dados
+

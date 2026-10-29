@@ -1,0 +1,122 @@
+/// Um título (parcela) por linha. Status, dias de atraso e aging foram calculados na data de corte (31/12/2025).
+/// Relação ativa com o calendário pelo vencimento; emissão e pagamento são usados com USERELATIONSHIP.
+table 'Contas a Receber'
+
+	column 'Título'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: titulo
+
+	column cliente_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: cliente_key
+
+	column filial_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: filial_key
+
+	column emissao_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: emissao_key
+
+	column vencimento_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: vencimento_key
+
+	column pagamento_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: pagamento_key
+
+	column 'Nota Fiscal'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: nf_numero
+
+	column Parcela
+		dataType: string
+		summarizeBy: none
+		sourceColumn: parcela
+
+	column Valor
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		sourceColumn: valor
+
+	column 'Valor Pago'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		sourceColumn: valor_pago
+
+	column 'Juros e Multa'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		sourceColumn: juros_multa
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: status
+
+	column 'Dias de Atraso'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: dias_atraso
+
+	column 'Faixa de Aging'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: faixa_aging
+		sortByColumn: 'Ordem Aging'
+
+	column 'Ordem Aging'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ordem_aging
+
+	column 'Prazo Concedido (dias)'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: prazo_concedido_dias
+
+	column 'Prazo Real (dias)'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: prazo_real_dias
+
+	partition 'Contas a Receber' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_conta_receber"]}[Data],
+				    Faixas = {"A vencer", "1 a 30 dias", "31 a 60 dias", "61 a 90 dias", "Mais de 90 dias", "Liquidado"},
+				    ComOrdem = Table.AddColumn(Dados, "ordem_aging", each List.PositionOf(Faixas, [faixa_aging]) + 1, Int64.Type)
+				in
+				    ComOrdem
+

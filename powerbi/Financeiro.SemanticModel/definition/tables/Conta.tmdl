@@ -1,0 +1,62 @@
+/// Plano de contas gerencial. Ordem DRE e Sinal montam a DRE; Grupo de Caixa agrupa as saídas no fluxo de caixa.
+table Conta
+
+	column conta_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: conta_key
+
+	column 'Código Conta'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cod_conta
+
+	column Conta
+		dataType: string
+		summarizeBy: none
+		sourceColumn: descricao
+		sortByColumn: 'Código Conta'
+
+	column 'Grupo DRE'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: grupo_dre
+		sortByColumn: 'Ordem DRE'
+
+	column 'Ordem DRE'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ordem_grupo
+
+	column Sinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: sinal
+
+	column 'Entra na DRE'
+		dataType: boolean
+		isHidden
+		formatString: """Sim"";""Sim"";""Não"""
+		summarizeBy: none
+		sourceColumn: entra_dre
+
+	column 'Grupo de Caixa'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: grupo_caixa
+
+	partition Conta = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "dim_conta"]}[Data]
+				in
+				    Dados
+

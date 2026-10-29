@@ -104,6 +104,7 @@ docs/             dicionário de dados e relatório de qualidade
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
 powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatório) e tema de cores
+excel/            pastas de trabalho com Power Query e o código M de cada consulta (excel/consultas)
 ```
 
 ## Painéis sobre esta base
@@ -120,7 +121,9 @@ powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatór
 
    ![Compras e Estoque: Estoque e Ruptura](docs/img/compras_estoque_ruptura.png)
 
-4. **Excel + automação**: consolidação com Power Query e conciliação
+4. **Excel + automação**: duas rotinas administrativas que viram um clique em "Atualizar Tudo", só com Excel e Power Query: a consolidação dos 24 arquivos mensais de ponto do RH (com mudança de layout no meio) e a conciliação bancária de dezembro (1.601 lançamentos, 11 pendências encontradas). Veja o [roteiro](docs/excel_automacao.md).
+
+   ![Excel: conciliação bancária](docs/img/excel_conciliacao_bancaria.png)
 
 ---
 

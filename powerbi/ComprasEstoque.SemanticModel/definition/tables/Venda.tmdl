@@ -1,0 +1,73 @@
+/// Itens de nota fiscal (vendas e devoluções). Usada para a curva ABC e para o nível de serviço:
+/// quantidade pedida pelo cliente x quantidade faturada (a diferença é ruptura de estoque).
+table Venda
+	lineageTag: bce4d9b3-b17a-4187-b98d-1ab63a5a2629
+
+	column data_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2e25d7d2-deec-4697-ab68-8862e7052988
+		summarizeBy: none
+		sourceColumn: data_key
+
+	column produto_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e5a3b1f2-d6ad-4070-8fd6-213216bf44ce
+		summarizeBy: none
+		sourceColumn: produto_key
+
+	column 'Tipo de Operação'
+		dataType: string
+		lineageTag: c7b102eb-4d8b-403c-b945-409725abb36a
+		summarizeBy: none
+		sourceColumn: tipo_operacao
+
+	column 'Qtd Pedida'
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: fc5fd8e6-993f-4f9f-b4e0-76ad92b11df8
+		sourceColumn: qtd_pedida
+
+	column 'Qtd Faturada'
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 6b14ee23-71a5-4457-937a-46bbcff4c379
+		sourceColumn: qtd_faturada
+
+	column 'Preço Unitário'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0.00
+		lineageTag: 9389cb00-aa36-4ba1-bb21-233be4843439
+		sourceColumn: preco_unitario
+
+	column 'Desconto %'
+		dataType: double
+		isHidden
+		formatString: 0.0
+		lineageTag: 39a07126-a9f5-4c1d-8468-a733c545dbe8
+		sourceColumn: desconto_pct
+
+	column 'Receita Líquida'
+		dataType: double
+		isHidden
+		formatString: R$ #,##0
+		lineageTag: 1045f79a-39d5-41f6-94c2-7d58877e721a
+		sourceColumn: receita_liquida
+
+	partition Venda = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_venda"]}[Data],
+				    Colunas = Table.SelectColumns(Dados, {"data_key", "produto_key", "tipo_operacao", "qtd_pedida", "qtd_faturada",
+				        "preco_unitario", "desconto_pct", "receita_liquida"})
+				in
+				    Colunas
+

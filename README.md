@@ -116,7 +116,10 @@ powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatór
 
    ![People Analytics: Rotatividade](docs/img/rh_rotatividade.png)
 
-3. **Compras e estoque**: curva ABC, ruptura e pontualidade de fornecedores
+3. **Compras e Estoque**: pontualidade de fornecedores, giro e cobertura de estoque, ruptura e venda perdida, curva ABC, em 3 páginas. O modelo tem 29 medidas DAX conferidas contra o SQL. Veja o [roteiro do painel](docs/painel_compras_estoque.md).
+
+   ![Compras e Estoque: Estoque e Ruptura](docs/img/compras_estoque_ruptura.png)
+
 4. **Excel + automação**: consolidação com Power Query e conciliação
 
 ---

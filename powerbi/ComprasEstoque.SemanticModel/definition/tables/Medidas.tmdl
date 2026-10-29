@@ -1,0 +1,222 @@
+/// Tabela só de medidas (a coluna é oculta). Pastas: 1. Compras, 2. Estoque, 3. Nível de Serviço,
+/// 4. Curva ABC, 5. Comparativos, 6. Formatação.
+table Medidas
+	lineageTag: 83f82a9a-65ed-493d-924e-18e44e065767
+
+	measure 'Valor Comprado' = SUM(Compra[Valor Total])
+		formatString: R$ #,##0
+		displayFolder: 1. Compras
+		lineageTag: d8739691-d7a5-42d0-b74d-f11827040423
+
+	measure 'Pedidos de Compra' = DISTINCTCOUNT(Compra[Pedido de Compra])
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: e750d8f7-0a9d-4c96-94cc-6b069e9e2df9
+
+	measure 'Pedidos Entregues' = CALCULATE(DISTINCTCOUNT(Compra[Pedido de Compra]), NOT ISBLANK(Compra[entrega_real_key]))
+		formatString: #,##0
+		displayFolder: 1. Compras
+		lineageTag: 2e0db40e-1e2f-4751-abbc-1a61ef06ee43
+
+	/// % dos pedidos entregues até a data prometida. Medido por pedido: todos os itens de um pedido chegam juntos.
+	measure 'Entregas no Prazo %' =
+			VAR Pedidos =
+			    ADDCOLUMNS(
+			        CALCULATETABLE(VALUES(Compra[Pedido de Compra]), NOT ISBLANK(Compra[entrega_real_key])),
+			        "@noPrazo", CALCULATE(MAX(Compra[Entregue no Prazo]))
+			    )
+			RETURN DIVIDE(COUNTROWS(FILTER(Pedidos, [@noPrazo] = 1)), COUNTROWS(Pedidos))
+		formatString: 0.0%
+		displayFolder: 1. Compras
+		lineageTag: 7cfee8de-2ff0-455a-acfd-4c9c27cd0797
+
+	/// Média de dias de atraso considerando só os pedidos que atrasaram.
+	measure 'Atraso Médio quando Atrasa (dias)' =
+			VAR Pedidos =
+			    ADDCOLUMNS(
+			        CALCULATETABLE(VALUES(Compra[Pedido de Compra]), NOT ISBLANK(Compra[entrega_real_key])),
+			        "@atraso", CALCULATE(MAX(Compra[Dias de Atraso na Entrega]))
+			    )
+			RETURN AVERAGEX(FILTER(Pedidos, [@atraso] > 0), [@atraso])
+		formatString: 0.0
+		displayFolder: 1. Compras
+		lineageTag: 3a26e412-3831-4da0-a5f6-46bff942ef40
+
+	/// Valor do estoque (a custo) no último dia do período, limitado à data de corte.
+	measure 'Estoque (R$)' =
+			VAR Ultima = MIN(MAX('Calendário'[Data]), DATE(2025, 12, 31))
+			RETURN
+			    IF(
+			        MIN('Calendário'[Data]) > DATE(2025, 12, 31),
+			        BLANK(),
+			        CALCULATE(SUM('Movimento de Estoque'[Valor]), REMOVEFILTERS('Calendário'), 'Calendário'[Data] <= Ultima)
+			    )
+		formatString: R$ #,##0
+		displayFolder: 2. Estoque
+		lineageTag: 676e66f1-40c9-427c-a157-a60416c2dda2
+
+	measure 'Estoque (unidades)' =
+			VAR Ultima = MIN(MAX('Calendário'[Data]), DATE(2025, 12, 31))
+			RETURN
+			    IF(
+			        MIN('Calendário'[Data]) > DATE(2025, 12, 31),
+			        BLANK(),
+			        CALCULATE(SUM('Movimento de Estoque'[Quantidade]), REMOVEFILTERS('Calendário'), 'Calendário'[Data] <= Ultima)
+			    )
+		formatString: #,##0
+		displayFolder: 2. Estoque
+		lineageTag: 5a2bd75f-56d3-494c-b2c3-360c9daf4a60
+
+	/// Custo das mercadorias que saíram por venda, líquido das devoluções.
+	measure 'CMV das Vendas' =
+			-CALCULATE(
+			    SUM('Movimento de Estoque'[Valor]),
+			    'Movimento de Estoque'[Tipo de Movimento] IN {"Saída por venda", "Devolução de cliente"}
+			)
+		formatString: R$ #,##0
+		displayFolder: 2. Estoque
+		lineageTag: 3f315680-9695-4d10-9e28-d5056347a2f9
+
+	/// Média do valor do estoque no fim de cada mês do período.
+	measure 'Estoque Médio (R$)' =
+			AVERAGEX(
+			    FILTER(
+			        VALUES('Calendário'[Primeiro Dia do Mês]),
+			        'Calendário'[Primeiro Dia do Mês] >= DATE(2024, 1, 1) && 'Calendário'[Primeiro Dia do Mês] <= DATE(2025, 12, 1)
+			    ),
+			    CALCULATE([Estoque (R$)])
+			)
+		formatString: R$ #,##0
+		displayFolder: 2. Estoque
+		lineageTag: 088bc891-d01b-49d4-bc8c-97069fcfd021
+
+	/// Quantas vezes o estoque "girou" no período: CMV ÷ estoque médio.
+	measure 'Giro de Estoque' = DIVIDE([CMV das Vendas], [Estoque Médio (R$)])
+		formatString: 0.0
+		displayFolder: 2. Estoque
+		lineageTag: 68af5b3a-9245-4310-b460-6d8cd769a744
+
+	/// Quantos dias de venda o estoque do fim do período cobre, pelo ritmo médio do período.
+	measure 'Cobertura de Estoque (dias)' =
+			VAR Dias =
+			    CALCULATE(
+			        COUNTROWS('Calendário'),
+			        KEEPFILTERS('Calendário'[Data] >= DATE(2024, 1, 1) && 'Calendário'[Data] <= DATE(2025, 12, 31))
+			    )
+			RETURN DIVIDE([Estoque (R$)], DIVIDE([CMV das Vendas], Dias))
+		formatString: 0
+		displayFolder: 2. Estoque
+		lineageTag: 2c00151c-75db-4f34-9858-d35a40fd12f8
+
+	measure 'Unidades Pedidas' = CALCULATE(SUM(Venda[Qtd Pedida]), Venda[Tipo de Operação] = "VENDA")
+		formatString: #,##0
+		displayFolder: 3. Nível de Serviço
+		lineageTag: 4b59fab5-e083-40a5-aaff-69183931ed1d
+
+	measure 'Unidades Atendidas' = CALCULATE(SUM(Venda[Qtd Faturada]), Venda[Tipo de Operação] = "VENDA")
+		formatString: #,##0
+		displayFolder: 3. Nível de Serviço
+		lineageTag: 84cad6c7-f6f0-44ec-beb1-250367b7d9fa
+
+	/// Unidades faturadas ÷ unidades que os clientes pediram (fill rate).
+	measure 'Nível de Serviço %' = DIVIDE([Unidades Atendidas], [Unidades Pedidas])
+		formatString: 0.0%
+		displayFolder: 3. Nível de Serviço
+		lineageTag: f9671d9f-9631-4d2c-9375-d9672302505a
+
+	measure 'Unidades Não Atendidas' = [Unidades Pedidas] - [Unidades Atendidas]
+		formatString: #,##0
+		displayFolder: 3. Nível de Serviço
+		lineageTag: 34113668-c09e-4a24-98ba-b5b5fbf3803f
+
+	measure 'Ruptura %' = DIVIDE([Unidades Não Atendidas], [Unidades Pedidas])
+		formatString: 0.0%
+		displayFolder: 3. Nível de Serviço
+		lineageTag: 1731489a-5c23-458f-8983-249299625fbc
+
+	/// Receita que deixou de entrar porque faltou produto: unidades não atendidas × preço com desconto.
+	measure 'Venda Perdida por Ruptura' =
+			CALCULATE(
+			    SUMX(Venda, (Venda[Qtd Pedida] - Venda[Qtd Faturada]) * Venda[Preço Unitário] * (1 - Venda[Desconto %] / 100)),
+			    Venda[Tipo de Operação] = "VENDA"
+			)
+		formatString: R$ #,##0
+		displayFolder: 3. Nível de Serviço
+		lineageTag: 2d390264-4b7e-4aba-897b-a45660834d0b
+
+	measure 'Produtos com Ruptura' = COUNTROWS(FILTER(VALUES(Produto[Código Produto]), [Unidades Não Atendidas] > 0))
+		formatString: #,##0
+		displayFolder: 3. Nível de Serviço
+		lineageTag: f29014e8-f131-4f74-8e8d-e183ec7e632d
+
+	measure 'Receita Líquida' = SUM(Venda[Receita Líquida])
+		formatString: R$ #,##0
+		displayFolder: 4. Curva ABC
+		lineageTag: f94d8c44-0a79-463c-b7b2-32c38ef29a05
+
+	measure Produtos = COUNTROWS(Produto)
+		formatString: #,##0
+		displayFolder: 4. Curva ABC
+		lineageTag: 4759b3a0-9811-4e77-99d2-5eded3750132
+
+	/// Fatia dos produtos que está em cada classe (use com Produto[Classe ABC]).
+	measure '% dos Produtos' = DIVIDE(COUNTROWS(Produto), CALCULATE(COUNTROWS(Produto), REMOVEFILTERS(Produto[Classe ABC])))
+		formatString: 0%
+		displayFolder: 4. Curva ABC
+		lineageTag: ad02aa48-581a-47ec-b328-71bd0b0e0d52
+
+	/// Fatia da receita que cada classe representa (use com Produto[Classe ABC]).
+	measure '% da Receita' = DIVIDE([Receita Líquida], CALCULATE([Receita Líquida], REMOVEFILTERS(Produto[Classe ABC])))
+		formatString: 0%
+		displayFolder: 4. Curva ABC
+		lineageTag: 6e9672c9-85c7-404f-9744-97174b023b9d
+
+	measure 'Participação na Receita' = DIVIDE([Receita Líquida], CALCULATE([Receita Líquida], REMOVEFILTERS(Produto)))
+		formatString: 0.0%
+		displayFolder: 4. Curva ABC
+		lineageTag: b695ea31-9bc0-417b-89ef-c4ecfce981b7
+
+	measure 'Produtos Classe A' = CALCULATE([Produtos], Produto[Classe ABC] = "A")
+		formatString: #,##0
+		displayFolder: 4. Curva ABC
+		lineageTag: 6261655d-de11-434f-9113-3ba421540387
+
+	measure '% dos Produtos na Classe A' = CALCULATE([% dos Produtos], Produto[Classe ABC] = "A")
+		formatString: 0%
+		displayFolder: 4. Curva ABC
+		lineageTag: 572a54e8-99d2-4330-9916-d575c981cf78
+
+	measure '% da Receita na Classe A' = CALCULATE([% da Receita], Produto[Classe ABC] = "A")
+		formatString: 0%
+		displayFolder: 4. Curva ABC
+		lineageTag: 35975dc9-babb-4249-b27b-646f573fe9b9
+
+	measure 'Valor Comprado Ano Anterior' = CALCULATE([Valor Comprado], SAMEPERIODLASTYEAR('Calendário'[Data]))
+		formatString: R$ #,##0
+		displayFolder: 5. Comparativos
+		lineageTag: 9bbbfa6b-b1fc-44d0-8406-397a367fb611
+
+	measure 'Valor Comprado vs Ano Anterior %' = DIVIDE([Valor Comprado] - [Valor Comprado Ano Anterior], [Valor Comprado Ano Anterior])
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5. Comparativos
+		lineageTag: d3ad50d8-057e-4515-a09a-9bffbe3b92b6
+
+	/// Verde a partir de 80% no prazo, âmbar entre 60% e 80%, vermelho abaixo de 60%.
+	measure 'Cor da Pontualidade' =
+			VAR v = [Entregas no Prazo %]
+			RETURN IF(ISBLANK(v), BLANK(), IF(v < 0.6, "#C62828", IF(v < 0.8, "#B26A00", "#2E7D32")))
+		isHidden
+		displayFolder: 6. Formatação
+		lineageTag: 048ebb4e-4df0-486f-ba53-a0e04340636a
+
+	column Coluna
+		dataType: string
+		isHidden
+		lineageTag: f13bd9ea-01b1-4652-89a3-263c64ec89b6
+		summarizeBy: none
+		sourceColumn: Coluna
+
+	partition Medidas = m
+		mode: import
+		source = #table(type table [Coluna = text], {})
+

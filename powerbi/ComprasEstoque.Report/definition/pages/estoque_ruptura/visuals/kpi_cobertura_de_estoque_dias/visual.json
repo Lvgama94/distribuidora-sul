@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_cobertura_de_estoque_dias",
+  "position": {
+    "x": 440,
+    "y": 88,
+    "z": 7000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Cobertura de Estoque (dias)"
+                }
+              },
+              "queryRef": "Medidas.Cobertura de Estoque (dias)",
+              "nativeQueryRef": "Cobertura de Estoque (dias)",
+              "displayName": "Cobertura (dias)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

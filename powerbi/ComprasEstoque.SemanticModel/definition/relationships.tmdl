@@ -1,0 +1,29 @@
+relationship compra_data_pedido
+	fromColumn: Compra.data_pedido_key
+	toColumn: Calendário.data_key
+
+relationship compra_entrega_real
+	isActive: false
+	fromColumn: Compra.entrega_real_key
+	toColumn: Calendário.data_key
+
+relationship compra_produto
+	fromColumn: Compra.produto_key
+	toColumn: Produto.produto_key
+
+relationship estoque_calendario
+	fromColumn: 'Movimento de Estoque'.data_key
+	toColumn: Calendário.data_key
+
+relationship estoque_produto
+	fromColumn: 'Movimento de Estoque'.produto_key
+	toColumn: Produto.produto_key
+
+relationship venda_calendario
+	fromColumn: Venda.data_key
+	toColumn: Calendário.data_key
+
+relationship venda_produto
+	fromColumn: Venda.produto_key
+	toColumn: Produto.produto_key
+

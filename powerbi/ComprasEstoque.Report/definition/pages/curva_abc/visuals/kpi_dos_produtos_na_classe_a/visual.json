@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_dos_produtos_na_classe_a",
+  "position": {
+    "x": 772.8,
+    "y": 88,
+    "z": 8000,
+    "height": 96,
+    "width": 233.6,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% dos Produtos na Classe A"
+                }
+              },
+              "queryRef": "Medidas.% dos Produtos na Classe A",
+              "nativeQueryRef": "% dos Produtos na Classe A",
+              "displayName": "Fatia dos produtos (A)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

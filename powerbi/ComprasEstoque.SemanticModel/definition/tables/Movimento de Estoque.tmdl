@@ -1,0 +1,51 @@
+/// Movimentos do estoque central a custo: saldo inicial, entradas por compra, saídas por venda e devoluções.
+/// A soma acumulada até uma data dá a posição de estoque naquela data.
+table 'Movimento de Estoque'
+	lineageTag: c34b2dd1-fd9f-452e-b0fe-97c314190633
+
+	column data_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b9533301-20e7-4558-bc0a-a7f0882661b6
+		summarizeBy: none
+		sourceColumn: data_key
+
+	column produto_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 758ab0cf-8f0d-4199-a5bd-2050a93de85a
+		summarizeBy: none
+		sourceColumn: produto_key
+
+	column 'Tipo de Movimento'
+		dataType: string
+		lineageTag: c7b237f6-6bf1-4436-ae61-af608034fa69
+		summarizeBy: none
+		sourceColumn: tipo_movimento
+
+	column Quantidade
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 7b1f0ddd-20b1-47dd-bab4-4c1cf092bc5b
+		sourceColumn: quantidade
+
+	column Valor
+		dataType: double
+		isHidden
+		formatString: R$ #,##0
+		lineageTag: 6b60043d-54c6-47f7-bbc4-e748e3d2007e
+		sourceColumn: valor
+
+	partition 'Movimento de Estoque' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database(Servidor, Banco),
+				    Dados = Fonte{[Schema = "dw", Item = "fato_estoque_movimento"]}[Data],
+				    Colunas = Table.RemoveColumns(Dados, {"movimento_key"})
+				in
+				    Colunas
+

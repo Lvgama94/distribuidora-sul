@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_produtos_classe_a",
+  "position": {
+    "x": 523.2,
+    "y": 88,
+    "z": 7000,
+    "height": 96,
+    "width": 233.6,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Produtos Classe A"
+                }
+              },
+              "queryRef": "Medidas.Produtos Classe A",
+              "nativeQueryRef": "Produtos Classe A",
+              "displayName": "Produtos na classe A"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

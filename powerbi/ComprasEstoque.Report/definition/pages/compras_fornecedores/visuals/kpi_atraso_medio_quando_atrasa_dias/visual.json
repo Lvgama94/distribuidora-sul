@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "kpi_atraso_medio_quando_atrasa_dias",
+  "position": {
+    "x": 648,
+    "y": 88,
+    "z": 8000,
+    "height": 96,
+    "width": 192,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Atraso Médio quando Atrasa (dias)"
+                }
+              },
+              "queryRef": "Medidas.Atraso Médio quando Atrasa (dias)",
+              "nativeQueryRef": "Atraso Médio quando Atrasa (dias)",
+              "displayName": "Atraso médio (dias)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

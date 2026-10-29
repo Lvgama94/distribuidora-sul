@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ComprasEstoque"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "176d8061-8d0d-4ad3-b5b5-5c0aa9d27ae9"
+  }
+}

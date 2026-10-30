@@ -10,7 +10,7 @@ Este é o **projeto 0** do meu portfólio: a fundação que alimenta os painéis
 
 | Competência | Onde está |
 |---|---|
-| **Python (pandas)**: ETL e qualidade de dados | [`python/etl.py`](python/etl.py) trata 11 tipos de problema e gera um [relatório de qualidade](docs/relatorio_qualidade.md) a cada execução |
+| **Python (pandas)**: ETL, qualidade de dados e análise | [`python/etl.py`](python/etl.py) trata 11 tipos de problema e gera um [relatório de qualidade](docs/relatorio_qualidade.md) a cada execução; [`analises/`](analises/clientes_e_previsao.ipynb) segmenta os clientes (RFM) e prevê a receita de 2026 |
 | **SQL Server**: modelagem, carga e análise | [`sql/`](sql/): staging, modelo estrela, procedure de carga com transação, testes automáticos e views com CTE e funções de janela. Em [`sql/perguntas`](sql/perguntas) há 10 perguntas de negócio respondidas em SQL ([página no portfólio](https://lucasgama.vercel.app/sql.html)) |
 | **Power BI e DAX** | [Painel Financeiro](docs/painel_financeiro.md) em formato PBIP (modelo em TMDL, relatório em PBIR): relacionamentos inativos (`USERELATIONSHIP`), inteligência de tempo e medidas conferidas contra o SQL |
 | **Modelagem dimensional** | 8 dimensões e 9 fatos com grão definido ([dicionário de dados](docs/dicionario_de_dados.md)) |
@@ -106,6 +106,7 @@ docs/             dicionário de dados, relatório de qualidade, roteiros dos pa
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
 sql/perguntas/    10 perguntas de negócio respondidas em SQL (página "SQL na prática" do portfólio)
+analises/         análise em Python: segmentação RFM e previsão de receita (notebook executado)
 powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatório) e tema de cores
 excel/            pastas de trabalho com Power Query e o código M de cada consulta (excel/consultas)
 ```
@@ -133,6 +134,8 @@ excel/            pastas de trabalho com Power Query e o código M de cada consu
    ![Comercial: Visão Geral](docs/img/comercial_visao_geral.png)
 
 Os quatro painéis também viram decisão no [relatório para a diretoria](docs/relatorio_diretoria.md): três decisões para 2026, com o ganho em reais de cada uma calculado em SQL na view `dw.vw_relatorio_diretoria` ([`sql/11_relatorio_diretoria.sql`](sql/11_relatorio_diretoria.sql)). Há também uma [versão para leitura](https://lucasgama.vercel.app/relatorio.html).
+
+A carteira de clientes e a receita também têm uma [análise em Python](analises/clientes_e_previsao.ipynb) (pandas e matplotlib): segmentação RFM dos clientes, que separa os 12 que compravam muito e pararam, e uma previsão da receita de 2026 (R$ 65,7 mi), testada no segundo semestre de 2025 contra o real e contra o orçamento. Os números de partida são conferidos com a view do painel Comercial antes da análise ([versão para leitura](https://lucasgama.vercel.app/analise.html)).
 
 Os 140 indicadores dos quatro modelos estão no [catálogo de indicadores](docs/catalogo_indicadores.md), com definição, fórmula DAX, tabela de origem e valor conferido. Ele é gerado dos próprios modelos por [`python/gerar_catalogo.py`](python/gerar_catalogo.py): a definição é a descrição da medida no Power BI, e medida sem descrição faz o script parar ([versão com busca](https://lucasgama.vercel.app/indicadores.html)).
 

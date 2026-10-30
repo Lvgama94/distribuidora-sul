@@ -101,7 +101,7 @@ O servidor padrão é `localhost\SQLEXPRESS`. Para outro servidor, use `--servid
 ```
 data/bruto/       arquivos como saem dos sistemas (ERP, RH, compras, financeiro)
 data/tratado/     arquivos limpos e padronizados (entrada do SQL e do Power BI)
-docs/             dicionário de dados e relatório de qualidade
+docs/             dicionário de dados, relatório de qualidade, roteiros dos painéis e relatório para a diretoria
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
 sql/perguntas/    10 perguntas de negócio respondidas em SQL (página "SQL na prática" do portfólio)
@@ -130,6 +130,8 @@ excel/            pastas de trabalho com Power Query e o código M de cada consu
 5. **Comercial**: faturamento, margem, ticket médio, vendedores, concentração e clientes que pararam de comprar, em 3 páginas, com o mesmo faturamento da DRE. O modelo tem 25 medidas DAX conferidas contra o SQL ([`sql/10_comercial.sql`](sql/10_comercial.sql)). Veja o [roteiro do painel](docs/painel_comercial.md) ou explore a [versão web interativa](https://lucasgama.vercel.app/comercial.html).
 
    ![Comercial: Visão Geral](docs/img/comercial_visao_geral.png)
+
+Os quatro painéis também viram decisão no [relatório para a diretoria](docs/relatorio_diretoria.md): três decisões para 2026, com o ganho em reais de cada uma calculado em SQL na view `dw.vw_relatorio_diretoria` ([`sql/11_relatorio_diretoria.sql`](sql/11_relatorio_diretoria.sql)). Há também uma [versão para leitura](https://lucasgama.vercel.app/relatorio.html).
 
 ---
 

@@ -8,21 +8,25 @@ table Medidas
 		displayFolder: 1. Vendas
 		lineageTag: c8beba82-ce75-44b0-94c0-de4fa4ac2674
 
+	/// Preço de tabela das vendas, antes do desconto: faturamento + descontos concedidos.
 	measure 'Valor de Tabela' = CALCULATE(SUM(Venda[Valor de Tabela]), Venda[Tipo de Operação] = "VENDA")
 		formatString: R$ #,##0
 		displayFolder: 1. Vendas
 		lineageTag: 4a825e76-01a9-4197-b77c-b16d8618dcc3
 
+	/// Desconto comercial dado nas notas de venda.
 	measure 'Descontos Concedidos' = CALCULATE(SUM(Venda[Valor do Desconto]), Venda[Tipo de Operação] = "VENDA")
 		formatString: R$ #,##0
 		displayFolder: 1. Vendas
 		lineageTag: 55b3fa7b-2bab-4bcd-adef-026e819b0ebe
 
+	/// Descontos concedidos ÷ valor de tabela das vendas.
 	measure 'Desconto Médio %' = DIVIDE([Descontos Concedidos], [Valor de Tabela])
 		formatString: 0.0%
 		displayFolder: 1. Vendas
 		lineageTag: 177e9dcc-faa9-4e80-8c87-68600b8cb996
 
+	/// Notas de devolução de clientes, em valor positivo. Bate com a conta 3.02 da DRE.
 	measure Devoluções = CALCULATE(-SUM(Venda[Valor Líquido]), Venda[Tipo de Operação] = "DEVOLUCAO")
 		formatString: R$ #,##0
 		displayFolder: 1. Vendas
@@ -46,21 +50,25 @@ table Medidas
 		displayFolder: 1. Vendas
 		lineageTag: 70703fdd-0925-4a6a-a81f-65785a18c685
 
+	/// Notas de venda distintas. A coluna Nota junta filial e número, porque a numeração é por filial.
 	measure 'Notas Fiscais' = CALCULATE(DISTINCTCOUNT(Venda[Nota]), Venda[Tipo de Operação] = "VENDA")
 		formatString: #,##0
 		displayFolder: 1. Vendas
 		lineageTag: aa1961bf-d093-4496-b1a7-0e452573717f
 
+	/// Faturamento médio por nota fiscal de venda.
 	measure 'Ticket Médio' = DIVIDE([Faturamento], [Notas Fiscais])
 		formatString: R$ #,##0
 		displayFolder: 1. Vendas
 		lineageTag: 49b1ed6e-2fea-4f89-a83b-1ce71d9d035f
 
+	/// Clientes distintos com pelo menos uma nota de venda no período.
 	measure 'Clientes que Compraram' = CALCULATE(DISTINCTCOUNT(Venda[cliente_key]), Venda[Tipo de Operação] = "VENDA")
 		formatString: #,##0
 		displayFolder: 2. Clientes
 		lineageTag: c35cf23b-23db-4e35-8e2a-c6b6a173882c
 
+	/// Faturamento ÷ clientes que compraram no período.
 	measure 'Faturamento por Cliente' = DIVIDE([Faturamento], [Clientes que Compraram])
 		formatString: R$ #,##0
 		displayFolder: 2. Clientes
@@ -110,6 +118,7 @@ table Medidas
 		displayFolder: 2. Clientes
 		lineageTag: b68bbc6e-ad37-4866-9383-5a727383d0d6
 
+	/// Faturamento dos dois anos, ignorando o filtro de data. Base para comparar os clientes parados.
 	measure 'Faturamento em 2024 e 2025' = CALCULATE([Faturamento], REMOVEFILTERS('Calendário'))
 		formatString: R$ #,##0
 		displayFolder: 2. Clientes
@@ -121,21 +130,25 @@ table Medidas
 		displayFolder: 2. Clientes
 		lineageTag: e0ebae4d-ff37-4fe1-945d-83afda8b683a
 
+	/// Dias sem comprar, só para os clientes parados há mais de 90 dias (vazio para os demais).
 	measure 'Dias Parado' = IF([Dias sem Comprar] > 90, [Dias sem Comprar])
 		formatString: #,##0
 		displayFolder: 2. Clientes
 		lineageTag: c9101d85-0910-4f58-adf5-aaf8d7d9acf8
 
+	/// Faturamento no mesmo período do ano anterior.
 	measure 'Faturamento Ano Anterior' = CALCULATE([Faturamento], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: R$ #,##0
 		displayFolder: 3. Comparativos
 		lineageTag: 574abae6-c537-4c2b-ba5a-c1b8efc0c13a
 
+	/// Variação do faturamento contra o mesmo período do ano anterior.
 	measure 'Faturamento vs Ano Anterior %' = DIVIDE([Faturamento] - [Faturamento Ano Anterior], [Faturamento Ano Anterior])
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 3. Comparativos
 		lineageTag: 94ec63d2-944d-427a-8a5d-1e679d20e309
 
+	/// Diferença da margem comercial contra o mesmo período do ano anterior, em pontos percentuais.
 	measure 'Margem vs Ano Anterior (p.p.)' =
 			VAR Antes = CALCULATE([Margem Comercial %], SAMEPERIODLASTYEAR('Calendário'[Data]))
 			RETURN IF(ISBLANK(Antes), BLANK(), ([Margem Comercial %] - Antes) * 100)
@@ -143,6 +156,7 @@ table Medidas
 		displayFolder: 3. Comparativos
 		lineageTag: 57f4e091-db6a-4595-aa79-35f9ae717287
 
+	/// Variação do ticket médio contra o mesmo período do ano anterior.
 	measure 'Ticket Médio vs Ano Anterior %' =
 			VAR Antes = CALCULATE([Ticket Médio], SAMEPERIODLASTYEAR('Calendário'[Data]))
 			RETURN DIVIDE([Ticket Médio] - Antes, Antes)

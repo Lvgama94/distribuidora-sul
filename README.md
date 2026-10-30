@@ -90,6 +90,7 @@ python python/gerar_dados.py     # opcional: os dados já estão no repositório
 python python/etl.py             # data/bruto -> data/tratado + relatório de qualidade
 python python/carregar_sql.py    # cria o banco, carrega e roda os testes (~20 s)
 python python/exportar_web.py    # opcional: JSONs das versões web dos painéis e do "SQL na prática" (conferidos com o SQL antes de gravar)
+python python/gerar_catalogo.py  # opcional: catálogo de indicadores gerado dos modelos do Power BI
 ```
 
 O servidor padrão é `localhost\SQLEXPRESS`. Para outro servidor, use `--servidor "NOME"`.
@@ -101,7 +102,7 @@ O servidor padrão é `localhost\SQLEXPRESS`. Para outro servidor, use `--servid
 ```
 data/bruto/       arquivos como saem dos sistemas (ERP, RH, compras, financeiro)
 data/tratado/     arquivos limpos e padronizados (entrada do SQL e do Power BI)
-docs/             dicionário de dados, relatório de qualidade, roteiros dos painéis e relatório para a diretoria
+docs/             dicionário de dados, relatório de qualidade, roteiros dos painéis, relatório para a diretoria e catálogo de indicadores
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
 sql/perguntas/    10 perguntas de negócio respondidas em SQL (página "SQL na prática" do portfólio)
@@ -132,6 +133,8 @@ excel/            pastas de trabalho com Power Query e o código M de cada consu
    ![Comercial: Visão Geral](docs/img/comercial_visao_geral.png)
 
 Os quatro painéis também viram decisão no [relatório para a diretoria](docs/relatorio_diretoria.md): três decisões para 2026, com o ganho em reais de cada uma calculado em SQL na view `dw.vw_relatorio_diretoria` ([`sql/11_relatorio_diretoria.sql`](sql/11_relatorio_diretoria.sql)). Há também uma [versão para leitura](https://lucasgama.vercel.app/relatorio.html).
+
+Os 140 indicadores dos quatro modelos estão no [catálogo de indicadores](docs/catalogo_indicadores.md), com definição, fórmula DAX, tabela de origem e valor conferido. Ele é gerado dos próprios modelos por [`python/gerar_catalogo.py`](python/gerar_catalogo.py): a definição é a descrição da medida no Power BI, e medida sem descrição faz o script parar ([versão com busca](https://lucasgama.vercel.app/indicadores.html)).
 
 ---
 

@@ -9,6 +9,7 @@ table Medidas
 		displayFolder: 1. DRE
 		lineageTag: 95d0284f-91b9-4135-8113-cb390093a05e
 
+	/// Devoluções de vendas (conta 3.02 da DRE).
 	measure Devoluções = CALCULATE(SUM(DRE[Valor]), Conta[Código Conta] = "3.02")
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
@@ -20,6 +21,7 @@ table Medidas
 		displayFolder: 1. DRE
 		lineageTag: e467f1da-de75-4b7e-8ba5-9026b98688fc
 
+	/// Receita bruta menos devoluções e impostos sobre vendas.
 	measure 'Receita Líquida' = [Receita Bruta] - [Devoluções] - [Impostos sobre Vendas]
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
@@ -31,16 +33,19 @@ table Medidas
 		displayFolder: 1. DRE
 		lineageTag: 67159a44-d8f1-43b4-9f4b-c4a809756324
 
+	/// Receita líquida menos o custo das mercadorias vendidas (CMV).
 	measure 'Lucro Bruto' = [Receita Líquida] - [CMV]
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
 		lineageTag: f46fe2e2-8753-4275-bbe8-8082be504ea7
 
+	/// Lucro bruto ÷ receita líquida.
 	measure 'Margem Bruta %' = DIVIDE([Lucro Bruto], [Receita Líquida])
 		formatString: 0.0%
 		displayFolder: 1. DRE
 		lineageTag: 0906ef56-13e4-4f77-a524-c7bef83990c2
 
+	/// Salários, encargos e benefícios (grupo Despesas com pessoal da DRE).
 	measure 'Despesas com Pessoal' = CALCULATE(SUM(DRE[Valor]), Conta[Grupo DRE] = "Despesas com pessoal")
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
@@ -52,11 +57,13 @@ table Medidas
 		displayFolder: 1. DRE
 		lineageTag: e26b8476-0334-4d3c-94ac-73ac24c1a491
 
+	/// Lucro bruto menos as despesas operacionais.
 	measure 'Resultado Operacional' = [Lucro Bruto] - [Despesas Operacionais]
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
 		lineageTag: 524ac92f-d167-4637-b949-d0c4ba2d0606
 
+	/// Tarifas bancárias e juros da DRE; negativo quando é despesa.
 	measure 'Resultado Financeiro' = -CALCULATE(SUM(DRE[Valor]), Conta[Grupo DRE] = "Resultado financeiro")
 		formatString: R$ #,##0
 		displayFolder: 1. DRE
@@ -68,6 +75,7 @@ table Medidas
 		displayFolder: 1. DRE
 		lineageTag: bbbac53d-d74d-4c5a-8783-0f503513ef93
 
+	/// Resultado líquido ÷ receita líquida.
 	measure 'Margem Líquida %' = DIVIDE([Resultado Líquido], [Receita Líquida])
 		formatString: 0.0%
 		displayFolder: 1. DRE
@@ -103,26 +111,31 @@ table Medidas
 		displayFolder: 2. Orçamento
 		lineageTag: 7b38d324-2df7-4a3d-97af-db2704dc9bc8
 
+	/// Desvio ÷ orçado. Divide pelo orçado em valor absoluto para o sinal continuar dizendo se ficou acima ou abaixo.
 	measure 'Desvio %' = DIVIDE([Desvio], ABS([Orçado]))
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 2. Orçamento
 		lineageTag: 8e59819f-63fe-4e6f-bcc9-d9c94640d6f2
 
+	/// Receita bruta orçada (conta 3.01).
 	measure 'Receita Orçada' = CALCULATE([Orçado], Conta[Código Conta] = "3.01")
 		formatString: R$ #,##0
 		displayFolder: 2. Orçamento
 		lineageTag: f93d2184-6f83-4cc7-9e88-8ee7cf8199dc
 
+	/// Receita bruta realizada ÷ receita orçada.
 	measure 'Atingimento da Receita %' = DIVIDE([Receita Bruta], [Receita Orçada])
 		formatString: 0.0%
 		displayFolder: 2. Orçamento
 		lineageTag: e3389a1a-ebae-4e06-812e-79d05fdcc203
 
+	/// Resultado líquido do orçamento: todas as contas orçadas, com o sinal da DRE.
 	measure 'Resultado Orçado' = CALCULATE([Orçado], REMOVEFILTERS(Conta))
 		formatString: R$ #,##0;-R$ #,##0
 		displayFolder: 2. Orçamento
 		lineageTag: b45745e1-2d66-40bb-a9ea-3585b3ce43af
 
+	/// Resultado líquido realizado menos o orçado; vazio quando não há orçamento no período.
 	measure 'Desvio do Resultado' = IF(ISBLANK([Resultado Orçado]), BLANK(), [Resultado Líquido] - [Resultado Orçado])
 		formatString: R$ #,##0;-R$ #,##0
 		displayFolder: 2. Orçamento
@@ -139,6 +152,7 @@ table Medidas
 		displayFolder: 3. Contas a Receber
 		lineageTag: 71998119-7bf1-49b4-a48f-95cf8e697478
 
+	/// Títulos a receber vencidos e não pagos na data de corte (fotografia: ignora o filtro de data).
 	measure Vencido =
 			CALCULATE(
 			    SUM('Contas a Receber'[Valor]),
@@ -149,6 +163,7 @@ table Medidas
 		displayFolder: 3. Contas a Receber
 		lineageTag: 03468570-b751-4cb5-86f0-d88b6911307b
 
+	/// Títulos a receber ainda no prazo na data de corte.
 	measure 'A Vencer' =
 			CALCULATE(
 			    SUM('Contas a Receber'[Valor]),
@@ -159,6 +174,7 @@ table Medidas
 		displayFolder: 3. Contas a Receber
 		lineageTag: 4bb2c441-bee2-4d81-bb82-b3169d6951e6
 
+	/// Títulos a receber vencidos há mais de 90 dias na data de corte.
 	measure 'Vencido há Mais de 90 Dias' =
 			CALCULATE(
 			    SUM('Contas a Receber'[Valor]),
@@ -175,6 +191,7 @@ table Medidas
 		displayFolder: 3. Contas a Receber
 		lineageTag: 7ef2f937-c6b5-4508-8d99-03c43f51db5f
 
+	/// Clientes com pelo menos um título vencido na data de corte.
 	measure 'Clientes Inadimplentes' =
 			CALCULATE(
 			    DISTINCTCOUNT('Contas a Receber'[cliente_key]),
@@ -201,6 +218,7 @@ table Medidas
 		displayFolder: 3. Contas a Receber
 		lineageTag: d1e64372-d239-4d03-97b8-f66cf17a3959
 
+	/// Juros e multas pagos pelos clientes, pela data do pagamento.
 	measure 'Juros e Multas Recebidos' =
 			CALCULATE(
 			    SUM('Contas a Receber'[Juros e Multa]),
@@ -254,6 +272,7 @@ table Medidas
 		displayFolder: 4. Caixa e Contas a Pagar
 		lineageTag: 553440c5-d0bb-44a5-8a5b-00aa98ca60bc
 
+	/// Recebido menos pago no período, pelo caixa.
 	measure 'Geração de Caixa' = [Recebido] - [Pago]
 		formatString: R$ #,##0;-R$ #,##0
 		displayFolder: 4. Caixa e Contas a Pagar
@@ -277,6 +296,7 @@ table Medidas
 		displayFolder: 4. Caixa e Contas a Pagar
 		lineageTag: 63f4400e-2728-4425-86e0-76a3b1e50635
 
+	/// Títulos a pagar ainda não pagos na data de corte.
 	measure 'A Pagar em Aberto' =
 			CALCULATE(
 			    SUM('Contas a Pagar'[Valor]),
@@ -301,6 +321,7 @@ table Medidas
 		displayFolder: 4. Caixa e Contas a Pagar
 		lineageTag: ae542cae-0d52-4710-b1c7-2a8c8ee408a2
 
+	/// Juros e multas pagos a fornecedores, pela data do pagamento.
 	measure 'Juros e Multas Pagos' =
 			CALCULATE(
 			    SUM('Contas a Pagar'[Juros e Multa]),
@@ -345,21 +366,25 @@ table Medidas
 		displayFolder: 4. Caixa e Contas a Pagar
 		lineageTag: dc4bf353-2df0-41eb-b1b3-e2a7cdf797ff
 
+	/// Receita líquida no mesmo período do ano anterior.
 	measure 'Receita Líquida Ano Anterior' = CALCULATE([Receita Líquida], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: R$ #,##0
 		displayFolder: 5. Comparativos
 		lineageTag: 5940d606-a0b3-41da-99cb-357507042555
 
+	/// Variação da receita líquida contra o mesmo período do ano anterior.
 	measure 'Receita Líquida vs Ano Anterior %' = DIVIDE([Receita Líquida] - [Receita Líquida Ano Anterior], [Receita Líquida Ano Anterior])
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 5. Comparativos
 		lineageTag: c83456f0-67cc-4311-89f8-230dc284e0fb
 
+	/// Resultado líquido no mesmo período do ano anterior.
 	measure 'Resultado Líquido Ano Anterior' = CALCULATE([Resultado Líquido], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: R$ #,##0;-R$ #,##0
 		displayFolder: 5. Comparativos
 		lineageTag: 9b82f27d-8b44-4bfd-a540-07dd2a899c83
 
+	/// Margem líquida no mesmo período do ano anterior.
 	measure 'Margem Líquida Ano Anterior %' = CALCULATE([Margem Líquida %], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: 0.0%
 		displayFolder: 5. Comparativos
@@ -371,11 +396,13 @@ table Medidas
 		displayFolder: 5. Comparativos
 		lineageTag: 0cc97e91-a70a-46df-a7ae-c628498194cb
 
+	/// Resultado líquido acumulado de janeiro até o fim do período filtrado.
 	measure 'Resultado Acumulado no Ano' = TOTALYTD([Resultado Líquido], 'Calendário'[Data])
 		formatString: R$ #,##0;-R$ #,##0
 		displayFolder: 5. Comparativos
 		lineageTag: 21c3baff-62ab-462e-8b81-626abdd8baa1
 
+	/// Data da fotografia de títulos em aberto, vencidos e aging: 31/12/2025.
 	measure 'Data de Corte' = DATE(2025, 12, 31)
 		formatString: dd/mm/yyyy
 		displayFolder: 5. Comparativos
@@ -387,6 +414,7 @@ table Medidas
 		displayFolder: 2. Orçamento
 		lineageTag: 2ec48ffe-3415-4202-bd5c-f2495a2f1427
 
+	/// Maior atraso entre os títulos vencidos na data de corte, em dias.
 	measure 'Maior Atraso (dias)' =
 			CALCULATE(
 			    MAX('Contas a Receber'[Dias de Atraso]),

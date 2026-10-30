@@ -21,16 +21,19 @@ table Medidas
 		displayFolder: 1. Quadro
 		lineageTag: e6d45465-3b9e-4661-81ad-f8302f82599c
 
+	/// Admissões no período.
 	measure Admissões = SUM('Quadro Mensal'[Admitido no Mês])
 		formatString: #,##0
 		displayFolder: 1. Quadro
 		lineageTag: 2d1cba47-5ba3-42fb-9711-8b7875c96474
 
+	/// Desligamentos no período, voluntários e involuntários.
 	measure Desligamentos = SUM('Quadro Mensal'[Desligado no Mês])
 		formatString: #,##0
 		displayFolder: 1. Quadro
 		lineageTag: 39093a00-a002-433a-8c87-ec69a8551e04
 
+	/// Admissões menos desligamentos.
 	measure 'Saldo de Contratações' = [Admissões] - [Desligamentos]
 		formatString: +#,##0;-#,##0;0
 		displayFolder: 1. Quadro
@@ -42,6 +45,7 @@ table Medidas
 		displayFolder: 2. Rotatividade
 		lineageTag: 99b06c15-59b4-4dd1-b696-c39bf8df859e
 
+	/// Desligamentos a pedido do funcionário.
 	measure 'Desligamentos Voluntários' = SUM('Quadro Mensal'[Desligamento Voluntário])
 		formatString: #,##0
 		displayFolder: 2. Rotatividade
@@ -59,6 +63,7 @@ table Medidas
 		displayFolder: 2. Rotatividade
 		lineageTag: 59bb7662-bc71-4a1b-a748-cad047818f93
 
+	/// Fatia dos desligamentos que foi a pedido do funcionário.
 	measure '% Voluntário dos Desligamentos' = DIVIDE([Desligamentos Voluntários], [Desligamentos])
 		formatString: 0.0%
 		displayFolder: 2. Rotatividade
@@ -70,31 +75,37 @@ table Medidas
 		displayFolder: 2. Rotatividade
 		lineageTag: 1fb2af71-c05a-4e79-b1a6-9aab97f622fc
 
+	/// Fatia dos desligamentos que aconteceu no contrato de experiência.
 	measure '% Saídas na Experiência' = DIVIDE([Desligamentos na Experiência], [Desligamentos])
 		formatString: 0.0%
 		displayFolder: 2. Rotatividade
 		lineageTag: 7e86273d-b43b-4c35-80cf-c4285719c84e
 
+	/// Desligamentos de quem tinha menos de 12 meses de casa.
 	measure 'Desligamentos no 1º Ano' = CALCULATE([Desligamentos], KEEPFILTERS('Funcionário'[Tempo de Casa (meses)] < 12))
 		formatString: #,##0
 		displayFolder: 2. Rotatividade
 		lineageTag: 542cb552-37e2-4c6b-94a3-ecfe8d2b7a76
 
+	/// Fatia dos desligamentos que aconteceu antes de um ano de casa.
 	measure '% Saídas no 1º Ano' = DIVIDE([Desligamentos no 1º Ano], [Desligamentos])
 		formatString: 0.0%
 		displayFolder: 2. Rotatividade
 		lineageTag: 772af203-5fd4-4b40-8cd7-bf2bd2423d3d
 
+	/// Dias de trabalho previstos na escala: a base do absenteísmo.
 	measure 'Dias Previstos' = SUM(Ponto[Dias Previstos])
 		formatString: #,##0
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: d2e42988-648c-4f2a-b282-b6aa5dd56472
 
+	/// Dias de falta, sem contar os atestados.
 	measure Faltas = SUM(Ponto[Faltas])
 		formatString: #,##0
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 9a512934-a17d-4e10-963c-05d0349becf6
 
+	/// Dias de afastamento com atestado médico.
 	measure 'Dias de Atestado' = SUM(Ponto[Dias de Atestado])
 		formatString: #,##0
 		displayFolder: 3. Absenteísmo e Horas Extras
@@ -106,6 +117,7 @@ table Medidas
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 1f2b8456-b8b7-4755-bed8-9a9d8b3ad316
 
+	/// Horas extras registradas no ponto.
 	measure 'Horas Extras' = SUM(Ponto[Horas Extras])
 		formatString: #,##0
 		displayFolder: 3. Absenteísmo e Horas Extras
@@ -117,6 +129,7 @@ table Medidas
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 21996d1c-61df-4416-a24b-ea5490604924
 
+	/// Faltas por funcionário por mês trabalhado (cada linha do ponto é um funcionário em um mês).
 	measure 'Faltas por Pessoa (mês)' = DIVIDE([Faltas], COUNTROWS(Ponto))
 		formatString: 0.00
 		displayFolder: 3. Absenteísmo e Horas Extras
@@ -128,21 +141,25 @@ table Medidas
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 33c74c03-ce62-4abd-a13f-95e59c534f66
 
+	/// Faltas por pessoa por mês de quem está ativo hoje.
 	measure 'Faltas por Mês: Quem Ficou' = CALCULATE([Faltas por Pessoa (mês)], 'Funcionário'[Situação] = "Ativo")
 		formatString: 0.00
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 47d4e582-e8be-451a-bf8f-be09894fe3b8
 
+	/// Quanto a mais quem saiu faltava por mês, em relação a quem ficou.
 	measure 'Quem Saiu Faltava a Mais %' = DIVIDE([Faltas por Mês: Quem Saiu] - [Faltas por Mês: Quem Ficou], [Faltas por Mês: Quem Ficou])
 		formatString: +0%;-0%;0%
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: 08b60548-1e4e-42e4-8203-17eddbab4677
 
+	/// Absenteísmo de quem já foi desligado.
 	measure 'Absenteísmo: Quem Saiu' = CALCULATE([Absenteísmo %], 'Funcionário'[Situação] = "Desligado")
 		formatString: 0.0%
 		displayFolder: 3. Absenteísmo e Horas Extras
 		lineageTag: c361349e-2bcb-4f43-8246-eea9c6564092
 
+	/// Absenteísmo de quem está ativo hoje.
 	measure 'Absenteísmo: Quem Ficou' = CALCULATE([Absenteísmo %], 'Funcionário'[Situação] = "Ativo")
 		formatString: 0.0%
 		displayFolder: 3. Absenteísmo e Horas Extras
@@ -167,11 +184,13 @@ table Medidas
 		displayFolder: 4. Custo
 		lineageTag: 8f77588e-b126-4f21-adf2-4065f162e286
 
+	/// Salário médio atual dos funcionários ativos.
 	measure 'Salário Médio (ativos)' = CALCULATE(AVERAGE('Funcionário'[Salário Atual]), 'Funcionário'[Situação] = "Ativo")
 		formatString: R$ #,##0
 		displayFolder: 4. Custo
 		lineageTag: 7e9a76ec-073c-46ad-a76e-87c2131bc4c5
 
+	/// Turnover no mesmo período do ano anterior.
 	measure 'Turnover Ano Anterior %' = CALCULATE([Turnover %], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: 0.0%
 		displayFolder: 5. Comparativos
@@ -183,11 +202,13 @@ table Medidas
 		displayFolder: 5. Comparativos
 		lineageTag: f3a7140f-7521-407f-b477-9d972c69c48a
 
+	/// Custo de pessoal no mesmo período do ano anterior.
 	measure 'Custo de Pessoal Ano Anterior' = CALCULATE([Custo de Pessoal], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: R$ #,##0
 		displayFolder: 5. Comparativos
 		lineageTag: dc60affb-d152-4ed6-b4df-ce354a0db835
 
+	/// Variação do custo de pessoal contra o mesmo período do ano anterior.
 	measure 'Custo de Pessoal vs Ano Anterior %' = DIVIDE([Custo de Pessoal] - [Custo de Pessoal Ano Anterior], [Custo de Pessoal Ano Anterior])
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 5. Comparativos

@@ -3,16 +3,19 @@
 table Medidas
 	lineageTag: 83f82a9a-65ed-493d-924e-18e44e065767
 
+	/// Valor dos itens dos pedidos de compra, pela data do pedido.
 	measure 'Valor Comprado' = SUM(Compra[Valor Total])
 		formatString: R$ #,##0
 		displayFolder: 1. Compras
 		lineageTag: d8739691-d7a5-42d0-b74d-f11827040423
 
+	/// Pedidos de compra distintos, pela data do pedido.
 	measure 'Pedidos de Compra' = DISTINCTCOUNT(Compra[Pedido de Compra])
 		formatString: #,##0
 		displayFolder: 1. Compras
 		lineageTag: e750d8f7-0a9d-4c96-94cc-6b069e9e2df9
 
+	/// Pedidos de compra que já têm data de entrega.
 	measure 'Pedidos Entregues' = CALCULATE(DISTINCTCOUNT(Compra[Pedido de Compra]), NOT ISBLANK(Compra[entrega_real_key]))
 		formatString: #,##0
 		displayFolder: 1. Compras
@@ -55,6 +58,7 @@ table Medidas
 		displayFolder: 2. Estoque
 		lineageTag: 676e66f1-40c9-427c-a157-a60416c2dda2
 
+	/// Saldo de estoque em unidades no último dia do período, limitado à data de corte (31/12/2025).
 	measure 'Estoque (unidades)' =
 			VAR Ultima = MIN(MAX('Calendário'[Data]), DATE(2025, 12, 31))
 			RETURN
@@ -108,11 +112,13 @@ table Medidas
 		displayFolder: 2. Estoque
 		lineageTag: 2c00151c-75db-4f34-9858-d35a40fd12f8
 
+	/// Unidades que os clientes pediram nas notas de venda.
 	measure 'Unidades Pedidas' = CALCULATE(SUM(Venda[Qtd Pedida]), Venda[Tipo de Operação] = "VENDA")
 		formatString: #,##0
 		displayFolder: 3. Nível de Serviço
 		lineageTag: 4b59fab5-e083-40a5-aaff-69183931ed1d
 
+	/// Unidades faturadas nas notas de venda.
 	measure 'Unidades Atendidas' = CALCULATE(SUM(Venda[Qtd Faturada]), Venda[Tipo de Operação] = "VENDA")
 		formatString: #,##0
 		displayFolder: 3. Nível de Serviço
@@ -124,11 +130,13 @@ table Medidas
 		displayFolder: 3. Nível de Serviço
 		lineageTag: f9671d9f-9631-4d2c-9375-d9672302505a
 
+	/// Unidades pedidas que não foram faturadas por falta de estoque.
 	measure 'Unidades Não Atendidas' = [Unidades Pedidas] - [Unidades Atendidas]
 		formatString: #,##0
 		displayFolder: 3. Nível de Serviço
 		lineageTag: 34113668-c09e-4a24-98ba-b5b5fbf3803f
 
+	/// Unidades não atendidas ÷ unidades pedidas. É o complemento do nível de serviço.
 	measure 'Ruptura %' = DIVIDE([Unidades Não Atendidas], [Unidades Pedidas])
 		formatString: 0.0%
 		displayFolder: 3. Nível de Serviço
@@ -144,16 +152,19 @@ table Medidas
 		displayFolder: 3. Nível de Serviço
 		lineageTag: 2d390264-4b7e-4aba-897b-a45660834d0b
 
+	/// Produtos com pelo menos uma unidade não atendida no período.
 	measure 'Produtos com Ruptura' = COUNTROWS(FILTER(VALUES(Produto[Código Produto]), [Unidades Não Atendidas] > 0))
 		formatString: #,##0
 		displayFolder: 3. Nível de Serviço
 		lineageTag: f29014e8-f131-4f74-8e8d-e183ec7e632d
 
+	/// Vendas depois do desconto e das devoluções, antes dos impostos (base da curva ABC). Não é a receita líquida da DRE, que também desconta os impostos.
 	measure 'Receita Líquida' = SUM(Venda[Receita Líquida])
 		formatString: R$ #,##0
 		displayFolder: 4. Curva ABC
 		lineageTag: f94d8c44-0a79-463c-b7b2-32c38ef29a05
 
+	/// Produtos do cadastro dentro do filtro.
 	measure Produtos = COUNTROWS(Produto)
 		formatString: #,##0
 		displayFolder: 4. Curva ABC
@@ -171,31 +182,37 @@ table Medidas
 		displayFolder: 4. Curva ABC
 		lineageTag: 6e9672c9-85c7-404f-9744-97174b023b9d
 
+	/// Receita líquida do produto ÷ receita líquida de todos os produtos.
 	measure 'Participação na Receita' = DIVIDE([Receita Líquida], CALCULATE([Receita Líquida], REMOVEFILTERS(Produto)))
 		formatString: 0.0%
 		displayFolder: 4. Curva ABC
 		lineageTag: b695ea31-9bc0-417b-89ef-c4ecfce981b7
 
+	/// Produtos na classe A da curva ABC: os que somam os primeiros 80% da receita.
 	measure 'Produtos Classe A' = CALCULATE([Produtos], Produto[Classe ABC] = "A")
 		formatString: #,##0
 		displayFolder: 4. Curva ABC
 		lineageTag: 6261655d-de11-434f-9113-3ba421540387
 
+	/// Fatia dos produtos que está na classe A.
 	measure '% dos Produtos na Classe A' = CALCULATE([% dos Produtos], Produto[Classe ABC] = "A")
 		formatString: 0%
 		displayFolder: 4. Curva ABC
 		lineageTag: 572a54e8-99d2-4330-9916-d575c981cf78
 
+	/// Fatia da receita que vem dos produtos da classe A.
 	measure '% da Receita na Classe A' = CALCULATE([% da Receita], Produto[Classe ABC] = "A")
 		formatString: 0%
 		displayFolder: 4. Curva ABC
 		lineageTag: 35975dc9-babb-4249-b27b-646f573fe9b9
 
+	/// Valor comprado no mesmo período do ano anterior.
 	measure 'Valor Comprado Ano Anterior' = CALCULATE([Valor Comprado], SAMEPERIODLASTYEAR('Calendário'[Data]))
 		formatString: R$ #,##0
 		displayFolder: 5. Comparativos
 		lineageTag: 9bbbfa6b-b1fc-44d0-8406-397a367fb611
 
+	/// Variação do valor comprado contra o mesmo período do ano anterior.
 	measure 'Valor Comprado vs Ano Anterior %' = DIVIDE([Valor Comprado] - [Valor Comprado Ano Anterior], [Valor Comprado Ano Anterior])
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: 5. Comparativos

@@ -11,7 +11,7 @@ Este é o **projeto 0** do meu portfólio: a fundação que alimenta os painéis
 | Competência | Onde está |
 |---|---|
 | **Python (pandas)**: ETL e qualidade de dados | [`python/etl.py`](python/etl.py) trata 11 tipos de problema e gera um [relatório de qualidade](docs/relatorio_qualidade.md) a cada execução |
-| **SQL Server**: modelagem e carga | [`sql/`](sql/): staging, modelo estrela, procedure de carga com transação, testes automáticos e views com CTE e funções de janela |
+| **SQL Server**: modelagem, carga e análise | [`sql/`](sql/): staging, modelo estrela, procedure de carga com transação, testes automáticos e views com CTE e funções de janela. Em [`sql/perguntas`](sql/perguntas) há 10 perguntas de negócio respondidas em SQL ([página no portfólio](https://lucasgama.vercel.app/sql.html)) |
 | **Power BI e DAX** | [Painel Financeiro](docs/painel_financeiro.md) em formato PBIP (modelo em TMDL, relatório em PBIR): relacionamentos inativos (`USERELATIONSHIP`), inteligência de tempo e medidas conferidas contra o SQL |
 | **Modelagem dimensional** | 8 dimensões e 9 fatos com grão definido ([dicionário de dados](docs/dicionario_de_dados.md)) |
 | **Processos administrativos** | Contas a pagar e a receber, DRE por competência, orçamento, folha, ponto, estoque e compras |
@@ -89,7 +89,7 @@ pip install -r requirements.txt
 python python/gerar_dados.py     # opcional: os dados já estão no repositório
 python python/etl.py             # data/bruto -> data/tratado + relatório de qualidade
 python python/carregar_sql.py    # cria o banco, carrega e roda os testes (~20 s)
-python python/exportar_web.py    # opcional: JSONs das versões web dos painéis (conferidos com o SQL antes de gravar)
+python python/exportar_web.py    # opcional: JSONs das versões web dos painéis e do "SQL na prática" (conferidos com o SQL antes de gravar)
 ```
 
 O servidor padrão é `localhost\SQLEXPRESS`. Para outro servidor, use `--servidor "NOME"`.
@@ -104,6 +104,7 @@ data/tratado/     arquivos limpos e padronizados (entrada do SQL e do Power BI)
 docs/             dicionário de dados e relatório de qualidade
 python/           geração dos dados, ETL e carga no SQL Server
 sql/              scripts numerados na ordem de execução
+sql/perguntas/    10 perguntas de negócio respondidas em SQL (página "SQL na prática" do portfólio)
 powerbi/          painéis em formato PBIP (modelo semântico em TMDL + relatório) e tema de cores
 excel/            pastas de trabalho com Power Query e o código M de cada consulta (excel/consultas)
 ```

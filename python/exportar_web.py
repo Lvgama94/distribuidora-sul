@@ -1,14 +1,15 @@
 """
 Exporta os dados dos painéis para a versão web interativa do portfólio.
 
-Para cada painel (Financeiro, People Analytics, Compras e Estoque), resume as
-fatos por mês e pelas dimensões dos filtros e grava um JSON pequeno que o site
-lê no navegador. Antes de gravar, recalcula a partir do próprio JSON os
+Para cada painel (Financeiro, People Analytics, Compras e Estoque, Comercial),
+resume as fatos por mês e pelas dimensões dos filtros e grava um JSON pequeno que
+o site lê no navegador. Antes de gravar, recalcula a partir do próprio JSON os
 indicadores da view de conferência do painel (dw.vw_conferencia_*) e para se
 algum não bater com o SQL. O painel "excel" lê as tabelas que o Power Query
 gravou nas pastas de trabalho de excel/ e as confere com o SQL e o CSV do banco.
+O "sql" roda as consultas de sql/perguntas/ e grava cada uma com o resultado.
 
-Uso:   python python/exportar_web.py                 (os quatro painéis)
+Uso:   python python/exportar_web.py                 (todos os painéis)
        python python/exportar_web.py --painel rh
        python python/exportar_web.py --pasta ../portfolio/assets/data
 Requer o banco DistribuidoraSul carregado (python/carregar_sql.py).
@@ -17,9 +18,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from datetime import date
+from decimal import Decimal
 from pathlib import Path
 
 import openpyxl
@@ -564,6 +567,97 @@ def verificar_excel(cursor, dados: dict) -> int:
     return falhas
 
 
+# ------------------------------------------------------------ SQL na prática
+
+PERGUNTAS = RAIZ / "sql" / "perguntas"
+CAMPOS = ("Pergunta", "Técnicas", "Leitura")
+
+
+def ler_pergunta(arquivo: Path) -> dict:
+    """Separa o cabeçalho do arquivo (Pergunta, Técnicas, Leitura) da consulta."""
+    texto = arquivo.read_text(encoding="utf-8")
+    cabecalho = re.match(r"\s*/\*(.*?)\*/\s*", texto, re.S)
+    campos, chave = {}, None
+    for linha in cabecalho.group(1).splitlines():
+        linha = linha.strip()
+        if linha.split(":")[0] in CAMPOS:
+            chave, valor = linha.split(":", 1)
+            campos[chave] = valor.strip()
+        elif linha and chave:
+            campos[chave] += " " + linha
+    return {"arquivo": arquivo.name, "pergunta": campos["Pergunta"], "leitura": campos["Leitura"],
+            # vírgulas fora de parênteses separam as técnicas
+            "tecnicas": re.split(r",\s*(?![^()]*\))", campos["Técnicas"]),
+            "sql": texto[cabecalho.end():].strip()}
+
+
+def tipo_coluna(nome: str, valores: list) -> str:
+    """Formato de exibição pelo nome e pelo tipo: pct_* é percentual, *_dias e *_meses têm uma casa."""
+    amostra = next((v for v in valores if v is not None), None)
+    if nome.startswith("pct_"):
+        return "pct"
+    if isinstance(amostra, date):
+        return "data"
+    if isinstance(amostra, str):
+        return "texto"
+    if isinstance(amostra, int):
+        return "int"
+    return "num1" if nome.endswith(("_dias", "_meses")) else "reais"
+
+
+def exportar_sql(cursor) -> dict:
+    perguntas = []
+    for arquivo in sorted(PERGUNTAS.glob("*.sql")):
+        pergunta = ler_pergunta(arquivo)
+        cursor.execute(pergunta["sql"])
+        nomes = [d[0] for d in cursor.description]
+        linhas = [list(l) for l in cursor.fetchall()]
+        tipos = [tipo_coluna(n, [l[i] for l in linhas]) for i, n in enumerate(nomes)]
+        for linha in linhas:
+            for i, v in enumerate(linha):
+                if isinstance(v, date):
+                    linha[i] = v.isoformat()
+                elif isinstance(v, (Decimal, float)):
+                    linha[i] = round(float(v), 6 if tipos[i] == "pct" else 2)
+        pergunta["colunas"] = [{"nome": n, "tipo": t} for n, t in zip(nomes, tipos)]
+        pergunta["linhas"] = linhas
+        perguntas.append(pergunta)
+    return {"perguntas": perguntas}
+
+
+def verificar_sql(cursor, dados: dict) -> int:
+    """Os números que as consultas têm em comum com os painéis precisam bater com as views de conferência."""
+    view = {(ano, indicador): float(valor) for ano, indicador, valor in consultar(cursor, """
+        SELECT ano, indicador, valor FROM dw.vw_conferencia_comercial
+        UNION ALL SELECT ano, indicador, valor FROM dw.vw_conferencia_rh
+        UNION ALL SELECT ano, indicador, valor FROM dw.vw_conferencia_financeiro""")}
+    p = {q["arquivo"][:2]: q for q in dados["perguntas"]}
+
+    def coluna(num: str, nome: str) -> list:
+        i = [c["nome"] for c in p[num]["colunas"]].index(nome)
+        return [l[i] for l in p[num]["linhas"]]
+
+    total_categorias = dict(zip(coluna("01", "categoria"), zip(coluna("01", "faturamento_2024"), coluna("01", "faturamento_2025"))))
+    comparacoes = [
+        ("01", "Faturamento 2024 (linha Total)", view[2024, "Faturamento"], total_categorias["Total"][0]),
+        ("01", "Faturamento 2025 (linha Total)", view[2025, "Faturamento"], total_categorias["Total"][1]),
+        ("02", "Desligamentos 2024 + 2025", view[2024, "Desligamentos"] + view[2025, "Desligamentos"], sum(coluna("02", "desligamentos"))),
+        ("04", "Clientes perdidos em 2025", view[2025, "Clientes Perdidos"], len(p["04"]["linhas"])),
+        ("06", "Faturamento 2025 (soma dos meses)", view[2025, "Faturamento"], sum(coluna("06", "faturamento"))),
+        ("07", "Receita bruta 2025 (acumulado de dezembro)", view[2025, "Receita Bruta"], coluna("07", "realizado_acumulado")[-1]),
+        ("07", "Atingimento da receita 2025", view[2025, "Atingimento da Receita %"], coluna("07", "pct_do_orcamento_anual")[-1]),
+        ("09", "Faturamento dos 20% maiores 2025", view[2025, "Faturamento dos 20% Maiores %"], coluna("09", "pct_do_faturamento")[0]),
+        ("10", "Notas fiscais 2024 + 2025", view[2024, "Notas Fiscais"] + view[2025, "Notas Fiscais"], sum(coluna("10", "notas"))),
+        ("10", "Notas que não conferem", 0.0, sum(n for s, n in zip(coluna("10", "situacao"), coluna("10", "notas")) if s != "Confere")),
+    ]
+    falhas = 0
+    for num, indicador, esperado, obtido in comparacoes:
+        ok = abs(obtido - esperado) <= (1e-6 if abs(esperado) < 1 else 0.01)
+        falhas += not ok
+        print(f"  {'OK   ' if ok else 'FALHA'} {num}  {indicador:<44} view {esperado:>16,.4f}   consulta {obtido:>16,.4f}")
+    return falhas
+
+
 # ------------------------------------------------------------ conferência e gravação
 
 def conferir(cursor, view: str, calculado: dict, ignorar=()) -> int:
@@ -593,6 +687,7 @@ PAINEIS = {
     "compras": (exportar_compras, pela_view(indicadores_compras, "dw.vw_conferencia_compras"), "dw.vw_conferencia_compras"),
     "comercial": (exportar_comercial, pela_view(indicadores_comercial, "dw.vw_conferencia_comercial"), "dw.vw_conferencia_comercial"),
     "excel": (exportar_excel, verificar_excel, "dw.fato_ponto, títulos no SQL e CSV do banco"),
+    "sql": (exportar_sql, verificar_sql, "as views de conferência dos painéis"),
 }
 
 
